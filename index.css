@@ -170,3 +170,12 @@ footer p {
     font-size: 1em;
 }
 
+
+@media only screen and (max-wdith: 500px) {
+    .header {
+        max-height: 250px;
+    }
+    .logo {
+        max-height: 250px;
+    }
+}
