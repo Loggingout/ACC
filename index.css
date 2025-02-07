@@ -49,7 +49,7 @@ header nav {
 
 /* Hero Section */
 .hero {
-    background: url('../images/Coffee\ Cup.jpg') no-repeat center center/cover;
+    background: url('./images/Coffee\ Cup.jpg') no-repeat center center/cover;
     color: white;
     text-align: center;
     padding: 100px 0;
