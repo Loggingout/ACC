@@ -190,7 +190,7 @@ footer p {
     font-size: 1em;
 }
 
-@media only screen and (aspect-ratio: 18:9) {
+@media only screen and (aspect-ratio: auto) {
     .header {
         max-height: 250px;
     }
