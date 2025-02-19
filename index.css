@@ -190,7 +190,7 @@ footer p {
     font-size: 1em;
 }
 
-@media only screen and (aspect-ratio: auto) {
+@media only screen and (width: 1250px) {
     .header {
         aspect-ratio: auto;
     }
