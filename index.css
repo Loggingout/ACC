@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Arial', sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -14,15 +15,20 @@ body {
 
 /* Navigation Bar */
 header {
-    background-color: deepskyblue;
+    background: linear-gradient( to right, gold, deepskyblue);
     padding: 20px;
+    border: 2px solid black;
 }
 
 header .logo h1 {
-    color: gold;
+    color: black;
     font-size: 2em;
     margin: 0;
     font-family: Segoe Script;
+}
+
+.logo > h1:hover {
+    color: deepskyblue;
 }
 
 
@@ -42,9 +48,13 @@ header nav {
 }
 
 .nav-links li a {
-    color: #fff;
+    color: black;
     text-decoration: none;
     font-size: 1.2em;
+}
+
+.nav-links > li > a:hover {
+    color: yellow;
 }
 
 /* Hero Section */
@@ -53,6 +63,7 @@ header nav {
     color: white;
     text-align: center;
     padding: 100px 0;
+    border-radius: 20px;
 }
 
 .hero h2 {
@@ -119,7 +130,7 @@ header nav {
 
 /* Contact Section */
 .contact {
-    background-color: orange;
+    background: linear-gradient(to bottom, orange, black);
     color: #fff;
     padding: 50px 20px;
     text-align: center;
@@ -160,7 +171,7 @@ header nav {
 
 /* Footer */
 footer {
-    background-color: deepskyblue;
+    background: linear-gradient(to left, gold, deepskyblue);
     color: #fff;
     text-align: center;
     padding: 20px;
@@ -170,12 +181,12 @@ footer p {
     font-size: 1em;
 }
 
-
-@media only screen and (max-wdith: 500px) {
+@media only screen and (max-wdith: 720px) {
     .header {
         max-height: 250px;
     }
     .logo {
         max-height: 250px;
+        font-size: 20px;
     }
 }
