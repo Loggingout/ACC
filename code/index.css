@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Arial', sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -14,15 +15,20 @@ body {
 
 /* Navigation Bar */
 header {
-    background-color: deepskyblue;
+    background: linear-gradient( to right, gold, gray);
     padding: 20px;
+    border: 2px solid black;
 }
 
 header .logo h1 {
-    color: gold;
+    color: beige;
     font-size: 2em;
     margin: 0;
     font-family: Segoe Script;
+}
+
+.logo > h1:hover {
+    color: deepskyblue;
 }
 
 
@@ -42,9 +48,17 @@ header nav {
 }
 
 .nav-links li a {
-    color: #fff;
+    color: black;
     text-decoration: none;
     font-size: 1.2em;
+}
+
+.nav-links > li > a:hover {
+    color: yellow;
+}
+
+li > a:visited {
+    color: beige;
 }
 
 /* Hero Section */
@@ -99,7 +113,7 @@ header nav {
 }
 
 .menu-items .item {
-    background-color: gold;
+    background: linear-gradient(to bottom right, white, beige);
     padding: 20px;
     border-radius: 10px;
     width: 250px;
@@ -117,12 +131,17 @@ header nav {
     color: #777;
 }
 
+.subtitle {
+    color: gold;
+}
+
 /* Contact Section */
 .contact {
-    background-color: orange;
+    background: linear-gradient(to left bottom , beige, white);
     color: #fff;
     padding: 50px 20px;
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .contact h2 {
@@ -155,12 +174,13 @@ header nav {
 }
 
 .contact form button:hover {
-    background-color: deepskyblue;
+    background-color: black;
+    color: white;
 }
 
 /* Footer */
 footer {
-    background-color: deepskyblue;
+    background: linear-gradient(to left, gold, gray);
     color: #fff;
     text-align: center;
     padding: 20px;
@@ -170,4 +190,12 @@ footer p {
     font-size: 1em;
 }
 
+@media only screen and (max-wdith: 720px) {
+    .header {
+        max-height: 250px;
+    }
+    .logo {
+        font-size: 15px;
+    }
+}
 
