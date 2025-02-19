@@ -15,13 +15,13 @@ body {
 
 /* Navigation Bar */
 header {
-    background: linear-gradient( to right, gold, deepskyblue);
+    background: linear-gradient( to right, gold, gray);
     padding: 20px;
     border: 2px solid black;
 }
 
 header .logo h1 {
-    color: black;
+    color: beige;
     font-size: 2em;
     margin: 0;
     font-family: Segoe Script;
@@ -57,13 +57,16 @@ header nav {
     color: yellow;
 }
 
+li > a:visited {
+    color: beige;
+}
+
 /* Hero Section */
 .hero {
     background: url('/images/Coffee\ Cup.jpg') no-repeat center center/cover;
     color: white;
     text-align: center;
     padding: 100px 0;
-    border-radius: 20px;
 }
 
 .hero h2 {
@@ -110,7 +113,7 @@ header nav {
 }
 
 .menu-items .item {
-    background-color: gold;
+    background: linear-gradient(to bottom right, white, beige);
     padding: 20px;
     border-radius: 10px;
     width: 250px;
@@ -128,12 +131,17 @@ header nav {
     color: #777;
 }
 
+.subtitle {
+    color: gold;
+}
+
 /* Contact Section */
 .contact {
-    background: linear-gradient(to bottom, orange, black);
+    background: linear-gradient(to left bottom , beige, white);
     color: #fff;
     padding: 50px 20px;
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .contact h2 {
@@ -166,12 +174,13 @@ header nav {
 }
 
 .contact form button:hover {
-    background-color: deepskyblue;
+    background-color: black;
+    color: white;
 }
 
 /* Footer */
 footer {
-    background: linear-gradient(to left, gold, deepskyblue);
+    background: linear-gradient(to left, gold, gray);
     color: #fff;
     text-align: center;
     padding: 20px;
@@ -186,7 +195,6 @@ footer p {
         max-height: 250px;
     }
     .logo {
-        max-height: 250px;
-        font-size: 20px;
+        font-size: 15px;
     }
 }
