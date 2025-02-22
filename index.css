@@ -197,7 +197,7 @@ footer p {
 
 @media only screen and (max-width: 750px) {
     .header {
-        aspect-ratio: auto;
+        aspect-ratio: 16:9 auto;
     }
     .logo {
         font-size: 15px;
