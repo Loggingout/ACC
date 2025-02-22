@@ -208,4 +208,7 @@ footer p {
     html {
         aspect-ratio: 16:9 auto;
     }
+    a {
+        font-size: 17px;
+    }
 }
