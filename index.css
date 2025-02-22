@@ -208,7 +208,4 @@ footer p {
     html {
         aspect-ratio: 16:9 auto;
     }
-    a {
-        gap: 7px;
-    }
 }
