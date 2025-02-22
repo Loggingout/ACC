@@ -209,6 +209,6 @@ footer p {
         aspect-ratio: 16:9 auto;
     }
     a {
-        font-size: 17px;
+        gap: 7px;
     }
 }
