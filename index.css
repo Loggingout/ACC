@@ -198,5 +198,8 @@ footer p {
 }
 
 @media only screen and (apsect-ratio: 16:9) {
-    
+    body {
+        min-width: 100vw;
+        min-height: 100vh;
+    } 
 }
