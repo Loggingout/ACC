@@ -1,3 +1,4 @@
+/*[VIEWERS]DO NOT MODIFIY COPY RAW FILE IF YOU'RE LOOKING TO POKE AROUND*/
 /* General Styles */
 * {
     margin: 0;
@@ -11,6 +12,8 @@ body {
     line-height: 1.6;
     background-color: #f4f4f4;
     color: #333;
+    width: 100vw;
+    height: 100vh;
 }
 
 /* Navigation Bar */
@@ -28,7 +31,7 @@ header .logo h1 {
 }
 
 .logo > h1:hover {
-    color: deepskyblue;
+    color: red;
 }
 
 
@@ -44,7 +47,7 @@ header nav {
 }
 
 .nav-links li {
-    margin: 0 20px;
+    margin: 0 12px;
 }
 
 .nav-links li a {
@@ -63,7 +66,7 @@ li > a:visited {
 
 /* Hero Section */
 .hero {
-    background: url('/images/Coffee\ Cup.jpg') no-repeat center center/cover;
+    background: url('/images/AccFrontDisplay.jpg') no-repeat center center/cover;
     color: white;
     text-align: center;
     padding: 100px 0;
@@ -182,20 +185,25 @@ li > a:visited {
 footer {
     background: linear-gradient(to left, gold, gray);
     color: #fff;
-    text-align: center;
+    text-align: justify;
     padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.footer-card {
+    width: auto;
+    height: auto;
+    text-align: center;
 }
 
 footer p {
     font-size: 1em;
 }
 
-@media only screen and (max-wdith: 720px) {
-    .header {
-        max-height: 250px;
-    }
-    .logo {
-        font-size: 15px;
-    }
+@media only screen and (aspect-ratio: 16/9) {
+    body {
+        min-width: 100vw;
+        min-height: 100vh;
+    } 
 }
-
