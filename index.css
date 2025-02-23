@@ -11,6 +11,7 @@ html {
     font-family: 'Arial', sans-serif;
     scroll-behavior: smooth;
     aspect-ratio: 16:9 auto;
+    min-width: 100vw;
 }
 
 body {
