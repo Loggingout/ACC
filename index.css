@@ -1,17 +1,11 @@
 /*[VIEWERS]DO NOT MODIFIY*/
 /* General Styles */
-html {
-    width: 100%;
-    height: 100%;
-}
-    
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Arial', sans-serif;
     scroll-behavior: smooth;
-    aspect-ratio: 16:9 auto;
 }
 
 body {
@@ -37,7 +31,7 @@ header .logo h1 {
 }
 
 .logo > h1:hover {
-    color: deepskyblue;
+    color: red;
 }
 
 
@@ -72,7 +66,7 @@ li > a:visited {
 
 /* Hero Section */
 .hero {
-    background: url('/images/Coffee\ Cup.jpg') no-repeat center center/cover;
+    background: url('/images/AccFrontDisplay.jpg') no-repeat center center/cover;
     color: white;
     text-align: center;
     padding: 100px 0;
@@ -191,15 +185,23 @@ li > a:visited {
 footer {
     background: linear-gradient(to left, gold, gray);
     color: #fff;
-    text-align: center;
+    text-align: justify;
     padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.footer-card {
+    width: auto;
+    height: auto;
+    text-align: center;
 }
 
 footer p {
     font-size: 1em;
 }
 
-@media only screen and (apsect-ratio: 16:9) {
+@media only screen and (aspect-ratio: 16/9) {
     body {
         min-width: 100vw;
         min-height: 100vh;
