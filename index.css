@@ -196,7 +196,7 @@ footer p {
     font-size: 1em;
 }
 
-@media only screen and (max-width: auto) {
+@media screen and (max-width: auto) {
     * {
         aspect-ratio: 18:9 auto;
     }
