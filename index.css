@@ -198,9 +198,11 @@ footer p {
 
 @media screen and (max-width: auto) {
     * {
-        aspect-ratio: 18:9 auto;
+        width: 100vh;
+        height: 100vh;
     }
     html {
-        aspect-ratio: 16:9 auto;
+         width: 100vh;
+        height: 100vh;
     }
 }
