@@ -18,7 +18,7 @@ body {
 
 /* Navigation Bar */
 header {
-    background: linear-gradient( to right, gold, gray);
+    background: url(/images/checked.jpg) no-repeat center center/cover;
     padding: 20px;
     border: 2px solid black;
 }
@@ -183,7 +183,7 @@ li > a:visited {
 
 /* Footer */
 footer {
-    background: linear-gradient(to left, gold, gray);
+    background: url(/images/checked.jpg) no-repeat center center/cover;
     color: #fff;
     text-align: justify;
     padding: 20px;
@@ -207,3 +207,4 @@ footer p {
         min-height: 100vh;
     } 
 }
+
