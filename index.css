@@ -1,4 +1,4 @@
-/*[VIEWERS]DO NOT MODIFIY COPY RAW FILE IF NEEDING TO MODIFY*/
+/*[VIEWERS]DO NOT MODIFIY COPY RAW FILE FOR NEED TO MODIFY*/
 /* General Styles */
 * {
     margin: 0;
@@ -192,9 +192,13 @@ footer {
 }
 
 .footer-card {
-    width: auto;
+    width: 70%;
     height: auto;
     text-align: center;
+}
+
+.footer-card a {
+    color: black;
 }
 
 footer p {
