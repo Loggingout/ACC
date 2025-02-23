@@ -196,6 +196,6 @@ footer p {
     font-size: 1em;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (apsect-ratio: 16:9) {
     
 }
