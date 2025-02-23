@@ -1,4 +1,4 @@
-/*[VIEWERS]DO NOT MODIFIY*/
+/*[VIEWERS]DO NOT MODIFIY COPY RAW FILE IF NEEDING TO MODIFY*/
 /* General Styles */
 * {
     margin: 0;
@@ -31,7 +31,7 @@ header .logo h1 {
 }
 
 .logo > h1:hover {
-    color: red;
+    color: brown;
 }
 
 
@@ -57,7 +57,7 @@ header nav {
 }
 
 .nav-links > li > a:hover {
-    color: yellow;
+    color: brown;
 }
 
 li > a:visited {
@@ -207,4 +207,3 @@ footer p {
         min-height: 100vh;
     } 
 }
-
