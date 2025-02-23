@@ -10,7 +10,7 @@ html {
     box-sizing: border-box;
     font-family: 'Arial', sans-serif;
     scroll-behavior: smooth;
-    aspect-ratio: 16:9 auto;
+    aspect-ratio: 18:9 auto;
 }
 
 body {
