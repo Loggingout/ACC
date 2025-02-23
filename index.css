@@ -196,7 +196,7 @@ footer p {
     font-size: 1em;
 }
 
-@media screen and (max-width: auto) {
+@media screen and (max-width: 1200px) {
     * {
         width: 100vh;
         height: 100vh;
