@@ -133,7 +133,10 @@
             <p>Closed</p>
         </div>
     </footer>
-    <!--vercel analytics-->
-    <script defer src="/_vercel/insights/script.js"> window.va = window.va || function() {(window.vaq = window.vaq || []).push(arguments); };</script>
+    <!--vercel analytics/insights-->
+     <script defer src="/_vercel/insights/script.js", defer src="/_vercel/speed-insights/script.js"> 
+        window.va = window.va || function() {(window.vaq = window.vaq || []).push(arguments); };
+        window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+    </script>
 </body>
 </html>
