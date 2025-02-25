@@ -119,9 +119,9 @@ li > a:visited {
     background: linear-gradient(to bottom right, white, beige);
     padding: 20px;
     border-radius: 10px;
-    width: 250px;
+    width: auto;
     margin: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) ;
 }
 
 .menu-items .item h3 {
@@ -138,6 +138,56 @@ li > a:visited {
     color: gold;
 }
 
+#description {
+    color: black;
+}
+.prices {
+   font-weight: bold;
+   text-decoration-line: underline;
+}
+
+.coffee-p {
+    margin-top: 10px;
+}
+
+.iced-beverages-p {
+    margin-top: 20px;
+}
+
+.flavors-p {
+    margin-top: 25px;
+}
+
+.lunchMenu-p {
+    margin-top: 12px;
+}
+
+.espresso-p {
+    margin-top: 10px;
+}
+
+.sugar-type {
+    color: black;
+}
+
+.memo {
+    color: black;
+    font-weight: bold;
+}
+
+.coldMenu-p {
+    margin-top: 7px;
+}
+
+#specialD-memo {
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+}
+
+.specialD-title {
+    margin-top: 8px;
+}
 /* Contact Section */
 .contact {
     background: linear-gradient(to left bottom , beige, white);
@@ -203,6 +253,15 @@ footer {
 
 footer p {
     font-size: 1em;
+}
+
+.address {
+    font-weight: bold;
+}
+
+.hours-p {
+    color: black;
+    font-weight: bold;
 }
 
 @media only screen and (aspect-ratio: 16/9) {
