@@ -1,4 +1,4 @@
-<!--[VIEWERS]DO NOT MODIFIY-->
+<!--[VIEWERS]DO NOT MODIFIY COPY RAW FILE FOR NEED TO MODIFY-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,20 +13,18 @@
     <header>
         <nav>
             <div class="logo">
-                <h1>A Cheerful Cup <i class="fas fa-coffee"></i></h1>
+                <h1 class="logo-title">A Cheerful Cup <i id="icon" class="fas fa-coffee"></i></h1>
             </div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#menu">Menu</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
+    <section class="slogan">
+        <div class="slogan-content">
             <h2>Welcome to the Happiest Coffee in Town</h2>
-            <p>Freshly brewed, every cup made with love, every customer leaves with a smile.</p>
+            <p class="bold">Freshly brewed, every cup made with love, every customer leaves with a smile.</p>
             <a href="#menu" class="btn">View Our Menu</a>
         </div>
     </section>
@@ -36,46 +34,49 @@
         <div class="menu-items">
             <div class="item">
                 <h3 class="subtitle">Latte</h3>
-                <p>A smooth blend of espresso and steamed milk.</p>
-                <p class="coffee-p">Coffee ...$3.00(S)| $3.25(M) | $3.50(L)</p>
-                <p class="coffee-p">Café Au Lait .... $3.25(S)| $3.50(M) | $4.50(L)</p>
+                <p id="description">A smooth blend of espresso and steamed milk.</p>
+                <p class="coffee-p">Coffee ...<span class="prices">$3.00(S)| $3.25(M) | $3.50(L)</span></p>
+                <p class="coffee-p">Café Au Lait .... <span class="prices">$3.25(S)| $3.50(M) | $4.50(L)
+                </span></p>
+                <h3 class="subtitle">Specialty Drinks</h3>
+                <p class="specialD-title">2 Leaves & a Bud Tea... <span class="prices">$4.00(S)| $4.50(M) | $5.00(L)</span></p>
+                <p id="specialD-memo">*Tea Bag Assorted*</p>
+                <p class="specialD-title">Hot spiced Apple Cider... <span class="prices">$4.00(S)| $4.50(M) | $5.00(L)</span></p>
+                <p class="specialD-title">Hot Chocolate... <span class="prices">$4.00(S)| $4.50(M) | $5.00(L)</span></p>
             </div>
             <div class="item">
                 <h3 class="subtitle">Espresso</h3>
-                <p>A strong, rich coffee made with finely ground beans.</p>
-                <p class="espresso-p bold">Espresso</p>
-                <p class="espreso-p">Red Eye ... $3.50(S)| $4.00(M) | $4.50(L)</p>
-                <p class="espreso-p">Americano ..... $4.00(S)| $4.50(M) | $5.00(L)</p>
-                <p class="espreso-p">Cappuccino/Latte .... $4.00(S)| $5.00(M) | $6.00(L)</p>
-                <p class="espreso-p">Mocha ...... $4.50(S) | $5.50(M) | $6.50(L)</p>
-                <p class="espreso-p">Carmel Macchiato ........ $4.50(S) | $5.50(M) | $6.50(L)</p>
-                <p class="espreso-p">Chai Latte ..... $4.50(S) | $5.50(M) | $6.50(L)</p>
+                <p id="description">A strong, rich coffee made with finely ground beans.</p>
+                <p class="espresso-p">Red Eye ... <span class="prices"> $3.50(S)| $4.00(M) | $4.50(L)</span></p>
+                <p class="espresso-p">Americano ..... <span class="prices">$4.00(S)| $4.50(M) | $5.00(L)</span></p>
+                <p class="espresso-p">Cappuccino/Latte .... <span class="prices">$4.00(S)| $5.00(M) | $6.00(L)</span></p>
+                <p class="espresso-p">Mocha ...... <span class="prices">$4.50(S) | $5.50(M) | $6.50(L)</span></p>
+                <p class="espresso-p">Carmel Macchiato .... <span class="prices">$4.50(S) | $5.50(M) | $6.50(L)</span></p>
+                <p class="espresso-p">Chai Latte ..... <span class="prices">$4.50(S) | $5.50(M) | $6.50(L)</span></p>
             </div>
             <div class="item">
               <h3 class="subtitle">Iced-Beverages</h3>
-                <p>Espresso topped with cold milk.</p>
-                <p class="iced-beverages-title bold">Iced Beverages</p>
-                <p class="iced-berverages-p">Italian Soda ...... $4.00(M) | $4.50(L)</p>
-                <p class="iced-berverages-p">Caramel Frappe ......  $5.50(M) | $6.00(L)</p>
-                <p class="iced-berverages-p">Green Tea Frappe ...  $5.50(M) | $6.00(L)</p>
-                <p class="iced-berverages-p">Fruit Smoothie .. $5.50(M) | $6.00(L)</p>
+                <p id="description">Espresso topped with cold milk.</p>
+                <p class="iced-beverages-p">Italian Soda ...... <span class="prices">$4.00(M) | $4.50(L)</span></p>
+                <p class="iced-beverages-p">Caramel Frappe ......  <span class="prices">$5.50(M) | $6.00(L)</span></p>
+                <p class="iced-beverages-p">Green Tea Frappe ...  <span class="prices">$5.50(M) | $6.00(L)</span></p>
+                <p class="iced-beverages-p">Fruit Smoothie .. <span class="prices">$5.50(M) | $6.00(L)</span></p>
             </div>
             <div class="item">
                 <h3 class="subtitle">Flavors</h3>
-                <p class="flovers-p">Caramel(SugarFree)</p>
-                <p class="flovers-p">Chocolate</p>
-                <p class="flovers-p">English Toffee</p>
-                <p class="flovers-p">Hazelnut<i>(SugarFree)</i></p>
-                <p class="flovers-p">Irish Cream</p>
-                <p class="flovers-p">Mint</p>
-                <p class="flovers-p">Salted Caramel</p>
-                <p class="flovers-p">Toasted Marshmallow</p>
-                <p class="flovers-p">French Vanilla(SugarFree)</p>
-                <p class="flovers-p">White Chocolate</p>
+                <p class="flavors-p">Caramel.....<span class="sugar-type">(SugarFree)</span></p>
+                <p class="flavors-p">Chocolate</p>
+                <p class="flavors-p">English Toffee</p>
+                <p class="flavors-p">Hazelnut.....<span class="sugar-type">(SugarFree)</span></p>
+                <p class="flavors-p">Irish Cream</p>
+                <p class="flavors-p">Mint</p>
+                <p class="flavors-p">Salted Caramel</p>
+                <p class="flavors-p">Toasted Marshmallow</p>
+                <p class="flavors-p">French Vanilla.....<span class="sugar-type">(SugarFree)</span></p>
+                <p class="flavors-p">White Chocolate</p>
             </div>
             <div class="item">
-                <h3 class="subtitle">Cold/Breakfast Menu/Drinks</h3>
-                <p class="coldMenu-p">Breakfast Burritos</p>
+                <h3 class="subtitle">Cold-Menu/Drinks</h3>
                 <p class="coldMenu-p">Ceasar Salad</p>
                 <p class="coldMenu-p">Salami Plates</p>
                 <p class="coldMenu-p">Balance Breaks</p>
@@ -99,13 +100,14 @@
                 <p class="lunchMenu-p">Tamales</p>
                 <p class="lunchMenu-p">Baked Potato Soup</p>
                 <p class="lunchMenu-p">Chicken Tortilla Soup</p>
+                <p class="lunchMenu-p">Breakfast Burritos</p>
             </div>
         </div>
     </section>
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <h2 class="subtitle">Contact Us</h2>
-        <p class="subtitle">We'd love to hear from you!</p>
+        <p class="memo">We'd love to hear from you!</p>
         <form>
             <input type="text" placeholder="Your Name" required>
             <input type="email" placeholder="Your Email" required>
@@ -116,15 +118,26 @@
     <!-- Footer -->
     <footer>
         <div class="footer-card">
-            <h1>All Rights Reserved</h1>
-        <p>&copy; 2015 A Cheerful Cup. Every cup made with a little extra ❤️ !</p>
+            <h3>All Rights Reserved</h3>
+            <p>&copy; 2015 A Cheerful Cup.</p>
+            <p>Every cup made with a little extra ❤️!</p>
         </div>
         <div class="footer-card">
-            <h1>Location</h1>
-            <p>3801 E Florida Ave, Denver Co 80210</p>
+            <h3>Location</h3>
+            <p><span class="address"><a href="https://www.bing.com/maps?q=a+cheerful+cup&cvid=9a8fd8bce57442fca6a3780552b28214&gs_lcrp=EgRlZGdlKgkIABBFGDsY-QcyCQgAEEUYOxj5BzIGCAEQRRg7MgYIAhBFGDkyBggDEC4YQDIGCAQQLhhAMgYIBRAuGEAyBggGEEUYPDIGCAcQRRg8MgYICBBFGDzSAQg0NzUyajBqMagCALACAA&FORM=ANAB01&PC=U531">3801 E Florida Ave, Denver Co 80210</a></span></p>
             <p>Inside Belcaro Place</p>
         </div>
+        <div class="footer-card">
+            <h3>Hours</h3>
+            <p class="hours-p">Mon/Fri</p>
+            <p>7:30am-2:00pm</p>
+            <p class="hours-p">Sat/Sun</p>
+            <p>Closed</p>
+        </div>
     </footer>
+    <!--vercel analytics/insights-->
+     <script defer src="/_vercel/insights/script.js", defer src="/_vercel/speed-insights/script.js"> 
+        window.va = window.va || function() {(window.vaq = window.vaq || []).push(arguments); };
+    </script>
 </body>
 </html>
-
