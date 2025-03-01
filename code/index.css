@@ -1,4 +1,4 @@
-/*[VIEWERS]DO NOT MODIFIY COPY RAW FILE IF YOU'RE LOOKING TO POKE AROUND*/
+/*[VIEWERS]DO NOT MODIFIY COPY RAW FILE FOR NEED TO MODIFY*/
 /* General Styles */
 * {
     margin: 0;
@@ -16,9 +16,9 @@ body {
     height: 100vh;
 }
 
-/* Navigation Bar */
+/* Header */
 header {
-    background: linear-gradient( to right, gold, gray);
+    background: url(/images/checked.jpg) no-repeat center center/cover;
     padding: 20px;
     border: 2px solid black;
 }
@@ -31,10 +31,31 @@ header .logo h1 {
 }
 
 .logo > h1:hover {
-    color: red;
+    color: burlywood;
+    box-shadow: 0 0 10px 2.5px white;
+    border-radius: 10px;
 }
 
+.logo {
+    padding: 2px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2.5px burlywood;
+    background: linear-gradient(to bottom left, black, #C66A3C);
+    border: 3px solid black;
+}
 
+.logo-title {
+    animation-name: blink;
+    animation-timing-function: linear;
+    animation-duration: 2.5s;
+    animation-iteration-count: 3;
+    border-radius: 10px;
+}
+
+#icon {
+    font-size: 20px;
+}
+/*Start of Nav links*/
 header nav {
     display: flex;
     justify-content: space-between;
@@ -47,7 +68,7 @@ header nav {
 }
 
 .nav-links li {
-    margin: 0 12px;
+    margin: 0;
 }
 
 .nav-links li a {
@@ -57,33 +78,43 @@ header nav {
 }
 
 .nav-links > li > a:hover {
-    color: yellow;
+    color: #C66A3C;
 }
 
 li > a:visited {
     color: beige;
 }
 
-/* Hero Section */
-.hero {
+
+
+/* slogan Section */
+.slogan {
     background: url('/images/AccFrontDisplay.jpg') no-repeat center center/cover;
     color: white;
     text-align: center;
     padding: 100px 0;
 }
 
-.hero h2 {
+.slogan-content {
+    color: white;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.slogan h2 {
     font-size: 3em;
     margin-bottom: 20px;
     font-family: Segoe Script;
 }
 
-.hero p {
+.slogan p {
     font-size: 1.5em;
     margin-bottom: 30px;
 }
 
-.hero .btn {
+.slogan .btn {
     padding: 10px 30px;
     background-color: #f9c74f;
     color: #333;
@@ -92,7 +123,7 @@ li > a:visited {
     font-size: 1.2em;
 }
 
-.hero .btn:hover {
+.slogan .btn:hover {
     background-color: #ffb703;
 }
 
@@ -119,9 +150,12 @@ li > a:visited {
     background: linear-gradient(to bottom right, white, beige);
     padding: 20px;
     border-radius: 10px;
-    width: 250px;
+    width: auto;
     margin: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) ;
+    animation-name: descend;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
 }
 
 .menu-items .item h3 {
@@ -138,6 +172,56 @@ li > a:visited {
     color: gold;
 }
 
+#description {
+    color: black;
+}
+.prices {
+   font-weight: bold;
+   text-decoration-line: underline;
+}
+
+.coffee-p {
+    margin-top: 10px;
+}
+
+.iced-beverages-p {
+    margin-top: 20px;
+}
+
+.flavors-p {
+    margin-top: 25px;
+}
+
+.lunchMenu-p {
+    margin-top: 12px;
+}
+
+.espresso-p {
+    margin-top: 10px;
+}
+
+.sugar-type {
+    color: black;
+}
+
+.memo {
+    color: black;
+    font-weight: bold;
+}
+
+.coldMenu-p {
+    margin-top: 7px;
+}
+
+#specialD-memo {
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+}
+
+.specialD-title {
+    margin-top: 8px;
+}
 /* Contact Section */
 .contact {
     background: linear-gradient(to left bottom , beige, white);
@@ -183,7 +267,7 @@ li > a:visited {
 
 /* Footer */
 footer {
-    background: linear-gradient(to left, gold, gray);
+    background: url(/images/checked.jpg) no-repeat center center/cover;
     color: #fff;
     text-align: justify;
     padding: 20px;
@@ -192,18 +276,46 @@ footer {
 }
 
 .footer-card {
-    width: auto;
+    width: 70%;
     height: auto;
     text-align: center;
+}
+
+.footer-card a {
+    color: black;
 }
 
 footer p {
     font-size: 1em;
 }
 
-@media only screen and (aspect-ratio: 16/9) {
-    body {
-        min-width: 100vw;
-        min-height: 100vh;
-    } 
+.address {
+    font-weight: bold;
 }
+
+.hours-p {
+    color: black;
+    font-weight: bold;
+}
+
+@keyframes descend {
+    0% {transform: translateY(0%) scale(0);}
+    100% {transform: translateY(0%);}
+}
+
+@keyframes blink {
+    0% {opacity: 0.5; box-shadow: 0 0 10px 2.5px;}
+    50% {opacity: 1; box-shadow: 0 0 10px 2.5px white;}
+    100% {opacity: 0; box-shadow: 0 0 10px 2.5px ;}
+}
+
+
+
+
+@media only screen and (aspect-ratio: 16/9) {}
+
+@media (max-wdith: 480px) {}
+
+@media (min-width: 481px) and (max-width: 767px){}
+
+@media (min-width: 768px) and (max-width: 991px){}
