@@ -13,7 +13,7 @@
     <header>
         <nav>
             <div class="logo">
-                <h1>A Cheerful Cup <i class="fas fa-coffee"></i></h1>
+                <h1 class="logo-title">A Cheerful Cup <i id="icon" class="fas fa-coffee"></i></h1>
             </div>
             <ul class="nav-links">
                 <li><a href="#contact">Contact</a></li>
@@ -21,11 +21,18 @@
         </nav>
     </header>
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
+    <section class="slogan">
+        <div class="slogan-content">
             <h2>Welcome to the Happiest Coffee in Town</h2>
-            <p>Freshly brewed, every cup made with love, every customer leaves with a smile.</p>
+            <p class="bold">Freshly brewed, every cup made with love, every customer leaves with a smile.</p>
             <a href="#menu" class="btn">View Our Menu</a>
+        </div>
+    </section>
+
+    <section class="update-background">
+        <div class="update-panel">
+            <h1 class="update-title"> !UPDATES IN PROGRESS!</h1>
+            <p class="update-info">ACC will be undergoing a minor update to our UI from March 1st to midnight of March 2nd.</p>
         </div>
     </section>
     <!-- Menu Section -->
@@ -96,11 +103,11 @@
             </div>
             <div class="item">
                 <h3 class="subtitle">Lunch menu</h3>
-                <p class="lunchMenu-p">Breakfast Burritos</p>
                 <p class="lunchMenu-p">Hot Dogs</p>
                 <p class="lunchMenu-p">Tamales</p>
                 <p class="lunchMenu-p">Baked Potato Soup</p>
                 <p class="lunchMenu-p">Chicken Tortilla Soup</p>
+                <p class="lunchMenu-p">Breakfast Burritos</p>
             </div>
         </div>
     </section>
@@ -138,7 +145,6 @@
     <!--vercel analytics/insights-->
      <script defer src="/_vercel/insights/script.js", defer src="/_vercel/speed-insights/script.js"> 
         window.va = window.va || function() {(window.vaq = window.vaq || []).push(arguments); };
-        window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
     </script>
 </body>
 </html>
