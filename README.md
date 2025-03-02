@@ -17,9 +17,15 @@ v1.1.0.61
 -Broke the link on the menu button, fixed it.
 
 V1.0.62
+
 -Add styling to logo name.
 
 -Added animation to coffee icon.
 
 -Added catering services.
 
+V1.0.63
+
+-Displaying customer comments.
+
+-Styling Testimonal display.
