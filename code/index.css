@@ -69,7 +69,7 @@ header .logo h1 {
     border: 2px solid black;
     padding: 0.5px;
     border-radius: 10px;
-    background-color: black;
+    background: url(/images/Black\ Texture\ Background.jpg) no-repeat center center/cover;
     box-shadow: 0 0 10px 2.5px gold;
 }
 
@@ -216,7 +216,7 @@ li > a:visited {
 }
 
 .coffee-p {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .iced-beverages-p {
@@ -232,7 +232,7 @@ li > a:visited {
 }
 
 .espresso-p {
-    margin-top: 10px;
+    margin-top: 30px;
 }
 
 .sugar-type {
@@ -266,7 +266,7 @@ li > a:visited {
 }
 
 .pic-holder {
-    background: url(/images/mom.jpg) no-repeat center center/cover;
+    background: url(/images/faced\ coffee.jpeg) no-repeat center center/cover;
     height: 300px;
     width: 300px;
     border-radius: 10px;
@@ -284,6 +284,7 @@ li > a:visited {
 
 .cater-subtitle {
     font-size: 30px;
+    text-align: center;
 }
 
 .catering-card {
@@ -310,6 +311,7 @@ li > a:visited {
 
 .cater-slogan-text {
     margin-top: 70px;
+    font-weight: bold;
 }
 
 .catering-title {
