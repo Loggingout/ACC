@@ -69,7 +69,7 @@ header .logo h1 {
     border: 2px solid black;
     padding: 0.5px;
     border-radius: 10px;
-    background-color: black;
+    background: url(/images/Black\ Texture\ Background.jpg) no-repeat center center/cover;
     box-shadow: 0 0 10px 2.5px gold;
 }
 
@@ -166,9 +166,7 @@ li > a:visited {
     padding: 50px 20px;
     text-align: center;
     background-color: #fff;
-    animation-name: descend;
-    animation-duration: 3s;
-    animation-iteration-count: 1;
+    
 }
 
 .menu h2 {
@@ -218,7 +216,7 @@ li > a:visited {
 }
 
 .coffee-p {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .iced-beverages-p {
@@ -234,7 +232,7 @@ li > a:visited {
 }
 
 .espresso-p {
-    margin-top: 10px;
+    margin-top: 30px;
 }
 
 .sugar-type {
@@ -258,6 +256,66 @@ li > a:visited {
 
 .specialD-title {
     margin-top: 8px;
+}
+
+/*Catering section*/
+.catering-background {
+    text-align: center;
+    padding: 50px 0;
+    background-color: white;
+}
+
+.pic-holder {
+    background: url(/images/faced\ coffee.jpeg) no-repeat center center/cover;
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2.5px gray;
+}
+
+.catering {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+    animation-name: descend;
+    animation-duration: 6s;
+    animation-iteration-count: 1;
+}
+
+.cater-subtitle {
+    font-size: 30px;
+    text-align: center;
+}
+
+.catering-card {
+    text-align: left;
+    background: linear-gradient(to bottom right, white, beige);
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2.5px gray;
+}
+
+.price-title {
+    margin-top: 50px;
+    color: gold;
+    font-size: 25px;
+}
+
+.price-right {
+    font-weight: bold;
+    font-size: 25px;
+    margin-right: 10px;
+    float: right;
+    text-decoration: underline;
+    text-decoration-color: black;
+}
+
+.cater-slogan-text {
+    margin-top: 70px;
+    font-weight: bold;
+}
+
+.catering-title {
+    font-size: 35px;
 }
 /* Contact Section */
 .contact {
@@ -354,6 +412,10 @@ footer p {
 
 @media (max-wdith: 480px) {}
 
-@media (min-width: 481px) and (max-width: 767px){}
+@media (min-width: 481px) and (max-width: 767px){
+    .logo {
+        font-size: 15px;
+    }
+}
 
 @media (min-width: 768px) and (max-width: 991px){}
