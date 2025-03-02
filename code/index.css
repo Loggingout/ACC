@@ -276,6 +276,7 @@ li > a:visited {
 .catering {
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
     margin-top: 50px;
     animation-name: descend;
     animation-duration: 6s;
@@ -292,6 +293,9 @@ li > a:visited {
     background: linear-gradient(to bottom right, white, beige);
     border-radius: 10px;
     box-shadow: 0 0 10px 2.5px gray;
+    margin: 30px;
+    justify-content: auto;
+    flex-wrap: wrap;
 }
 
 .price-title {
@@ -310,9 +314,15 @@ li > a:visited {
 }
 
 .cater-slogan-text {
-    margin-top: 70px;
+    margin-top: 50px;
     font-weight: bold;
 }
+
+.cater-contact-text {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
 
 .catering-title {
     font-size: 35px;
