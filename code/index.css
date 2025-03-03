@@ -23,17 +23,24 @@ header {
     border: 2px solid black;
 }
 
-header .logo h1 {
+.logo-title {
+    animation-name: descend;
+    animation-timing-function: linear;
+    animation-duration: 3.5s;
+    animation-iteration-count: 1;
+    font-size: 1.5rem;
     color: beige;
-    font-size: 2em;
     margin: 0;
     font-family: Segoe Script;
 }
 
 .logo > h1:hover {
     color: burlywood;
-    box-shadow: 0 0 10px 2.5px white;
     border-radius: 10px;
+}
+
+.logo:hover {
+    box-shadow: 0 0 10px 2.5px white;
 }
 
 .logo {
@@ -44,21 +51,13 @@ header .logo h1 {
     border: 3px solid black;
 }
 
-.logo-title {
-    animation-name: blink;
-    animation-timing-function: linear;
-    animation-duration: 2.5s;
-    animation-iteration-count: 3;
-    border-radius: 10px;
-}
 
 #icon {
     font-size: 20px;
 }
 
-
 /*Update panel*/
-
+/*
 .update-panel {
     margin-left: auto;
     margin-right: auto;
@@ -89,6 +88,8 @@ header .logo h1 {
     color: white;
     margin-top: 5px;
 }
+*/
+
 /*Start of Nav links*/
 header nav {
     display: flex;
@@ -106,7 +107,7 @@ header nav {
 }
 
 .nav-links li a {
-    color: black;
+    color: white;
     text-decoration: none;
     font-size: 1.2em;
 }
@@ -118,8 +119,6 @@ header nav {
 li > a:visited {
     color: beige;
 }
-
-
 
 /* slogan Section */
 .slogan {
@@ -205,6 +204,8 @@ li > a:visited {
 
 .subtitle {
     color: gold;
+    text-decoration: underline;
+    text-decoration-color: black;
 }
 
 #description {
@@ -216,23 +217,27 @@ li > a:visited {
 }
 
 .coffee-p {
-    margin-top: 20px;
+    line-height: 130px;
 }
 
 .iced-beverages-p {
-    margin-top: 20px;
+    line-height: 30px;
 }
 
 .flavors-p {
-    margin-top: 25px;
+    line-height: 38px;
 }
 
 .lunchMenu-p {
-    margin-top: 12px;
+    line-height: 100px;
+}
+
+.coldMenu-p {
+    line-height: 55px;
 }
 
 .espresso-p {
-    margin-top: 30px;
+    line-height: 50px;
 }
 
 .sugar-type {
@@ -245,7 +250,7 @@ li > a:visited {
 }
 
 .coldMenu-p {
-    margin-top: 7px;
+    line-height: 30px;
 }
 
 #specialD-memo {
@@ -404,28 +409,20 @@ footer p {
 }
 
 @keyframes descend {
-    0% {transform: translateY(0%) scale(0);}
-    100% {transform: translateY(0%);}
+    0% {transform: scale(0);}
+    100% {}
 }
 
 @keyframes blink {
-    0% {opacity: 0.5; box-shadow: 0 0 10px 2.5px;}
-    50% {opacity: 1; box-shadow: 0 0 10px 2.5px white;}
-    100% {opacity: 0; box-shadow: 0 0 10px 2.5px ;}
+    0% {opacity: 0.5;}
+    50% {opacity: 1; }
+    100% {opacity: 0;}
 }
-
-
-
-
 
 @media only screen and (aspect-ratio: 16/9) {}
 
 @media (max-wdith: 480px) {}
 
-@media (min-width: 481px) and (max-width: 767px){
-    .logo {
-        font-size: 15px;
-    }
-}
+@media (min-width: 481px) and (max-width: 767px){}
 
 @media (min-width: 768px) and (max-width: 991px){}
