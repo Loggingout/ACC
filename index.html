@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Agu+Display&family=Bitcount+Prop+Single:wght@100..900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Indie+Flower&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Stint+Ultra+Condensed&display=swap" rel="stylesheet">
 </head>
-<body>
+<body onload="showAlert()">
     <!-- Header Navigation Bar -->
     <header>
         <div class="container-fluid">
@@ -30,7 +30,7 @@
                             <ul class="navbar-nav"> 
                                <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
                                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                               <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
+                               <li class="nav-item"><a class="nav-link" href="/review.html">Reviews</a></li>
                                <li class="nav-item"><a class="nav-link" href="#cater">Cater</a></li>
                             </ul>
                         </div>
@@ -40,13 +40,13 @@
         </div>
     </header>
     <main>
-        <div class="container-fluid p-4 text-bg-dark slogan-container ">
+        <div class="container-fluid p-4 slogan-container">
             <!---->
-            <div class="container-fluid">
+            <div class="container-fluid d-flex slogan-div">
                 <!--Slogan img container-->
                 <div class="container-fluid slogan"></div>
                 <!--Slogan content container-->
-                <div class="container-sm mt-3">
+                <div class="container-fluid mt-3 d-block align-self-center justify-content-center">
                     <h1 class="text-center slogan-title ">Welcome to A Cheerful Cup</h1>
                     <p class="text-center slogan-text">Rated 5 stars all year round, serving freshly brewed coffee since 2015!</p>
                 </div>
@@ -57,17 +57,17 @@
         <div class="container-fluid menu-container">
             <!---->
             <div class="container-fluid p-3">
-                <!--Menu title container-->
-                <div class="container-sm">
-                    <h1 class="text-center menu-title" id="menu">Our menu</h1>
-                    <p class="text-center menu-slogan">Grab your favorite drink with a morning snack.</p>
-                </div>
                 <!---->
                 <div class="container-fluid">
                     <!--Card container-->
                     <div class="container-fluid">
                         <div class="card p-2 border border-dark border-2">
                             <div class="card-body">
+                                <!--Menu title container-->
+                                <div class="container-sm">
+                                    <h1 class="text-center menu-title" id="menu">Our menu</h1>
+                                    <p class="text-center menu-slogan">Grab your favorite drink with a morning snack.</p>
+                                </div>
                                 <div class="card-content-container">
                                     <h3 class="card-title menu-subtitle">Brewed Coffee</h3>
                                     <p class="card-description">A smooth blend of espresso and steamed milk.</p>
@@ -75,7 +75,7 @@
                                     <p class="card-text menu-text">Coffee...<span class="menu-price-right">$3.00(S) | $3.25(M) | $3.50(L)</span></p>
                                     <p class="card-text menu-text">Café Au Lait.... <span class="menu-price-right">$3.25(S) | $3.50(M) | $4.50(L)</span></p>
                                 </div>
-                                <hr>
+                                <hr/>
                                 <div class="card-content-container">
                                     <h3 class="card-title menu-subtitle">Espresso</h3>
                                     <p class="card-description">A strong, rich coffee made with finely ground beans.</p>
@@ -87,7 +87,7 @@
                                     <p class="card-text menu-text">Carmel Macchiato....<span class="menu-price-right">$4.50(S) | $5.50(M) | $6.50(L)</span></p>
                                     <p class="card-text menu-text">Chai Latte.....<span class="menu-price-right">$4.50(S) | $5.50(M) | $6.50(L)</span></p>
                                 </div>
-                                <hr>
+                                <hr/>
                                 <div class="card-content-container">
                                     <h3 class="card-title menu-subtitle">Iced Beverages</h3>
                                     <p class="card-description">Espresso topped with cold milk.</p>
@@ -104,7 +104,7 @@
                                     <p class="card-text menu-text">Hot Chocolate...<span class="menu-price-right">$4.00(S)| $4.50(M) | $5.00(L)</span></p>
                                     <p class="card-text menu-text">Joe to Go...<span class="menu-price-right">$20.00 + tax</span></p>
                                 </div>
-                                <hr>
+                                <hr/>
                                 <div class="card-content-container">
                                     <h3 class="card-title menu-subtitle">Flavors</h3>
                                     <p class="card-description">Not a black coffee drinker, don't worry add some flavor!</p>
@@ -124,23 +124,24 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="container-sm">
-                            <h1 class="text-center menu-title">Our Cold/Lunch Menu</h1>
-                            <p class="text-center menu-slogan">In the mood for something to keep you going for work?</p>
-                        </div>
+                        <br/>
                         <!--Lunch menu card-->
                         <div class="card p-2 border-dark border-2">
                             <div class="card-body">
+                                <div class="container-sm">
+                                    <h1 class="text-center menu-title">Our Cold/Lunch Menu</h1>
+                                    <p class="text-center menu-slogan">In the mood for something to keep you going for work?</p>
+                                </div>
                                 <div>
                                     <h3 class="card-title menu-subtitle">Lunch Items</h3>
                                     <p class="card-text menu-text">Breakfast Burritos</p>
                                     <p class="card-text menu-text">Hot Dogs</p>
                                     <p class="card-text menu-text">Tamales</p>
-                                    <p class="card-text menu-text">Baked Potato Soup</p>
                                     <p class="card-text menu-text"><span class="menu-memo">*Soups Seasonal*</span></p>
                                     <p class="card-text menu-text">Chicken Tortilla Soup</p>
+                                    <p class="card-text menu-text">Baked Potato Soup</p>
                                 </div>
-                                <hr>
+                                <hr/>
                                 <div>
                                     <h3 class="card-title menu-subtitle">Cold Items</h3>
                                     <p class="card-text menu-text">Ceasar Salad</p>
@@ -162,185 +163,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="container-fluid review-container">
-            <!---->
-            <div class="container-fluid p-4">
-                <!---->
-                <div class="container">
-                    <h3 class="text-center review-title">Reviews</h3>
-                    <p class="text-center review-slogan">Looking to leave a review after your visit, we would highly appericate you sharing your experience.</p>
-                </div>
-                <!---->
-                <div class="contanier grid">
-                    <!--Grid container-->
-                    <div class="row" id="reviews">
-                        <!--First card col-->
-                        <div class="col">
-                            <!--Review card-->
-                            <div class="card">
-                                <div class="card-body">
-                                    <div>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
-                                            <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
-                                        </svg>
-                                    </div>
-                                    <h4 class="author">Katt B.</h4>
-                                    <p class="review-rating">⭐⭐⭐⭐⭐</p>
-                                    <p class="review-text">" Sheila is as wonderful a business owner as they come! She is always cheerful, she remembers peoples names, and she makes damn good coffee every time! Specialty beans!! "</p>
-                                    <div class="card-footer">
-                                        <p class="text-center mt-3 review-date"> Posted: <span class="review-date-highlight">1 Year Ago</span></p>
-                                        <p class="text-center review-source">Left on Yelp</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <!--Review card-->
-                            <div class="card">
-                                <div class="card-body">
-                                    <div>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
-                                            <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
-                                        </svg>
-                                    </div>
-                                    <h4 class="author">A Kurman.</h4>
-                                    <p class="review-rating">⭐⭐⭐⭐⭐</p>
-                                    <p class="review-text">" This cafe is a little gem worth searching for. I just needed a quiet place for a simple coffee and oatmeal. The bonus was Sheila's smile and genuine cheer. Thank you Sheila for being you... beautiful! "</p>
-                                    <div class="card-footer">
-                                        <p class="text-center mt-3 review-date"> Posted: <span class="review-date-highlight">1 Year Ago</span></p>
-                                        <p class="text-center review-source">Left on Google Reviews</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <!--Review card-->
-                            <div class="card">
-                                <div class="card-body">
-                                    <div>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
-                                            <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
-                                        </svg>
-                                    </div>
-                                    <h4 class="author">Bri W.</h4>
-                                    <p class="review-rating">⭐⭐⭐⭐⭐</p>
-                                    <p class="review-text">
-                                        " Great place to stop in for a delicious cup of coffee and a quick snack!
-                                        Sheila greets everyone with cheer and kindness, truly the light of her business! Serving laughter (free of charge) as she makes your drink, I guarantee you will leave this shop with a smile on your face! :) "
-                                    </p>
-                                    <div class="card-footer">
-                                        <p class="text-center mt-3 review-date"> Posted: <span class="review-date-highlight">8 Year Ago</span></p>
-                                        <p class="text-center review-source">Left on Google Reviews</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <!--Review card-->
-                            <div class="card">
-                                <div class="card-body">
-                                    <div>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
-                                            <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
-                                        </svg>
-                                    </div>
-                                    <h4 class="author">Llyod Barta.</h4>
-                                    <p class="review-rating">⭐⭐⭐⭐⭐</p>
-                                    <p class="review-text"> The name is perfect. She is very cheerful. I totally enjoyed the service and the coffee. I'm definitely returning. "</p>
-                                    <div class="card-footer">
-                                        <p class="text-center mt-3 review-date"> Posted: <span class="review-date-highlight">5 Months Ago</span></p>
-                                        <p class="text-center review-source">Left on Google Reviews</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <!--Review card-->
-                            <div class="card">
-                                <div class="card-body">
-                                    <div>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
-                                            <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
-                                        </svg>
-                                    </div>
-                                    <h4 class="author">Denise A.</h4>
-                                    <p class="review-rating">⭐⭐⭐⭐⭐</p>
-                                    <p class="review-text">" I love Sheila and her energy that she brings to every customer. I would say her cafe has it all. "</p>
-                                    <div class="card-footer">
-                                        <p class="text-center mt-3 review-date"> Posted: <span class="review-date-highlight">5 Months Ago</span></p>
-                                        <p class="text-center review-source">Left on Google Reviews</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <!--Review card-->
-                            <div class="card">
-                                <div class="card-body">
-                                    <div>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
-                                            <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
-                                        </svg>
-                                    </div>
-                                    <h4 class="author">Matthew Overstreet</h4>
-                                    <p class="review-rating">⭐⭐⭐⭐⭐</p>
-                                    <p class="review-text">" For those wondering, yes this place is inside the office building, and yes it is well worth you time to find it (it's not hard just follow the signs from the front door). Owner is one of the most cheerful people I've ever met, her energy alone started my day off right, and then I got the coffee! Coffee was amazing, not that bitter bean juice the big chains serve. Support your local coffee shop people! "</p>
-                                    <div class="card-footer">
-                                        <p class="text-center mt-3 review-date"> Posted: <span class="review-date-highlight">1 Year Ago</span></p>
-                                        <p class="text-center review-source">Left on Google Reviews</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <!--Review card-->
-                            <div class="card">
-                                <div class="card-body">
-                                    <div>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
-                                            <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
-                                        </svg>
-                                    </div>
-                                    <h4 class="author">Natalia</h4>
-                                    <p class="review-rating">⭐⭐⭐⭐⭐</p>
-                                    <p class="review-text">" Sheila is the shining star of this office building. She has a variety of coffees, lates, teas, and energy drinks, as well as breakfast food & snacks like burritos, oatmeal, muffins, and salads. Trust me, she will make your day! "</p>
-                                    <div class="card-footer">
-                                        <p class="text-center mt-3 review-date"> Posted: <span class="review-date-highlight">2 Year Ago</span></p>
-                                        <p class="text-center review-source">Left on Google Reviews</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <!--Review card-->
-                            <div class="card">
-                                <div class="card-body">
-                                    <div>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
-                                            <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
-                                        </svg>
-                                    </div>
-                                    <h4 class="author">Alexuss</h4>
-                                    <p class="review-rating">⭐⭐⭐⭐⭐</p>
-                                    <p class="review-text">" This coffee shop is located in the Belcaro building and is definitely the best coffee shop in Denver, the owner is very cheerful and greets everyone with a smile and the atmosphere is very welcoming! Great food and beverages, a great place to grab your morning "pick me up"! Ask about the Chai, its one of my favorites, hot or cold its such a treat! "</p>
-                                    <div class="card-footer">
-                                        <p class="text-center mt-3 review-date"> Posted: <span class="review-date-highlight">4 months ago</span></p>
-                                        <p class="text-center review-source">Left on Google Reviews</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container review-btn-container mt-3" id="contact">
-                        <h3 class="leave-review-slogan">What did you think of your experience?</h3>
-                        <button class="google-review-btn"><a href="https://www.google.com/search?sca_esv=42f97cfd63395683&sxsrf=AE3TifOhwLCuddXVAlzHU-DEYeNtGkF3Dw:1752809882341&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E_70VPGvoStT9577jIP-4_j7m6hV8kEIp_zBYtB7aqbWR5TxxsTLjZsSipPfmsjfQK6n-rGhbvhW32q6yAtgBrAEQar7&q=A+cheerful+Cup+Reviews&sa=X&ved=2ahUKEwi-gpXTvcWOAxWTHNAFHegQMPQQ0bkNegQIJRAE&biw=1912&bih=954&dpr=1#lrd=0x876c7f0bdbd727b5:0xd4eadbdad48a8d99,3,,,," target="_blank">Leave a Google Review</a></button>
-                        <button class="yelp-review-btn"><a href="https://www.yelp.com/writeareview/biz/AtOFMCEF93ywMdQbNuzOIQ?return_url=%2Fbiz%2FAtOFMCEF93ywMdQbNuzOIQ&review_origin=biz-details-war-button" target="_blank">Leave a Yelp Review</a></button>
                     </div>
                 </div>
             </div>
@@ -424,6 +246,6 @@
     </script>
     <!--Bootstrap script-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-    <script scr="script.js"></script>
+    <script src="./Java/index.js"></script>
 </body>
 </html>

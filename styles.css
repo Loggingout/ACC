@@ -13,6 +13,7 @@
 
 /*[VIEWERS]DO NOT MODIFIY COPY RAW FILE FOR NEED TO MODIFY*/
 /* General Styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -33,14 +34,14 @@ body {
 header {
     background-color: white;
     padding: 0px;
-    background: black;
+    background-image: radial-gradient( circle farthest-corner at -5.6% -6.8%,  rgba(103,49,145,1) 37.3%, rgba(50,0,129,1) 73.5% );
 }
 
 .acc-logo {
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    border: 2px solid black;
+    border: 1px solid black;
     animation-name: descend;
     animation-timing-function: linear;
     animation-duration: 3.5s;
@@ -72,12 +73,9 @@ header {
 }
 
 /* slogan Section */
-.slogan-container {
-    background: url(/Assets/main.jpg) no-repeat center center/cover;
-}
 
 .slogan {
-    background: url(Assets/mom.jpg) no-repeat center center/cover;
+    background: url(Assets/forest.jpeg) no-repeat center center/cover;
     height: 600px;
     width: 100%;
     color: black;
@@ -89,8 +87,12 @@ header {
 .slogan-title {
     text-shadow: 0 0 5px white;
     font-size: 3.7rem;
-    font-weight: 400;
+    font-weight: 100;
     font-family: "Stint Ultra Condensed", serif;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-image: linear-gradient( 177.5deg,  rgba(255,200,42,1) 28.3%, rgba(202,32,132,1) 79.8% );
 }
 
 .slogan-text {
@@ -102,10 +104,6 @@ header {
 
 
 /* Menu Section */
-.menu-container {
-    background: url(Assets/bean\ pattern.jpg) no-repeat center center/cover;
-}
-
 .menu-title {
     font-family: "Stint Ultra Condensed", serif;
     font-size: 4rem;
@@ -130,6 +128,10 @@ header {
     font-family: "Indie Flower", cursive;
     font-size: 1.5rem;
     font-weight: 600;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(253,115,200,1) 0%, rgba(0,92,141,1) 90.5% );
 }
 
 .menu-price-right {
@@ -137,11 +139,31 @@ header {
     font-family: "Stint Ultra Condensed", serif;
     font-size: 1.7rem;
     font-weight: 400;
+    color: black;
+}
+
+.card-title {
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-image: linear-gradient( 111.6deg,  rgba(114,167,232,1) 9.4%, rgba(253,129,82,1) 43.9%, rgba(253,129,82,1) 54.8%, rgba(249,202,86,1) 86.3% );
 }
 
 .card-description {
     font-family: "Stint Ultra Condensed", serif;
     font-size: 1.5rem;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-image: radial-gradient( circle 971px at 10.4% 51.2%,  rgba(236,105,65,1) 0%, rgba(236,219,65,1) 52.1%, rgba(245,233,226,1) 99.3% );
+}
+
+.sugar-type {
+    font-family: "Stint Ultra Condensed", serif;
+    font-size: 1.3rem;
+    color: black;
+    letter-spacing: 0.1rem;
+    font-weight: 100;
 }
 
 .tax-memo {
@@ -152,12 +174,12 @@ header {
 .menu-memo {
     font-family: "Stint Ultra Condensed", serif;
     font-size: 1.3rem;
+    letter-spacing: 0.1rem;
+    color: black;
+    font-weight: 100;
 }
 
 /*Catering section*/
-.cater-container {
-    background: url(Assets/bean\ pattern.jpg) no-repeat center center/cover;
-}
 
 .cater-img {
     width: 100%;
@@ -170,7 +192,11 @@ header {
     font-family: "Indie Flower", cursive;
     font-size: 2rem;
     font-weight: 600;
-    text-shadow: 0 0 5px white; 
+    text-shadow: 0 0 5px white;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-image: linear-gradient( 111.6deg,  rgba(114,167,232,1) 9.4%, rgba(253,129,82,1) 43.9%, rgba(253,129,82,1) 54.8%, rgba(249,202,86,1) 86.3% );
 }
 
 .cater-text {
@@ -198,79 +224,7 @@ header {
     letter-spacing: 0.2rem;
 }
 
-
-
-/*Review styling*/
-
-.review-container {
-    background: url(Assets/main.jpg) no-repeat center center/cover;
-}
-
-.review-title {
-    color: white;
-    font-size: 3.3rem;
-    font-family: "Stint Ultra Condensed", serif;
-}
-
-.review-source {
-    color: red;
-}
-
-.review-slogan {
-    color: white;
-    font-size: 2rem;
-    font-family: "Stint Ultra Condensed", serif;
-}
-
-.review-btn-container {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
-.google-review-btn {
-    background: linear-gradient(to right, #B0EBB4, #A0DEFF);
-    color: white;
-    padding: 5px 5px;
-    border-radius: 5px;
-    font-size: 1.5em;
-    margin: 10px;
-    text-shadow: 0 0 5px black;
-}
-
-.yelp-review-btn {
-    background: linear-gradient(to right, #B0EBB4, #A0DEFF);
-    color: white;
-    padding: 5px 5px;
-    border-radius: 5px;
-    font-size: 1.5em;
-    margin: 10px;
-    text-shadow: 0 0 5px black;
-}
-
-.leave-review-slogan {
-    font-size: 2.3em;
-    color: white;
-    margin-bottom: 20px;
-    font-family: "Stint Ultra Condensed", serif;
-    text-shadow: 0 0 5px white;
-}
-
-button > a {
-    text-decoration: none;
-    color: white;
-    font-family: "Stint Ultra Condensed", serif;
-}
-
-button > a:visited {
-    color: gold;
-}
-
 /* Footer */
-.footer-container {
-    background: url(Assets/main.jpg) no-repeat center center/cover;
-}
-
 .footer-img {
     width: 100px;
     height: 100px;
@@ -278,8 +232,8 @@ button > a:visited {
 }
 
 .footer-title {
-    color: white;
-    font-weight: 600;
+    color: black;
+    font-weight: 200;
     text-shadow: 0 0 5px black;
     font-family: "Stint Ultra Condensed", serif;
     letter-spacing: 0.2rem;
@@ -290,7 +244,7 @@ button > a:visited {
     font-size: 1.4rem;
     font-family: "Stint Ultra Condensed", serif;
     letter-spacing: 0.2rem;
-    color: burlywood;
+    color: black;
     font-weight: 500;
     text-shadow: 0 0 5px black;
 }
@@ -300,28 +254,68 @@ button > a:visited {
     font-size: 1.4rem;
     font-family: "Stint Ultra Condensed", serif;
     letter-spacing: 0.2rem;
-    color: burlywood;
+    color: black;
     font-weight: 500;
-    text-shadow: 0 0 5px black;
+    text-shadow: 0 0 2px black;
 }
 
 .footer-text {
-    color: white;
+    color: black;
     font-size: 1.4rem;
     font-family: "Stint Ultra Condensed", serif;
-    text-shadow: 0 0 5px black;
+    text-shadow: 0 0 2px black;
 }
 
 .footer-memo-title {
-    color: burlywood;
-    font-weight: 600;
-    text-shadow: 0 10px 5px black;
+    color: black;
+    font-weight: 400;
+    text-shadow: 0 0px 1px black;
 }
 
 .footer-memo {
-    color: burlywood;
-    font-weight: 600;
-    text-shadow: 0 5px 5px black;
+    color: black;
+    font-weight: 400;
+}
+/*Review page*/
+.review-container {
+    padding: 100px;
+    max-height: auto;
+    height: auto;
+    background: url("./Assets/main.jpg") no-repeat center center/cover;
+    object-fit: cover;
+}
+
+.review-div {
+    border: 2px solid black;
+    height: auto;
+    padding: 20px;
+    border-radius: 20px;
+    background: white;
+}
+
+.review-title {
+    text-decoration: underline;
+}
+
+
+
+.home-btn > a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.4rem;
+}
+
+.home-btn > a:hover {
+    color: hsl(0, 1%, 73%);
+}
+
+.card-body {
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.review-link {
+    text-decoration: none;
 }
 
 /*Animations*/
@@ -337,20 +331,8 @@ button > a:visited {
 }
 /*Media Response*/
 /*FINISH MEDIA QUERIES BY THE END OF THE WEEK DELETE UPDATE CSS AND HTML REPLACE IT WITH AN ERROR FUNCTION WHEN NEEDED.*/
-@media (min-width: 320px) and (max-width: 360px) {
+@media screen and (max-width: 1024px) {
     .acc-logo {
-    width: 120px;
-    height: 120px;
-   }
-   .nav-links {
-    display: block;
-    font-size: 0.7em;
-    margin: 0px;
-   }
-}
-
-@media (min-width: 375px) and (max-width: 600px) {
-   .acc-logo {
     width: 70px;
     height: 70px;
    }
@@ -360,7 +342,6 @@ button > a:visited {
     margin: 0px;
    }
    .navbar-toggler-icon {
-    background-color: white;
     border-radius: 5px;
    }
    .menu-slogan {
@@ -370,15 +351,26 @@ button > a:visited {
    }
    .card-text {
     font-size: 1rem;
+    display: flex;
+    letter-spacing: 0.1rem;
    }
    .menu-title {
     font-size: 2.5rem;
    }
+   .menu-text {
+    font-size: 1rem;
+   }
    .menu-price-right {
-    font-size: 1.1rem;
+    font-size: 1rem;
    }
    .menu-subtitle {
     font-size: 1.7rem;
+   }
+   .sugar-type {
+    font-size: 0.7rem;
+   }
+   .slogan-div {
+    flex-direction: column;
    }
    .slogan-content h2  {
     font-size: 2em;
@@ -417,31 +409,8 @@ button > a:visited {
    .footer-memo {
     font-size: 0.8rem;
    }
-   .google-review-btn, .yelp-review-btn {
-    font-size: 0.8em;
-    padding: 5px 10px;
-   }
-   .leave-review-slogan {
-    font-size: 1.2em;
-    color: white;
-}
-.footer-memo-title {
+    .footer-memo-title {
     font-size: 1.4rem;
-}
-
-
-}
-
-@media (min-width: 481px) and (max-width: 767px){
-    .catering-background {
-        height: 500px;
     }
-    .catering-title {
-        font-size: 1.5rem;
-    }
-    .cater-subtitle, .cater-slogan-text, .price-title, .price-right, .cater-contact-text {
-        font-size: 1rem;
-    }
-}
 
-@media (min-width: 768px) and (max-width: 991px){}
+}
