@@ -66,6 +66,12 @@ header {
     color: white;
 }
 
+.navbar-toggler.navbar-toggler {
+    border: 1px solid black;
+    outline: none;
+    background-color: white;
+}
+
 .brand {
     font-family: "Stint Ultra Condensed", serif;
     font-size: 2rem;
@@ -192,11 +198,10 @@ header {
     font-family: "Indie Flower", cursive;
     font-size: 2rem;
     font-weight: 600;
-    text-shadow: 0 0 5px white;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    background-image: radial-gradient( circle 874px at 11.1% 99.3%,  rgba(248,97,41,0.85) 0%, rgba(247,194,55,1) 100.2% );
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(214,40,40,1) 0%, rgba(255,195,0,1) 90% );
 }
 
 .cater-text {
@@ -234,7 +239,6 @@ header {
 .footer-title {
     color: black;
     font-weight: 200;
-    text-shadow: 0 0 5px black;
     font-family: "Stint Ultra Condensed", serif;
     letter-spacing: 0.2rem;
 }
@@ -297,8 +301,6 @@ header {
     text-decoration: underline;
 }
 
-
-
 .home-btn > a {
     text-decoration: none;
     color: black;
@@ -320,6 +322,10 @@ header {
 
 .review-link {
     text-decoration: none;
+}
+
+.review-slogan {
+    text-decoration: underline;
 }
 
 /*Animations*/
@@ -419,5 +425,8 @@ header {
     .footer-memo-title {
     font-size: 1.4rem;
     }
-
+    /*Review page queries*/
+    .home-btn a {
+        font-size: 0.9rem;
+    }
 }
