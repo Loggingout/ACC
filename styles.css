@@ -1,432 +1,310 @@
-/*Font Variables*/
+/* ===============================
+   Fonts
+================================ */
 .stint-ultra {
   font-family: "Stint Ultra Condensed", serif;
-  font-weight: 400;
-  font-style: normal;
 }
 
-.indie-flower-regular {
+.indie-flower {
   font-family: "Indie Flower", cursive;
-  font-weight: 400;
-  font-style: normal;
 }
 
-/*[VIEWERS]DO NOT MODIFIY COPY RAW FILE FOR NEED TO MODIFY*/
-/* General Styles */
-
+/* ===============================
+   Global Styles
+================================ */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    font-family: Franklin Lucida Console  sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 body {
-    background-color: white;
-    color: #333;
-    width: 100%;
-    height: 100vh;
+  background-color: #fff;
+  color: #333;
 }
 
-/* Header */
-
+/* ===============================
+   Header / Navbar
+================================ */
 header {
-    background-color: white;
-    padding: 0px;
-    background-image: radial-gradient( circle farthest-corner at -5.6% -6.8%,  rgba(103,49,145,1) 37.3%, rgba(50,0,129,1) 73.5% );
+  background-image: radial-gradient(
+    circle farthest-corner at -5.6% -6.8%,
+    rgba(103, 49, 145, 1) 37.3%,
+    rgba(50, 0, 129, 1) 73.5%
+  );
 }
 
 .acc-logo {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    border: 1px solid black;
-    animation-name: descend;
-    animation-timing-function: linear;
-    animation-duration: 3.5s;
-    animation-iteration-count: 1;
-}
-
-/*Start of Nav links*/
-.nav-item {
-    font-size: 1.6rem;
-    color: white;
-}
-.nav-item > a {
-    color: white;
-    font-family: "Stint Ultra Condensed", serif;
-}
-
-.nav-item > .nav-link:hover {
-    color: white;
-}
-
-.nav-item > .nav-link:visited {
-    color: white;
-}
-
-.navbar-toggler.navbar-toggler {
-    border: 1px solid black;
-    outline: none;
-    background-color: white;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 1px solid black;
+  animation: descend 3.5s linear;
 }
 
 .brand {
-    font-family: "Stint Ultra Condensed", serif;
-    font-size: 2rem;
-    color: white;
+  font-family: "Stint Ultra Condensed", serif;
+  font-size: 2rem;
+  color: white;
 }
 
-/* slogan Section */
-
-.slogan {
-    background: url(Assets/forest.jpeg) no-repeat center center/cover;
-    height: 600px;
-    width: 100%;
-    color: black;
-    text-align: center;
-    box-shadow: 0 0 6px 2.5px gray;
-    border-radius: 5px;
+.nav-item a {
+  color: white;
+  font-size: 1.6rem;
+  font-family: "Stint Ultra Condensed", serif;
 }
 
+.nav-item a:hover,
+.nav-item a:visited {
+  color: white;
+}
+
+.navbar-toggler {
+  background-color: white;
+  border: 1px solid black;
+}
+
+/* ===============================
+   Hero / Slogan
+================================ */
 .slogan-title {
-    text-shadow: 0 0 5px white;
-    font-size: 3.7rem;
-    font-weight: 100;
-    font-family: "Stint Ultra Condensed", serif;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    background-image: linear-gradient( 177.5deg,  rgba(255,200,42,1) 28.3%, rgba(202,32,132,1) 79.8% );
+  font-family: "Stint Ultra Condensed", serif;
+  font-size: 3.7rem;
+  background-image: linear-gradient(
+    177.5deg,
+    rgba(255, 200, 42, 1) 28.3%,
+    rgba(202, 32, 132, 1) 79.8%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .slogan-text {
-    font-size: 2rem;
-    text-shadow: 0 0 5px white;
-    font-weight: 200;
-    font-family: "Stint Ultra Condensed", serif;
+  font-family: "Stint Ultra Condensed", serif;
+  font-size: 2rem;
+  text-shadow: 0 0 5px white;
 }
 
-
-/* Menu Section */
+/* ===============================
+   Menu Section
+================================ */
 .menu-title {
-    font-family: "Stint Ultra Condensed", serif;
-    font-size: 4rem;
-    text-shadow: 0 0 5px white;
-    font-weight: 300;
+  font-family: "Stint Ultra Condensed", serif;
+  font-size: 4rem;
 }
+
 .menu-slogan {
-    font-family: "Stint Ultra Condensed", serif;
-    font-size: 2rem;
-    text-shadow: 0 0 5px white;
-    font-weight: 300;
+  font-family: "Stint Ultra Condensed", serif;
+  font-size: 2rem;
 }
 
 .menu-subtitle {
-    font-family: "Stint Ultra Condensed", serif;
-    font-size: 2.3rem;
-    text-decoration: underline;
+  font-family: "Stint Ultra Condensed", serif;
+  font-size: 2.3rem;
+  text-decoration: underline;
 }
 
-
-.menu-text {
-    font-family: "Indie Flower", cursive;
-    font-size: 1.5rem;
-    font-weight: 600;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(253,115,200,1) 0%, rgba(0,92,141,1) 90.5% );
-}
-
-.menu-price-right {
-    float: right;
-    font-family: "Stint Ultra Condensed", serif;
-    font-size: 1.7rem;
-    font-weight: 400;
-    color: black;
-}
-
-.card-title {
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    background-image: linear-gradient( 111.6deg,  rgba(114,167,232,1) 9.4%, rgba(253,129,82,1) 43.9%, rgba(253,129,82,1) 54.8%, rgba(249,202,86,1) 86.3% );
-}
-
-.card-description {
-    font-family: "Stint Ultra Condensed", serif;
-    font-size: 1.5rem;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    background-image: radial-gradient( circle 971px at 10.4% 51.2%,  rgba(236,105,65,1) 0%, rgba(236,219,65,1) 52.1%, rgba(245,233,226,1) 99.3% );
-}
-
-.sugar-type {
-    font-family: "Stint Ultra Condensed", serif;
-    font-size: 1.3rem;
-    color: black;
-    letter-spacing: 0.1rem;
-    font-weight: 100;
-}
-
-.tax-memo {
-    font-family: "Stint Ultra Condensed", serif;
-    font-size: 1.3rem;
-}
-
-.menu-memo {
-    font-family: "Stint Ultra Condensed", serif;
-    font-size: 1.3rem;
-    letter-spacing: 0.1rem;
-    color: black;
-    font-weight: 100;
-}
-
-/*Catering section*/
-
-.cater-img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 0 5px 2px black;
-}
-
-.cater-title {
-    font-family: "Indie Flower", cursive;
-    font-size: 2rem;
-    font-weight: 600;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(214,40,40,1) 0%, rgba(255,195,0,1) 90% );
-}
-
-.cater-text {
-    font-family: "Stint Ultra Condensed", serif;
-    font-size: 1.7rem; 
-    text-shadow: 0 0 5px white; 
-    font-weight: 600;
-    letter-spacing: 0.1rem;
-}
-
-.cater-list-item {
-    font-family: "Stint Ultra Condensed", serif;
-    font-size: 1.5rem;
-    text-shadow: 0 0 5px white; 
-    font-weight: 600;
-    letter-spacing: 0.2rem;
-}
-
-.cater-email {
-    font-family: "Stint Ultra Condensed", serif;
-    font-size: 1.5rem;
-    text-shadow: 0 0 5px white; 
-    text-decoration: underline;
-    font-weight: 600;
-    letter-spacing: 0.2rem;
-}
-
-/* Footer */
-.footer-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-}
-
-.footer-title {
-    color: black;
-    font-weight: 200;
-    font-family: "Stint Ultra Condensed", serif;
-    letter-spacing: 0.2rem;
-}
-
-.dev-socials {
-    text-decoration: none;
-    font-size: 1.4rem;
-    font-family: "Stint Ultra Condensed", serif;
-    letter-spacing: 0.2rem;
-    color: black;
-    font-weight: 500;
-    text-shadow: 0 0 5px black;
-}
-
-.address {
-    text-decoration: none;
-    font-size: 1.4rem;
-    font-family: "Stint Ultra Condensed", serif;
-    letter-spacing: 0.2rem;
-    color: black;
-    font-weight: 500;
-    text-shadow: 0 0 2px black;
-}
-
-.footer-text {
-    color: black;
-    font-size: 1.4rem;
-    font-family: "Stint Ultra Condensed", serif;
-    text-shadow: 0 0 2px black;
-}
-
-.footer-memo-title {
-    color: black;
-    font-weight: 400;
-    text-shadow: 0 0px 1px black;
-}
-
-.footer-memo {
-    color: black;
-    font-weight: 400;
-}
-/*Review page*/
-.review-container {
-    padding: 100px;
-    max-height: auto;
-    height: auto;
-    background: url("./Assets/main.jpg") no-repeat center center/cover;
-    object-fit: cover;
-}
-
-.review-div {
-    border: 2px solid black;
-    height: auto;
-    padding: 20px;
-    border-radius: 20px;
-    background: white;
-}
-
-.review-title {
-    text-decoration: underline;
-}
-
-.home-btn > a {
-    text-decoration: none;
-    color: black;
-    font-size: 1.4rem;
-}
-
-.home-btn > a:hover {
-    color: hsl(0, 1%, 73%);
-}
-
+/* ===============================
+   Cards (Global)
+================================ */
 .card {
-    box-shadow: 0 0 2px 2px gray;
+  box-shadow: 0 0 2px 2px gray;
 }
 
 .card-body {
-    border:2px solid black;
-    border-radius: 4px;
+  border: 2px solid black;
+  border-radius: 4px;
 }
 
-.review-link {
-    text-decoration: none;
+.card-title {
+  background-image: linear-gradient(
+    111.6deg,
+    rgba(114, 167, 232, 1) 9.4%,
+    rgba(253, 129, 82, 1) 54.8%,
+    rgba(249, 202, 86, 1) 86.3%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.review-slogan {
-    text-decoration: underline;
+/* ===============================
+   Coffee Menu Animations
+================================ */
+#coffee-menu .card {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.5s forwards;
 }
 
-/*Animations*/
+#coffee-menu .card:hover {
+  transform: translateY(-5px) scale(1.03);
+  transition: transform 0.3s ease;
+}
+
+#coffee-menu .card-img-top {
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+#coffee-menu .card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+/* ===============================
+   Flavor Menu Animation (Desktop)
+================================ */
+.flavor-marquee {
+  overflow: hidden;
+  width: 100%;
+}
+
+#flavor-menu {
+  display: flex;
+  gap: 1.5rem;
+  animation: flavorScrollX 20s linear infinite;
+}
+
+#flavor-menu:hover {
+  animation-play-state: paused;
+}
+
+#flavor-menu .card {
+  min-width: 260px;
+  flex-shrink: 0;
+}
+
+/* ===============================
+   Catering Section
+================================ */
+.cater-img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 2px black;
+}
+
+.cater-title {
+  font-family: "Indie Flower", cursive;
+  font-size: 2rem;
+  background-image: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgba(214, 40, 40, 1) 0%,
+    rgba(255, 195, 0, 1) 90%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.cater-text,
+.cater-list-item,
+.cater-email {
+  font-family: "Stint Ultra Condensed", serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.1rem;
+}
+
+/* ===============================
+   Footer
+================================ */
+.footer-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.footer-title,
+.footer-text,
+.footer-memo,
+.footer-memo-title,
+.address,
+.dev-socials {
+  font-family: "Stint Ultra Condensed", serif;
+  color: black;
+}
+
+/* ===============================
+   Animations
+================================ */
 @keyframes descend {
-    0% {transform: scale(0);}
-    100% {transform: scale(1);}
+  from { transform: scale(0); }
+  to { transform: scale(1); }
 }
 
-@keyframes blink {
-    0% {opacity: 0.5;}
-    50% {opacity: 1; }
-    100% {opacity: 0;}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-/*Media Response*/
-/*FINISH MEDIA QUERIES BY THE END OF THE WEEK DELETE UPDATE CSS AND HTML REPLACE IT WITH AN ERROR FUNCTION WHEN NEEDED.*/
-@media screen and (max-width: 1024px) {
-    .acc-logo {
-    width: 70px;
-    height: 70px;
-   }
-   .nav-links {
-    display: block;
-    font-size: 0.7em;
-    margin: 0px;
-   }
-   .navbar-toggler-icon {
-    border-radius: 5px;
-   }
-   .menu-slogan {
-    justify-content: center;
-    align-items: center;
-    font-size: 1.6rem;
-   }
-   .card-text {
-    font-size: 1rem;
-    display: flex;
-    letter-spacing: 0.1rem;
-   }
-   .menu-title {
+
+/* Horizontal flavor scroll */
+@keyframes flavorScrollX {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ===============================
+   Responsive
+================================ */
+@media (max-width: 1024px) {
+  .menu-title {
     font-size: 2.5rem;
-   }
-   .menu-text {
-    font-size: 1rem;
-   }
-   .menu-price-right {
-    font-size: 1rem;
-   }
-   .menu-subtitle {
+  }
+
+  .menu-slogan {
+    font-size: 1.6rem;
+  }
+
+  .menu-subtitle {
     font-size: 1.7rem;
-   }
-   .sugar-type {
-    font-size: 0.7rem;
-   }
-   .slogan-div {
-    flex-direction: column;
-   }
-   .slogan-content h2  {
-    font-size: 2em;
-   }
-   .slogan-content p {
-    font-size: 1em;
-   }
-   .slogan-content .btn {
-    font-size: 1em;
-   }
-   .menu h2 {
-    font-size: 1.8em;
-   }
-   .item {
-    font-size: 0.8em;
-   }
-   .cater-content-container {
-    flex-direction: column;
-   }
-   .catering-title {
-    font-size: 1.5rem;
-   }
-   .review-title {
-    font-size: 2em;
-   }
-   .review-slogan {
+  }
+
+  .slogan-title {
+    font-size: 2.5rem;
+  }
+
+  .slogan-text {
     font-size: 1.4rem;
-   }
-   .row-container {
+  }
+}
+
+/* ===============================
+   Mobile Flavor Animation (Vertical)
+================================ */
+@media (max-width: 768px) {
+  .flavor-marquee {
+    height: 240px;
+  }
+
+  #flavor-menu {
     flex-direction: column;
-   }
-   .footer-logo {
-    width: 50px;
-    height: 50px;
-   }
-   footer {
-    font-size: 1.2em;
-   }
-   .footer-memo {
-    font-size: 0.8rem;
-   }
-    .footer-memo-title {
-    font-size: 1.4rem;
-    }
-    /*Review page queries*/
-    .home-btn a {
-        font-size: 0.9rem;
-    }
+    animation: flavorScrollY 18s linear infinite;
+  }
+
+  #flavor-menu .card {
+    min-width: unset;
+  }
+}
+
+@keyframes flavorScrollY {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
 }

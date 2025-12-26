@@ -1,251 +1,253 @@
-<!--[VIEWERS]DO NOT MODIFIY COPY RAW FILE FOR NEED TO MODIFY-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Cheerful Cup</title>
-    <link rel="stylesheet" href="styles.css"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Agu+Display&family=Bitcount+Prop+Single:wght@100..900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Indie+Flower&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Stint+Ultra+Condensed&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Cheerful Cup</title>
+
+  <!-- Existing styles -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Agu+Display&family=Bodoni+Moda&family=Indie+Flower&family=Playfair+Display&display=swap" rel="stylesheet" />
 </head>
-<body onload="showAlert()">
-    <!-- Header Navigation Bar -->
-    <header>
-        <div class="container-fluid">
-            <!---->
-            <nav class="navbar navbar-expand-lg navbar-background">
-                <div class="container-fluid">
-                    <img src="Assets/ACC logo.jpg" alt="A Cheerful Cup Logo" class="acc-logo">
-                    <p class="brand m-1">A Cheerful Cup</p>
-                    <button class="navbar-toggler navbar-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 "></ul>
-                        <div class="d-flex p-2 ">
-                            <ul class="navbar-nav"> 
-                               <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
-                               <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                               <li class="nav-item"><a class="nav-link" href="/review.html">Reviews</a></li>
-                               <li class="nav-item"><a class="nav-link" href="#cater">Cater</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <nav class="navbar navbar-dark navbar-expand-lg navbar-background">
+    <div class="container-fluid">
+      <img src="Assets/ACC logo.jpg" alt="A Cheerful Cup Logo" class="acc-logo" />
+      <p class="brand m-1">A Cheerful Cup</p>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#menu">
+              <i class="bi bi-card-list me-1"></i> Menu
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/review.html">
+              <i class="bi bi-star-fill me-1"></i> Reviews
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#cater">
+              <i class="bi bi-calendar-check me-1"></i> Cater
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- ================= HERO (REDESIGNED) ================= -->
+<section class="hero position-relative">
+  <!-- Optional background image -->
+  <img
+    src="Assets/ceo-and-menu.jpg"
+    alt="Freshly brewed coffee"
+    class="hero-image img-fluid w-100"
+  />
+
+  <!-- Overlay -->
+  <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center">
+    <div class="container text-center text-dark">
+      <h1 class="slogan-title">Welcome to A Cheerful Cup</h1>
+      <p class="slogan-text">
+        Rated 5 stars all year round, serving freshly brewed coffee since 2015!
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MENU ================= -->
+<section id="menu" class="container my-5">
+  <div class="text-center mb-4">
+    <h1 class="menu-title">Our Menu</h1>
+    <p class="menu-slogan">Grab your favorite drink with a morning snack</p>
+  </div>
+
+  <!-- Coffee Menu -->
+  <div class="row g-4" id="coffee-menu"></div>
+
+  <!-- Flavors -->
+  <h2 class="menu-subtitle mt-5">Flavors</h2>
+  <div class="flavor-marquee mt-3">
+    <div class="flavor-track" id="flavor-menu"></div>
+  </div>
+
+  <!-- Lunch -->
+  <div class="row g-4 mt-5" id="lunch-menu"></div>
+
+  <!-- Fridge -->
+  <div class="row g-4 mt-5" id="fridge-menu"></div>
+</section>
+
+<!-- ================= CATERING (REDESIGNED) ================= -->
+<section id="cater">
+  <div class="container my-5">
+    <div class="row align-items-center g-4">
+      <!-- Image Column -->
+      <div class="col-12 col-lg-6 text-center text-lg-start">
+        <img src="Assets/Mom catering.jpg" alt="Catering" class="cater-img img-fluid rounded shadow-sm" />
+      </div>
+
+      <!-- Text Column -->
+      <div class="col-12 col-lg-6">
+        <div class="p-4 p-lg-5 bg-light rounded shadow-sm">
+          <h3 class="cater-title mb-3">Need a coffee catering event?</h3>
+          <p class="cater-text mb-2">
+            From hospitals to corporate offices, we’ve catered countless events since opening.
+          </p>
+          <p class="cater-text mb-4">
+            Book a scheduled event and we guarantee we’ll show up smiling.
+          </p>
+
+          <h4 class="cater-title mb-2">Booking Requirements</h4>
+          <ul class="cater-requirement-list mb-4">
+            <li class="cater-list-item">Company Name</li>
+            <li class="cater-list-item">Location</li>
+            <li class="cater-list-item">Time</li>
+            <li class="cater-list-item">Questions</li>
+          </ul>
+
+          <h4 class="cater-title mb-2">Book Now!</h4>
+          <p class="cater-email mb-0">Acheerfulcup@gmail.com</p>
         </div>
-    </header>
-    <main>
-        <div class="container-fluid p-4 slogan-container">
-            <!---->
-            <div class="container-fluid d-flex slogan-div">
-                <!--Slogan img container-->
-                <div class="container-fluid slogan"></div>
-                <!--Slogan content container-->
-                <div class="container-fluid mt-3 d-block align-self-center justify-content-center">
-                    <h1 class="text-center slogan-title ">Welcome to A Cheerful Cup</h1>
-                    <p class="text-center slogan-text">Rated 5 stars all year round, serving freshly brewed coffee since 2015!</p>
-                </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container-fluid footer-container">
+    <div class="container-fluid footer-content-container">
+      <div class="container p-3 text-center">
+        <img src="/Assets/ACC logo.jpg" alt="ACC Logo" class="footer-img img-fluid" />
+      </div>
+
+      <div class="container">
+        <div class="row text-center text-md-start">
+          <div class="col">
+            <h3 class="footer-title">Location</h3>
+            <p><a class="address" href="#">3801 E Florida Ave, Denver CO</a></p>
+            <p class="footer-text">Inside Belcaro Place</p>
+          </div>
+          <div class="col">
+            <h3 class="footer-title">Hours</h3>
+            <p class="footer-text">Mon–Fri</p>
+            <p class="footer-text">7:30am – 2:00pm</p>
+            <p class="footer-text">Closed Holidays</p>
+          </div>
+          <div class="col">
+            <h3 class="footer-title">Built & Updated by</h3>
+            <p><a class="dev-socials" href="https://x.com/ysopopular">@ysopopular</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container mt-4">
+        <h2 class="text-center footer-memo-title">
+          What’s it called when you steal someone’s coffee? – A mugging! ☕
+        </h2>
+        <p class="footer-memo text-center">© A Cheerful Cup 2015–Present</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= MENU RENDER SCRIPT ================= -->
+<script src="/Java/menu.js"></script>
+<script>
+  const formatPrice = p => `$${p.toFixed(2)}`;
+
+  const renderCoffeeMenu = () => {
+    const container = document.getElementById('coffee-menu');
+    if (!container) return;
+
+    coffeeMenu.forEach((item, index) => {
+      container.innerHTML += `
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card h-100 shadow-sm" style="animation-delay:${index * 0.15}s">
+            ${item.image ? `<img src="${item.image}" class="card-img-top" alt="${item.name}">` : ''}
+            <div class="card-body">
+              <h5 class="card-title">${item.name}</h5>
+              ${item.seasonal ? `<span class="badge bg-warning text-dark">Seasonal</span>` : ''}
+              <p class="card-text">${item.description}</p>
+              <div class="mt-2">
+                ${Object.entries(item.prices).map(
+                  ([size, price]) =>
+                    `<span class="badge bg-danger me-1">${size.charAt(0).toUpperCase()}: ${formatPrice(price)}</span>`
+                ).join('')}
+              </div>
             </div>
-        </div>
-    </main>
-    <section>
-        <div class="container-fluid menu-container">
-            <!---->
-            <div class="container-fluid p-3">
-                <!---->
-                <div class="container-fluid">
-                    <!--Card container-->
-                    <div class="container-fluid">
-                        <div class="card p-2 border border-dark border-2">
-                            <div class="card-body">
-                                <!--Menu title container-->
-                                <div class="container-sm">
-                                    <h1 class="text-center menu-title" id="menu">Our menu</h1>
-                                    <p class="text-center menu-slogan">Grab your favorite drink with a morning snack.</p>
-                                </div>
-                                <div class="card-content-container">
-                                    <h3 class="card-title menu-subtitle">Brewed Coffee</h3>
-                                    <p class="card-description">A smooth blend of espresso and steamed milk.</p>
-                                    <span class="tax-memo">*Prices before tax*</span>
-                                    <p class="card-text menu-text">Coffee...<span class="menu-price-right">$3.00(S) | $3.25(M) | $3.50(L)</span></p>
-                                    <p class="card-text menu-text">Café Au Lait.... <span class="menu-price-right">$3.25(S) | $3.50(M) | $4.50(L)</span></p>
-                                </div>
-                                <hr/>
-                                <div class="card-content-container">
-                                    <h3 class="card-title menu-subtitle">Espresso</h3>
-                                    <p class="card-description">A strong, rich coffee made with finely ground beans.</p>
-                                    <span class="tax-memo">*Prices before tax*</span>
-                                    <p class="card-text menu-text">Red Eye...<span class="menu-price-right">$3.50(S) | $4.00(M) | $4.50(L)</span></p>
-                                    <p class="card-text menu-text">Americano.....<span class="menu-price-right">$4.00(S) | $4.50(M) | $5.00(L)</span></p>
-                                    <p class="card-text menu-text">Cappuccino/Latte.... <span class="menu-price-right">$4.00(S) | $5.00(M) | $6.00(L)</span></p>
-                                    <p class="card-text menu-text">Mocha......<span class="menu-price-right">$4.50(S) | $5.50(M) | $6.50(L)</span></p>
-                                    <p class="card-text menu-text">Carmel Macchiato....<span class="menu-price-right">$4.50(S) | $5.50(M) | $6.50(L)</span></p>
-                                    <p class="card-text menu-text">Chai Latte.....<span class="menu-price-right">$4.50(S) | $5.50(M) | $6.50(L)</span></p>
-                                </div>
-                                <hr/>
-                                <div class="card-content-container">
-                                    <h3 class="card-title menu-subtitle">Iced Beverages</h3>
-                                    <p class="card-description">Espresso topped with cold milk.</p>
-                                    <span class="tax-memo">*Prices before tax*</span>
-                                    <p class="card-text menu-text">Italian Soda......<span class="menu-price-right">$4.00(M) | $4.50(L)</span></p>
-                                    <p class="card-text menu-text">Caramel Frappe......<span class="menu-price-right">$5.50(M) | $6.00(L)</span></p>
-                                    <p class="card-text menu-text">Green Tea Frappe ...<span class="menu-price-right">$5.50(M) | $6.00(L)</span></p>
-                                    <p class="card-text menu-text">Fruit Smoothie..<span class="menu-price-right">$5.50(M) | $6.00(L)</span></p>
-                                    <h3 class="card-title menu-subtitle">Specialty Drinks</h3>
-                                    <span class="tax-memo">*Prices before tax*</span>
-                                    <p class="card-text menu-text">2 Leaves & a Bud Tea...<span class="menu-price-right">$4.00(S)| $4.50(M) | $5.00(L)</span></p>
-                                    <p class="card-text menu-memo">*Tea Bag Assorted*</p>
-                                    <p class="card-text menu-text">Hot spiced Apple Cider...<span class="menu-price-right">$4.00(S)| $4.50(M) | $5.00(L)</span></p>
-                                    <p class="card-text menu-text">Hot Chocolate...<span class="menu-price-right">$4.00(S)| $4.50(M) | $5.00(L)</span></p>
-                                    <p class="card-text menu-text">Joe to Go...<span class="menu-price-right">$20.00 + tax</span></p>
-                                </div>
-                                <hr/>
-                                <div class="card-content-container">
-                                    <h3 class="card-title menu-subtitle">Flavors</h3>
-                                    <p class="card-description">Not a black coffee drinker, don't worry add some flavor!</p>
-                                    <p class="card-text menu-text">Caramel</p>
-                                    <p class="card-text menu-text">Chocolate</p>
-                                    <p class="card-text menu-text">English Toffee</p>
-                                    <p class="card-text menu-text">Hazelnut</p>
-                                    <p class="card-text menu-text">Irish Cream</p>
-                                    <p class="card-text menu-text">Mint</p>
-                                    <p class="card-text menu-text">Salted Caramel</p>
-                                    <p class="card-text menu-text">Toasted Marshmallow</p>
-                                    <p class="card-text menu-text">French Vanilla</p>
-                                    <p class="card-text menu-text">White Chocolate</p>
-                                    <p class="card-text menu-text">Caramel <span class="sugar-type">(SugarFree)</span></p>
-                                    <p class="card-text menu-text">Hazelnut <span class="sugar-type">(SugarFree)</span></p>
-                                    <p class="card-text menu-text">French Vanilla <span class="sugar-type">(SugarFree)</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <br/>
-                        <!--Lunch menu card-->
-                        <div class="card p-2 border-dark border-2">
-                            <div class="card-body">
-                                <div class="container-sm">
-                                    <h1 class="text-center menu-title">Our Cold/Lunch Menu</h1>
-                                    <p class="text-center menu-slogan">In the mood for something to keep you going for work?</p>
-                                </div>
-                                <div>
-                                    <h3 class="card-title menu-subtitle">Lunch Items</h3>
-                                    <p class="card-text menu-text">Breakfast Burritos</p>
-                                    <p class="card-text menu-text">Hot Dogs</p>
-                                    <p class="card-text menu-text">Tamales</p>
-                                    <p class="card-text menu-text"><span class="menu-memo">*Soups Seasonal*</span></p>
-                                    <p class="card-text menu-text">Chicken Tortilla Soup</p>
-                                    <p class="card-text menu-text">Baked Potato Soup</p>
-                                </div>
-                                <hr/>
-                                <div>
-                                    <h3 class="card-title menu-subtitle">Cold Items</h3>
-                                    <p class="card-text menu-text">Ceasar Salad</p>
-                                    <p class="card-text menu-text">Salami Plates</p>
-                                    <p class="card-text menu-text">Balance Breaks</p>
-                                    <p class="card-text menu-text">Yogurt</p>
-                                    <p class="card-text menu-text">Red Bull</p>
-                                    <p class="card-text menu-text">Hard Boiled Egg</p>
-                                    <p class="card-text menu-text">Jumex</p>
-                                    <p class="card-text menu-text">Water</p>
-                                    <p class="card-text menu-text">Iced-Tea</p>
-                                    <p class="card-text menu-text">Apple Juice</p>
-                                    <p class="card-text menu-text">Nesquik</p>
-                                    <p class="card-text menu-text">Orange Juice</p>
-                                    <p class="card-text menu-text">Cranberry Juice</p>
-                                    <p class="card-text menu-text">Monster</p>
-                                    <p class="card-text menu-text">Body Armour</p>
-                                    <p class="card-text menu-text">Ice Sparkling Water</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          </div>
+        </div>`;
+    });
+  };
+
+  const renderFlavorMenu = () => {
+    const container = document.getElementById('flavor-menu');
+    if (!container) return;
+
+    flavorTypes.concat(flavorTypes).forEach(item => {
+      container.innerHTML += `
+        <div class="flavor-card">
+          <div class="card shadow-sm">
+            <div class="card-body text-center border-warning">
+              <h5 class="card-title mb-0">${item.name}</h5>
             </div>
-        </div>
-    </section>
-    <!--Cater section-->
-    <section>
-        <!--Cater Image bg-->
-        <div class="container-fluid cater-container">
-            <!--Cater content container background-->
-            <div class="container p-4 align-items-center d-flex cater-content-container" id="cater">
-                <!--Cater img container-->
-                <div class="container">
-                    <img src="Assets/Mom catering.jpg" alt="Ceo catering coffee locally" class="cater-img img-fluid">
-                </div>
-                <div class="container-fluid p-5">
-                    <h3 class="cater-title">Need a coffee catering event?</h3>
-                    <p class="cater-text">
-                        From Hospitals, schools, corp/governemnt office buildings, private company event. We've succuessfully catered for many business since the opening of our shop.
-                        No matter the time of the year, if you book a scheduled event we are guarenteed to show.
-                    </p>
-                    <p class="cater-text">
-                        We currently have a full time schedule for catering each month, we are looking for more business that need a smile with their cup of coffee.
-                    </p>
-                    <h3 class="cater-title">Booking Requirements</h3>
-                    <ul class="cater-requirement-list">
-                        <ul>
-                            <li class="cater-list-item">Provide Company Name</li>
-                            <li class="cater-list-item">Provide Location Needed</li>
-                            <li class="cater-list-item">Provide Time Needed</li>
-                            <li class="cater-list-item">Provide Any Questions That You Need Answered</li>
-                        </ul>
-                    </ul>
-                    <h3 class="cater-title">Book Now!</h3>
-                    <p class="cater-text">Have an event that you want catered, book with us now via email!</p>
-                    <p class="cater-text">We are looking forward to hearing from you.</p>
-                    <p class="cater-email text-center">Acheerfulcup@gmail.com</p>
-                </div>
+          </div>
+        </div>`;
+    });
+  };
+
+  const renderSimpleMenu = (items, containerId, title) => {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    container.insertAdjacentHTML(
+      'beforebegin',
+      `<h2 class="menu-subtitle mt-5">${title}</h2>`
+    );
+
+    items.forEach(item => {
+      container.innerHTML += `
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+              <h5 class="card-title">${item.name}</h5>
+              ${item.description ? `<p class="card-text">${item.description}</p>` : ''}
+              ${item.price ? `<p class="menu-price">${item.price}</p>` : ''}
+              ${item.availability === 'seasonal'
+                ? `<span class="badge bg-warning text-dark">Seasonal</span>`
+                : ''}
             </div>
-        </div>
-    </section>
-    <footer>
-        <!--Footer bg container-->
-        <div class="container-fluid footer-container">
-            <!--Footer content-->
-            <div class="container-fluid footer-content-container">
-                <div class="container p-3">
-                    <img src="/Assets/ACC logo.jpg" alt="ACC Logo" class="img-fluid footer-img">
-                </div>
-                <!--Footer content text-->
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <h3 class="footer-title">Location</h3>
-                            <p><a class="address" href="https://www.bing.com/maps?q=a+cheerful+cup&cvid=9a8fd8bce57442fca6a3780552b28214&gs_lcrp=EgRlZGdlKgkIABBFGDsY-QcyCQgAEEUYOxj5BzIGCAEQRRg7MgYIAhBFGDkyBggDEC4YQDIGCAQQLhhAMgYIBRAuGEAyBggGEEUYPDIGCAcQRRg8MgYICBBFGDzSAQg0NzUyajBqMagCALACAA&FORM=ANAB01&PC=U531">3801 E Florida Ave, Denver Co 80210</a></p>
-                            <p class="footer-text">Inside Belcaro Place</p>
-                        </div>
-                        <div class=col>
-                            <h3 class="footer-title">Hours</h3>
-                            <p class="footer-text">Mon/Fri</p>
-                            <p class="footer-text">7:30am-2:00pm</p>
-                            <p class="footer-text">All Major Holiday's</p>
-                            <p class="footer-text">Closed</p>
-                        </div>
-                        <div class="col">
-                            <h3 class="footer-title">Built & Updated by:</h3>
-                            <p><a class="dev-socials" href="https://x.com/ysopopular">@ysopopular</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <h2 class="text-center footer-memo-title">What's it called when you steal someone's coffee? - A mugging! 💝</h2>
-                    <p class="footer-memo text-center">©A Cheerful Cup  2015 all rights reserved. A Cheerful Cup trademarks are trademarks or registered trademarks of A Cheerful Cup. All other trademarks and trade names are the property of their respective owners.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!--vercel analytics/insights-->
-     <script defer src="/_vercel/insights/script.js". src="script.js"> 
-        window.va = window.va || function() {(window.vaq = window.vaq || []).push(arguments); }
-    </script>
-    <!--Bootstrap script-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-    <script src="./Java/index.js"></script>
+          </div>
+        </div>`;
+    });
+  };
+
+  renderCoffeeMenu();
+  renderFlavorMenu();
+  renderSimpleMenu(lunchMenu, 'lunch-menu', 'Lunch Items');
+  renderSimpleMenu(fridgeMenu, 'fridge-menu', 'Cold & Fridge Items');
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
