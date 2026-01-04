@@ -20,4 +20,14 @@ Responive Design
 
 ## Updates 💡
 
-In the process of rebuilding the website with bootstrap. There is no ETA at the moment, this isn't at the request of the owner it's for me to scale down and clean up excessive code.
+12/26/2025
+
+🔨 JavaScript integration
+
+🔨 Menu Redesign, badge and icon integration.
+
+🔨 Review page redesign
+
+❌ Removed contact navbar link (feature will be added when website is switched to a framework).
+
+
