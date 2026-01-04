@@ -1,6 +1,6 @@
-/* ===============================
+/* =====================================================
    Fonts
-================================ */
+===================================================== */
 .stint-ultra {
   font-family: "Stint Ultra Condensed", serif;
 }
@@ -9,9 +9,9 @@
   font-family: "Indie Flower", cursive;
 }
 
-/* ===============================
+/* =====================================================
    Global Styles
-================================ */
+===================================================== */
 * {
   margin: 0;
   padding: 0;
@@ -25,14 +25,14 @@ body {
   color: #333;
 }
 
-/* ===============================
+/* =====================================================
    Header / Navbar
-================================ */
+===================================================== */
 header {
   background-image: radial-gradient(
     circle farthest-corner at -5.6% -6.8%,
-    rgba(103, 49, 145, 1) 37.3%,
-    rgba(50, 0, 129, 1) 73.5%
+    rgb(71, 158, 192) 37.3%,
+    rgb(226, 224, 100) 73.5%
   );
 }
 
@@ -51,9 +51,9 @@ header {
 }
 
 .nav-item a {
-  color: white;
-  font-size: 1.6rem;
   font-family: "Stint Ultra Condensed", serif;
+  font-size: 1.6rem;
+  color: white;
 }
 
 .nav-item a:hover,
@@ -66,9 +66,9 @@ header {
   border: 1px solid black;
 }
 
-/* ===============================
+/* =====================================================
    Hero / Slogan
-================================ */
+===================================================== */
 .slogan-title {
   font-family: "Stint Ultra Condensed", serif;
   font-size: 3.7rem;
@@ -77,8 +77,8 @@ header {
     rgba(255, 200, 42, 1) 28.3%,
     rgba(202, 32, 132, 1) 79.8%
   );
-  -webkit-background-clip: text;
   background-clip: text;
+  -webkit-background-clip: text;
   color: transparent;
 }
 
@@ -88,9 +88,81 @@ header {
   text-shadow: 0 0 5px white;
 }
 
-/* ===============================
+/* =====================================================
+   Hero Rating Section
+===================================================== */
+.hero-rating-section {
+  padding: 3rem 1rem;
+  margin: 30px 0;
+}
+
+.hero-rating-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.hero-rating-content {
+  display: flex;
+  align-items: center;
+  gap: 15.5rem;
+  flex-wrap: wrap;
+}
+
+/* Diamond Background */
+.image-diamond {
+  background: #606161;
+  width: 320px;
+  height: 320px;
+  transform: rotate(45deg);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 72%;
+  height: 72%;
+  transform: rotate(-45deg);
+}
+
+.boss-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+}
+
+.rating-overlay {
+  position: absolute;
+  bottom: -14px;
+  right: -14px;
+  width: 110px;
+  border-radius: 14px;
+  background: #fff;
+  padding: 6px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Slogan */
+.slogan-row {
+  display: flex;
+  align-items: center;
+  max-width: 360px;
+}
+
+.slogan-row h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.9rem, 3vw, 2.8rem);
+  line-height: 1.2;
+}
+
+/* =====================================================
    Menu Section
-================================ */
+===================================================== */
 .menu-title {
   font-family: "Stint Ultra Condensed", serif;
   font-size: 4rem;
@@ -107,9 +179,9 @@ header {
   text-decoration: underline;
 }
 
-/* ===============================
+/* =====================================================
    Cards (Global)
-================================ */
+===================================================== */
 .card {
   box-shadow: 0 0 2px 2px gray;
 }
@@ -126,14 +198,14 @@ header {
     rgba(253, 129, 82, 1) 54.8%,
     rgba(249, 202, 86, 1) 86.3%
   );
-  -webkit-background-clip: text;
   background-clip: text;
+  -webkit-background-clip: text;
   color: transparent;
 }
 
-/* ===============================
+/* =====================================================
    Coffee Menu Animations
-================================ */
+===================================================== */
 #coffee-menu .card {
   opacity: 0;
   transform: translateY(30px);
@@ -156,9 +228,9 @@ header {
   transform: scale(1.05);
 }
 
-/* ===============================
-   Flavor Menu Animation (Desktop)
-================================ */
+/* =====================================================
+   Flavor Menu Animation
+===================================================== */
 .flavor-marquee {
   overflow: hidden;
   width: 100%;
@@ -179,9 +251,9 @@ header {
   flex-shrink: 0;
 }
 
-/* ===============================
+/* =====================================================
    Catering Section
-================================ */
+===================================================== */
 .cater-img {
   width: 100%;
   border-radius: 10px;
@@ -196,8 +268,8 @@ header {
     rgba(214, 40, 40, 1) 0%,
     rgba(255, 195, 0, 1) 90%
   );
-  -webkit-background-clip: text;
   background-clip: text;
+  -webkit-background-clip: text;
   color: transparent;
 }
 
@@ -209,9 +281,9 @@ header {
   letter-spacing: 0.1rem;
 }
 
-/* ===============================
+/* =====================================================
    Footer
-================================ */
+===================================================== */
 .footer-img {
   width: 100px;
   height: 100px;
@@ -228,9 +300,9 @@ header {
   color: black;
 }
 
-/* ===============================
+/* =====================================================
    Animations
-================================ */
+===================================================== */
 @keyframes descend {
   from { transform: scale(0); }
   to { transform: scale(1); }
@@ -247,44 +319,40 @@ header {
   }
 }
 
-/* Horizontal flavor scroll */
 @keyframes flavorScrollX {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
-/* ===============================
+@keyframes flavorScrollY {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+
+/* =====================================================
    Responsive
-================================ */
+===================================================== */
 @media (max-width: 1024px) {
-  .menu-title {
-    font-size: 2.5rem;
+  .menu-title { font-size: 2.5rem; }
+  .menu-slogan { font-size: 1.6rem; }
+  .menu-subtitle { font-size: 1.7rem; }
+  .slogan-title { font-size: 2.5rem; }
+  .slogan-text { font-size: 1.4rem; }
+}
+
+@media (max-width: 992px) {
+  .hero-rating-content {
+    justify-content: center;
+    gap: 2rem;
+    text-align: center;
   }
 
-  .menu-slogan {
-    font-size: 1.6rem;
-  }
-
-  .menu-subtitle {
-    font-size: 1.7rem;
-  }
-
-  .slogan-title {
-    font-size: 2.5rem;
-  }
-
-  .slogan-text {
-    font-size: 1.4rem;
+  .slogan-row {
+    justify-content: center;
+    max-width: 420px;
   }
 }
 
-/* ===============================
-   Mobile Flavor Animation (Vertical)
-================================ */
 @media (max-width: 768px) {
   .flavor-marquee {
     height: 240px;
@@ -300,11 +368,17 @@ header {
   }
 }
 
-@keyframes flavorScrollY {
-  from {
-    transform: translateY(0);
+@media (max-width: 576px) {
+  .image-diamond {
+    width: 260px;
+    height: 260px;
   }
-  to {
-    transform: translateY(-50%);
+
+  .rating-overlay {
+    width: 90px;
+  }
+
+  .slogan-row h1 {
+    font-size: 2rem;
   }
 }
