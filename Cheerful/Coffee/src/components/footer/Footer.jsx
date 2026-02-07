@@ -1,4 +1,4 @@
-import Logo from "../../assets/acc-logo.jpg";
+import Logo from "../../../public/acc-logo.jpg";
 import PartnerLogo from "../../assets/partner-logo.png";
 import { Clock, Coffee, MapPin, Phone, Mail } from "lucide-react";
 
