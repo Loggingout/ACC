@@ -1,20 +1,5 @@
 // menuInformation.js
-//Image imports
-import CoffeeImg from '../../../assets/coffee.jpg';
-import CafeAuLaitImg from '../../../assets/cafe-au-lait.jpg';
-import RedEyeImg from '../../../assets/red-eye.jpg';
-import AmericanoImg from '../../../assets/americano.jpg';
-import CappuccinoLatteImg from '../../../assets/cappuccino-latte.jpg';
-import MochaImg from '../../../assets/mocha.jpg';
-import CaramelMacchiatoImg from '../../../assets/caramel-macchiato.jpg';
-import ChaiLatteImg from '../../../assets/chai-latte.jpeg';
-import ItalianSodaImg from '../../../assets/italian-soda.jpg';
-import CaramelFrappeImg from '../../../assets/caramel-frappe.jpg';
-import GreenTeaFrappeImg from '../../../assets/green-tea-frappe.jpg';
-import FruitSmoothieImg from '../../../assets/fruit-smoothie.jpg';
-import HotAppleCiderImg from '../../../assets/hot-spiced-apple-cider.jpeg';
-import HotChocolateImg from '../../../assets/hot-chocolate.jpg';
-import JoeToGoImg from '../../../assets/joe-to-go.jpg';
+// Images now come directly from the public folder — no imports needed.
 
 // Coffee Menu
 export const coffeeMenu = [
@@ -25,7 +10,7 @@ export const coffeeMenu = [
     description: 'Freshly brewed coffee made from specialty beans.',
     prices: { small: 3.0, medium: 3.25, large: 3.5 },
     seasonal: false,
-    image: CoffeeImg
+    image: '/coffee.jpg'
   },
   {
     id: 'cafe-au-lait',
@@ -34,7 +19,7 @@ export const coffeeMenu = [
     description: 'Coffee blended with steamed milk.',
     prices: { small: 3.25, medium: 3.5, large: 4.5 },
     seasonal: false,
-    image: CafeAuLaitImg
+    image: '/cafe-au-lait.jpg'
   },
   {
     id: 'red-eye',
@@ -43,7 +28,7 @@ export const coffeeMenu = [
     description: 'Brewed coffee with a shot of espresso.',
     prices: { small: 3.5, medium: 4.0, large: 4.5 },
     seasonal: false,
-    image: RedEyeImg
+    image: '/red-eye.jpg'
   },
   {
     id: 'americano',
@@ -52,7 +37,7 @@ export const coffeeMenu = [
     description: 'Espresso diluted with hot water.',
     prices: { small: 4.0, medium: 4.5, large: 5.0 },
     seasonal: false,
-    image: AmericanoImg
+    image: '/americano.jpg'
   },
   {
     id: 'latte',
@@ -61,7 +46,7 @@ export const coffeeMenu = [
     description: 'Espresso with steamed milk and light foam.',
     prices: { small: 4.0, medium: 5.0, large: 6.0 },
     seasonal: false,
-    image: CappuccinoLatteImg
+    image: '/cappuccino-latte.jpg'
   },
   {
     id: 'mocha',
@@ -70,7 +55,7 @@ export const coffeeMenu = [
     description: 'Chocolate espresso with steamed milk.',
     prices: { small: 4.5, medium: 5.5, large: 6.5 },
     seasonal: false,
-    image: MochaImg
+    image: '/mocha.jpg'
   },
   {
     id: 'caramel-macchiato',
@@ -79,7 +64,7 @@ export const coffeeMenu = [
     description: 'Espresso layered with milk and caramel.',
     prices: { small: 4.5, medium: 5.5, large: 6.5 },
     seasonal: false,
-    image: CaramelMacchiatoImg
+    image: '/caramel-macchiato.jpg'
   },
   {
     id: 'chai-latte',
@@ -88,7 +73,7 @@ export const coffeeMenu = [
     description: 'Spiced chai blended with steamed milk.',
     prices: { small: 4.5, medium: 5.5, large: 6.5 },
     seasonal: false,
-    image: ChaiLatteImg
+    image: '/chai-latte.jpeg'
   },
   {
     id: 'italian-soda',
@@ -97,7 +82,7 @@ export const coffeeMenu = [
     description: 'Sparkling soda flavored with syrup.',
     prices: { medium: 4.0, large: 4.5 },
     seasonal: false,
-    image: ItalianSodaImg
+    image: '/italian-soda.jpg'
   },
   {
     id: 'caramel-frappe',
@@ -106,7 +91,7 @@ export const coffeeMenu = [
     description: 'Blended iced caramel coffee.',
     prices: { medium: 5.5, large: 6.0 },
     seasonal: false,
-    image: CaramelFrappeImg
+    image: '/caramel-frappe.jpg'
   },
   {
     id: 'green-tea-frappe',
@@ -115,7 +100,7 @@ export const coffeeMenu = [
     description: 'Refreshing blended green tea.',
     prices: { medium: 5.5, large: 6.0 },
     seasonal: false,
-    image: GreenTeaFrappeImg
+    image: '/green-tea-frappe.jpg'
   },
   {
     id: 'fruit-smoothie',
@@ -124,7 +109,7 @@ export const coffeeMenu = [
     description: 'Blended fruit smoothie.',
     prices: { medium: 5.5, large: 6.0 },
     seasonal: false,
-    image: FruitSmoothieImg
+    image: '/fruit-smoothie.jpg'
   },
   {
     id: 'hot-apple-cider',
@@ -133,7 +118,7 @@ export const coffeeMenu = [
     description: 'Warm spiced apple cider.',
     prices: { small: 4.0, medium: 4.5, large: 5.0 },
     seasonal: true,
-    image: HotAppleCiderImg
+    image: '/hot-spiced-apple-cider.jpeg'
   },
   {
     id: 'hot-chocolate',
@@ -142,7 +127,7 @@ export const coffeeMenu = [
     description: 'Classic rich hot chocolate.',
     prices: { small: 4.0, medium: 4.5, large: 5.0 },
     seasonal: true,
-    image: HotChocolateImg
+    image: '/hot-chocolate.jpg'
   },
   {
     id: 'joe-to-go',
@@ -151,7 +136,7 @@ export const coffeeMenu = [
     description: 'Perfect for meetings and events.',
     prices: { oneSize: 20.0 },
     seasonal: false,
-    image: JoeToGoImg
+    image: '/joe-to-go.jpg'
   }
 ];
 
@@ -159,28 +144,33 @@ export const coffeeMenu = [
 export const lunchMenu = [
   {
     name: 'Breakfast Burritos',
-    description: 'A warm flour tortilla wrapped around fluffy eggs, melted cheese, and a savory filling of green chili creating a hearty, handheld breakfast that fuels your morning with comfort and flavor.',
+    description:
+      'A warm flour tortilla wrapped around fluffy eggs, melted cheese, and a savory filling of green chili creating a hearty, handheld breakfast that fuels your morning with comfort and flavor.',
     price: '$5.00'
   },
   {
     name: 'Hot Dogs',
-    description: 'A classic grilled hot dog nestled in a soft bun, topped with your favorite condiments for a simple, satisfying bite that never goes out of style.',
+    description:
+      'A classic grilled hot dog nestled in a soft bun, topped with your favorite condiments for a simple, satisfying bite that never goes out of style.',
     price: null
   },
   {
     name: 'Tamales',
-    description: 'Soft, steamed masa filled with savory meats or sweet traditional flavors, wrapped in a corn husk for a comforting, handcrafted taste of tradition.',
+    description:
+      'Soft, steamed masa filled with savory meats or sweet traditional flavors, wrapped in a corn husk for a comforting, handcrafted taste of tradition.',
     price: null
   },
   {
     name: 'Chicken Tortilla Soup',
-    description: 'A hearty bowl of tender chicken, fire‑roasted tomatoes, and warm spices simmered to perfection, topped with crisp tortilla strips for a comforting, Southwest‑inspired classic.',
+    description:
+      'A hearty bowl of tender chicken, fire‑roasted tomatoes, and warm spices simmered to perfection, topped with crisp tortilla strips for a comforting, Southwest‑inspired classic.',
     availability: 'seasonal',
     price: null
   },
   {
     name: 'Baked Potato Soup',
-    description: 'A rich and creamy blend of tender potatoes, smoky bacon, and melted cheese, finished with a touch of green onion for the perfect cozy, homestyle bowl.',
+    description:
+      'A rich and creamy blend of tender potatoes, smoky bacon, and melted cheese, finished with a touch of green onion for the perfect cozy, homestyle bowl.',
     availability: 'seasonal',
     price: null
   }
