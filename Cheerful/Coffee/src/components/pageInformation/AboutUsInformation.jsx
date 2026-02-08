@@ -25,7 +25,7 @@ export default function AboutUsInformation() {
       <div className="relative z-10 max-w-4xl mx-auto  p-6 sm:p-10 md:p-12">
         
         {/* Title */}
-        <h2 className="text-white font-extrabold text-3xl sm:text-4xl md:text-5xl mb-6 text-center drop-shadow-lg">
+        <h2 className="bg-gradient-to-r from-white via-yellow-400 to-blue-500 bg-clip-text text-transparent font-extrabold text-3xl sm:text-4xl md:text-5xl mb-6 text-center drop-shadow-lg">
           About Us
         </h2>
 

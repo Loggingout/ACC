@@ -9,10 +9,10 @@ export default function CaterRequestInformation() {
   return (
     <section className="max-w-6xl mx-auto px-6 sm:px-8 py-10">
       {/* Glass container */}
-      <div className="relative rounded-2xl p-6 sm:p-10 min-h-[260px] flex flex-col justify-between bg-white/10 backdrop-blur-md">
+      <div className="relative rounded-2xl p-6 sm:p-10 min-h-[260px] flex flex-col justify-between">
         {/* Top row */}
         <div className="flex items-start gap-3">
-          <h1 className="text-white font-semibold leading-tight max-w-xl text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+          <h1 className="font-semibold bg-gradient-to-r from-blue-400 via-yellow-400 to-orange-500 bg-clip-text text-transparent leading-tight max-w-xl text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
             Rated 5 stars all year round
           </h1>
         </div>

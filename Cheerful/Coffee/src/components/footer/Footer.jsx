@@ -64,7 +64,7 @@ export default function Footer() {
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4 text-orange-500" />
               <a
-                href="3801 E Florida Ave Denver, CO 80210"
+                href="https://www.google.com/maps/place/A+cheerful+Cup/@39.6898918,-104.9447929,17z/data=!3m1!5s0x8707e28c84994409:0x507bd2e0b6c7f442!4m6!3m5!1s0x876c7f0bdbd727b5:0xd4eadbdad48a8d99!8m2!3d39.6898918!4d-104.942218!16s%2Fg%2F11qnc2c9k7?entry=ttu&g_ep=EgoyMDI2MDIwNC4wIKXMDSoKLDEwMDc5MjA2N0gBUAM%3D"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-xs sm:text-sm text-gray-300 hover:underline"
