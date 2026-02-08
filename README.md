@@ -30,4 +30,8 @@ Responive Design
 
 ❌ Removed contact navbar link (feature will be added when website is switched to a framework).
 
+2/7/2026
 
+🔨 Updated to React, Vite, Tailwind.
+
+🔨Forms don't have backend logic impmlemented yet
