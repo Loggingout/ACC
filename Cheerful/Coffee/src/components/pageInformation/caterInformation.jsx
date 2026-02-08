@@ -59,7 +59,7 @@ export default function CaterInformation() {
           <div className="flex items-center justify-center gap-3 mb-4">
             <DollarSign className="w-7 h-7 text-green-400" />
             <h3 className="text-2xl sm:text-3xl font-bold text-black">
-              $300
+              $300/hr
             </h3>
           </div>
 
