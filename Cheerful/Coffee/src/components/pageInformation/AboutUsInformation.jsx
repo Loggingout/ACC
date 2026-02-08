@@ -23,7 +23,6 @@ export default function AboutUsInformation() {
 
       {/* Content Container */}
       <div className="relative z-10 max-w-4xl mx-auto  p-6 sm:p-10 md:p-12">
-        
         {/* Title */}
         <h2 className="bg-gradient-to-r from-white via-yellow-400 to-blue-500 bg-clip-text text-transparent font-extrabold text-3xl sm:text-4xl md:text-5xl mb-6 text-center drop-shadow-lg">
           About Us
@@ -32,25 +31,20 @@ export default function AboutUsInformation() {
         {/* Paragraphs */}
         <div className="space-y-6 sm:space-y-8">
           <p className="text-white/90 text-lg sm:text-xl md:text-2xl leading-relaxed font-medium bg-white/10 backdrop-blur-lg rounded-xl p-4 sm:p-6 shadow-lg">
-            At A Cheerful Cup, we are passionate about crafting the perfect cup
-            of coffee. Our mission is to bring joy and warmth to our customers
-            through our carefully sourced beans and expertly brewed beverages.
-            Coffee is more than just a drink — it’s an experience that brightens
-            your day and brings people together.
+            At A Cheerful Cup, we’re dedicated to crafting the perfect cup of
+            coffee. We bring warmth and joy through carefully sourced beans and
+            expertly brewed drinks—because coffee isn’t just a beverage, it’s an
+            experience that brings people together.
           </p>
 
           <p className="text-white/90 text-lg sm:text-xl md:text-2xl leading-relaxed font-medium bg-white/10 backdrop-blur-lg rounded-xl p-4 sm:p-6 shadow-lg">
-            Founded in 2015, we’ve quickly become a beloved spot for coffee
-            lovers in the community over the 10 years. Our team is dedicated to exceptional
-            service and creating a welcoming atmosphere where everyone can enjoy
-            their favorite cup. Whether you’re grabbing a quick pick‑me‑up or
-            settling in to relax, A Cheerful Cup is here to serve you with a
-            smile.
+            Founded in 2015, A CheerfulCup is a community-loved spot offering
+            exceptional service and a welcoming atmosphere-perfect for a quick
+            boost or a relaxed visit.
           </p>
         </div>
 
         {/* Optional Button */}
-        
       </div>
     </section>
   );
