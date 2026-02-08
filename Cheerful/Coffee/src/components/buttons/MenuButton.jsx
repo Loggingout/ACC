@@ -8,7 +8,7 @@ export default function MenuButton() {
       <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
 
       {/* Text */}
-      <span>Menu</span>
+      <span className="drop-shadow-lg">Menu</span>
     </button>
   );
 }

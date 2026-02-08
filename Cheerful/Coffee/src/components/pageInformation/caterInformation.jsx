@@ -35,7 +35,7 @@ export default function CaterInformation() {
           <div className="flex items-center gap-4 bg-white/15 backdrop-blur-xl rounded-2xl p-6 shadow-xl">
             <Heart className="w-10 h-10 text-red-400" />
             <div>
-              <p className="text-3xl font-extrabold text-black">200K+</p>
+              <p className="text-3xl font-extrabold text-black">8K+</p>
               <p className="text-black text-sm sm:text-base">
                 Hearts touched through service
               </p>
@@ -46,7 +46,7 @@ export default function CaterInformation() {
           <div className="flex items-center gap-4 bg-white/15 backdrop-blur-xl rounded-2xl p-6 shadow-xl">
             <Coffee className="w-10 h-10 text-yellow-400" />
             <div>
-              <p className="text-3xl font-extrabold text-black">350K+</p>
+              <p className="text-3xl font-extrabold text-black">5.4K+</p>
               <p className="text-black text-sm sm:text-base">
                 Cups of coffee served
               </p>

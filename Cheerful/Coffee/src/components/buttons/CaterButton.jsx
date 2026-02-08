@@ -8,7 +8,7 @@ export default function CaterButton() {
       <Utensils className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
 
       {/* Text */}
-      <span>Catering</span>
+      <span className="drop-shadow-lg">Catering</span>
     </button>
   );
 }

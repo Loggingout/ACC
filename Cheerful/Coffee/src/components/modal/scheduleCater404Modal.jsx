@@ -9,10 +9,10 @@ export default function ScheduleCater404Modal({ onClose }) {
         onClick={(e) => e.stopPropagation()} // prevent closing when clicking modal content
       >
         <h2 className="text-2xl font-bold mb-4 text-gray-800">
-          Scheduling Form
+          Coming Soon 🙌
         </h2>
         <p className="text-gray-700 mb-6">
-          Scheduling form coming soon!
+          Scheduling form coming soon 🔐 -Stayed tuned for futher updates. 
         </p>
         <button
           onClick={onClose}

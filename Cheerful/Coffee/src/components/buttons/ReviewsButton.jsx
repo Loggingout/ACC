@@ -8,7 +8,7 @@ export default function ReviewsButton() {
       <Star className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
 
       {/* Text */}
-      <span>Reviews</span>
+      <span className="drop-shadow-lg">Reviews</span>
     </button>
   );
 }
