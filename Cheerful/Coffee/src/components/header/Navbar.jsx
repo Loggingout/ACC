@@ -4,8 +4,8 @@ import CaterButton from "../buttons/CaterButton";
 import MenuButton from "../buttons/MenuButton";
 import ReviewsButton from "../buttons/ReviewsButton";
 import ReturnHomeButton from "../buttons/ReturnHomeButton";
+import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Menu, X, Home, Utensils, Star, Coffee } from "lucide-react";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,19 +32,15 @@ export default function Navbar() {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-3 lg:gap-4">
           <Link to="/" className="flex items-center gap-2">
-            <Home className="w-5 h-5 text-blue-500" />
             <ReturnHomeButton />
           </Link>
           <Link to="/menu" className="flex items-center gap-2">
-            <Utensils className="w-5 h-5 text-orange-500" />
             <MenuButton />
           </Link>
           <Link to="/review-page" className="flex items-center gap-2">
-            <Star className="w-5 h-5 text-yellow-700" />
             <ReviewsButton />
           </Link>
-          <Link to="/catering" className="flex items-center gap-2">
-            <Coffee className="w-5 h-5 text-red-500" />
+          <Link to="/catering-page" className="flex items-center gap-2">
             <CaterButton />
           </Link>
         </div>
@@ -52,7 +48,7 @@ export default function Navbar() {
         {/* Hamburger Menu Button - Mobile */}
         <button
           onClick={toggleMenu}
-          className="md:hidden text-black p-2 hover:bg-white/10 rounded-lg transition-colors"
+          className="md:hidden text-gray-400 p-2 hover:bg-white/10 rounded-lg transition-colors"
           aria-label="Toggle menu"
         >
           {isMenuOpen ? (
@@ -71,7 +67,6 @@ export default function Navbar() {
             onClick={toggleMenu}
             className="flex items-center gap-3 p-2 hover:bg-white/10 rounded-lg transition-colors"
           >
-            <Home className="w-5 h-5 text-blue-500" />
             <ReturnHomeButton />
           </Link>
           <Link
@@ -79,7 +74,6 @@ export default function Navbar() {
             onClick={toggleMenu}
             className="flex items-center gap-3 p-2 hover:bg-white/10 rounded-lg transition-colors"
           >
-            <Utensils className="w-5 h-5 text-orange-500" />
             <MenuButton />
           </Link>
           <Link
@@ -87,15 +81,13 @@ export default function Navbar() {
             onClick={toggleMenu}
             className="flex items-center gap-3 p-2 hover:bg-white/10 rounded-lg transition-colors"
           >
-            <Star className="w-5 h-5 text-yellow-700" />
             <ReviewsButton />
           </Link>
           <Link
-            to="/catering"
+            to="/catering-page"
             onClick={toggleMenu}
             className="flex items-center gap-3 p-2 hover:bg-white/10 rounded-lg transition-colors"
           >
-            <Coffee className="w-5 h-5 text-red-600" />
             <CaterButton />
           </Link>
         </div>

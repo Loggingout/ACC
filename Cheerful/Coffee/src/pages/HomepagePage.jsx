@@ -2,6 +2,7 @@ import Navbar from "../components/header/Navbar";
 import LobbyImage from "../assets/acc-lobby.png";
 import AboutUsInformation from "../components/pageInformation/AboutUsInformation";
 import CaterRequestInformation from "../components/pageInformation/caterRequestInformation";
+import WhyTrustUsInformation from "../components/pageInformation/whyTrustUsInformation";
 import Footer from "../components/footer/Footer";
 
 export default function HomepagePage() {
@@ -31,6 +32,11 @@ export default function HomepagePage() {
           {/* About Us Section */}
           <div className="w-full max-w-7xl">
              <AboutUsInformation /> 
+          </div>
+
+          {/* Why Trust Us Section */}
+          <div className="w-full max-w-7xl">
+             <WhyTrustUsInformation /> 
           </div>
 
         </div>

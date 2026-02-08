@@ -5,7 +5,7 @@ export default function ReviewCards({ reviews }) {
       {reviews.map((review) => (
         <div
           key={review.id}
-          className="rounded-xl p-6 bg-white/70 backdrop-blur-md shadow-lg border border-white/30 flex flex-col justify-between"
+          className="rounded-xl p-6 bg-gradient-to-br from-yellow-50 to-white p-8 rounded-2xl border border-yellow-300 hover:border-yellow-400 flex flex-col justify-between"
         >
           <div>
             <div className="flex items-center justify-between mb-2">

@@ -37,7 +37,7 @@ export default function MenuCards({ menu }) {
 
             {/* Category if exists */}
             {item.category && (
-              <p className="text-sm text-gray-600 font-semibold mb-2">
+              <p className="text-sm text-white font-semibold mb-2">
                 {item.category}
               </p>
             )}
