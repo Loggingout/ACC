@@ -13,9 +13,7 @@ export default function MenuCards({ menu }) {
               rounded-2xl
               p-4
               flex flex-col items-start
-              bg-white/20
-              backdrop-blur-xl
-              border border-white/30
+              bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl border border-gray-300 hover:border-gray-400
               shadow-lg
               hover:shadow-2xl
               transition-all duration-300

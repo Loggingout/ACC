@@ -30,7 +30,7 @@ export default function WhyTrustUsInformation() {
           <div className="flex items-center gap-4 bg-white/15 backdrop-blur-xl rounded-2xl p-6 shadow-xl">
             <Coffee className="w-10 h-10 text-yellow-400" />
             <div>
-              <p className="text-3xl font-extrabold text-white">360K+</p>
+              <p className="text-3xl font-extrabold text-white">180K+</p>
               <p className="text-white/80 text-sm sm:text-base">
                 Cups of coffee served
               </p>
@@ -41,7 +41,7 @@ export default function WhyTrustUsInformation() {
           <div className="flex items-center gap-4 bg-white/15 backdrop-blur-xl rounded-2xl p-6 shadow-xl">
             <Users className="w-10 h-10 text-blue-400" />
             <div>
-              <p className="text-3xl font-extrabold text-white">2.4K+</p>
+              <p className="text-3xl font-extrabold text-white">3K+</p>
               <p className="text-white/80 text-sm sm:text-base">
                 Lives touched in our community
               </p>

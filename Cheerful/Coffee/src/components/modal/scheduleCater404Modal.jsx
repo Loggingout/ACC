@@ -12,7 +12,7 @@ export default function ScheduleCater404Modal({ onClose }) {
           Coming Soon 🙌
         </h2>
         <p className="text-gray-700 mb-6">
-          Scheduling form coming soon 🔐 -Stayed tuned for futher updates. 
+          Scheduling form coming soon 🔐 -Stayed tuned for further updates. 
         </p>
         <button
           onClick={onClose}
