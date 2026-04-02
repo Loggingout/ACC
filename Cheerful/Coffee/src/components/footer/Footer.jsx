@@ -89,7 +89,7 @@ export default function Footer() {
               <img
                 src={PartnerLogo}
                 alt="Partner Logo"
-                className="h-12 sm:h-14 lg:h-16 w-auto rounded-2xl hover:opacity-90 transition"
+                className="h-6 sm:h-7 lg:h-8 w-auto rounded-1xl hover:opacity-90 transition"
               />
             </a>
           </div>
