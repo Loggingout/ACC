@@ -15,7 +15,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-transparent">
+    <nav className="bg-black">
       <div className="flex items-center justify-between px-4 sm:px-6 py-4">
         {/* Logo and Title */}
         <div className="flex items-center gap-2 sm:gap-3">

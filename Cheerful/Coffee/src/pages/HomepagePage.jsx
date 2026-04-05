@@ -26,17 +26,7 @@ export default function HomepagePage() {
         <div className="absolute inset-0 bg-black/30" />
 
         {/* Hero Content */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-          <h1 className="text-white font-extrabold drop-shadow-lg
-                         text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-            Welcome to A Cheerful Cup
-          </h1>
-
-          <p className="text-white/90 mt-3 max-w-2xl
-                        text-sm sm:text-base md:text-lg">
-            Fresh coffee, friendly service, and catering you can count on.
-          </p>
-        </div>
+        
 
       </section>
 
