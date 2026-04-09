@@ -27,20 +27,47 @@ export default function CaterRequestInformation() {
   };
 
   const renderAnimatedLetters = (text) =>
-    text.split("").map((char, index) => (
-      <motion.span key={`${char}-${index}`} variants={letterVariant} className="inline-block">
-        {char === " " ? "\u00A0" : char}
-      </motion.span>
-    ));
+  text.split(" ").map((word, wordIndex) => (
+    <span key={`word-${wordIndex}`} className="inline-block whitespace-nowrap mr-2">
+      {word.split("").map((char, charIndex) => (
+        <motion.span
+          key={`${wordIndex}-${char}-${charIndex}`}
+          variants={letterVariant}
+          className="inline-block"
+        >
+          {char}
+        </motion.span>
+      ))}
+    </span>
+  ));
 
   return (
-    <section className="max-w-6xl mx-auto px-6 sm:px-8 py-10">
+    <section className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-10">
+      
       {/* Glass container */}
-      <div className="relative rounded-2xl p-6 sm:p-10 min-h-[260px] flex flex-col justify-between">
+      <div className="
+        relative
+        rounded-2xl
+        p-5 sm:p-8 md:p-10
+        min-h-[240px]
+        flex flex-col
+        justify-between
+        overflow-hidden
+        max-w-full
+      ">
+
         {/* Top row */}
-        <div className="flex items-start gap-3">
+        <div className="flex items-start gap-3 max-w-full">
           <motion.h1
-            className="font-semibold bg-gradient-to-r from-blue-400 via-yellow-400 to-orange-500 bg-clip-text text-transparent leading-tight max-w-xl text-2xl sm:text-3xl md:text-4xl lg:text-5xl"
+            className="
+              font-semibold
+              bg-gradient-to-r from-blue-400 via-yellow-400 to-orange-500
+              bg-clip-text text-transparent
+              leading-tight
+              w-full
+              break-words
+              text-2xl sm:text-3xl md:text-4xl lg:text-5xl
+            "
             style={{ textShadow: "0 1px 2px rgba(0,0,0,0.3)" }}
             variants={letterContainer}
             initial="hidden"
@@ -50,25 +77,17 @@ export default function CaterRequestInformation() {
           </motion.h1>
         </div>
 
-        {/**
-         * <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-          <h1 className="text-white font-extrabold drop-shadow-lg
-                         text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-            Welcome to A Cheerful Cup
-          </h1>
-
-          <p className="text-white/90 mt-3 max-w-2xl
-                        text-sm sm:text-base md:text-lg">
-            Fresh coffee, friendly service, and catering you can count on.
-          </p>
-        </div>
-         */}
-
-
         {/* Middle row */}
-        <div className="flex items-start gap-2 mt-5">
+        <div className="flex items-start gap-2 mt-4 max-w-full">
           <motion.p
-            className="text-white/80 font-semibold text-xl sm:text-2xl md:text-3xl lg:text-4xl"
+            className="
+              text-white/80
+              font-semibold
+              w-full
+              break-words
+              leading-relaxed
+              text-lg sm:text-xl md:text-2xl lg:text-3xl
+            "
             style={{ textShadow: "0 1px 2px rgba(0,0,0,0.3)" }}
             variants={letterContainer}
             initial="hidden"
@@ -81,15 +100,16 @@ export default function CaterRequestInformation() {
         </div>
 
         {/* Bottom row */}
-        <div className="flex justify-end mt-10">
-          <div className="flex items-center gap-3">
+        <div className="flex justify-end mt-8">
+          <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
             <Calendar className="w-5 h-5 text-white/80 hidden sm:block" />
             <ScheduleCaterButton onClick={() => setIsModalOpen(true)} />
           </div>
         </div>
+
       </div>
 
-      {/* "Coming Soon" Modal */}
+      {/* Modal */}
       {isModalOpen && (
         <ScheduleCater404Modal onClose={() => setIsModalOpen(false)} />
       )}
