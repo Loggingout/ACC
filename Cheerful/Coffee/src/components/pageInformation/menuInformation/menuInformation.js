@@ -152,7 +152,7 @@ export const lunchMenu = [
     name: 'Hot Dogs',
     description:
       'A classic grilled hot dog nestled in a soft bun, topped with your favorite condiments for a simple, satisfying bite that never goes out of style.',
-    price: null
+    price: '$4.00'
   },
   {
     name: 'Tamales',
@@ -178,12 +178,11 @@ export const lunchMenu = [
 
 // Fridge Menu
 export const fridgeMenu = [
-  { name: 'Ceasar Salad', price: '$5.25' },
+  { name: 'Salads', price: '$5.75' },
   { name: 'Salami Plates', price: '$4.00' },
   { name: 'Balance Breaks', price: '$2.00' },
   { name: 'Chobani Yogurt', price: '$2.00' },
   { name: 'Red Bull', price: '$3.00', type: 'Regular / Sugar Free' },
-  { name: 'Hard Boiled Egg', price: '$1.50' },
   { name: 'Jumex', price: '$1.00' },
   { name: 'Water', price: '$1.00' },
   { name: 'Arizona-Tea', price: '$1.00' },
@@ -196,7 +195,7 @@ export const fridgeMenu = [
   { name: 'Ice Sparkling Water', price: '$2.50' },
   { name: 'V8 Energy Drink', price: '$2.50' },
   { name: 'Pure Leaf Tea', price: '$2.50' },
-  { name: 'Ham Sandwiches', price: '$8.25' },
+  { name: 'Sandwiches', price: '$8.25' },
   { name: 'Celsius', price: '$2.50' },
-  { name: 'Sabra Smart Snackers', price: '$2.50' }
+  { name: 'Sabra Smart Snackers', price: '$2.00' }
 ];

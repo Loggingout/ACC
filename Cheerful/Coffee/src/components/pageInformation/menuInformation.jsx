@@ -1,16 +1,80 @@
+import { motion } from "framer-motion";
 import MenuCards from "../menu/menuCards";
-import { coffeeMenu, lunchMenu, fridgeMenu } from "../pageInformation/menuInformation/menuInformation"; // adjust path if needed
-import { Coffee, Utensils, Box } from "lucide-react"; // import lucide icons
+import { coffeeMenu, lunchMenu, fridgeMenu } from "../pageInformation/menuInformation/menuInformation";
+import { Coffee, Utensils, Box } from "lucide-react";
 
 export default function MenuInformation() {
+
+  const letterContainer = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.035,
+        delayChildren: 0.12,
+      },
+    },
+  };
+
+  const letterVariant = {
+    hidden: {
+      y: -24,
+      opacity: 0,
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        damping: 20,
+        stiffness: 260,
+      },
+    },
+  };
+
+  // Prevents single-letter wrapping issues
+  const renderAnimatedLetters = (text) =>
+    text.split(" ").map((word, wordIndex) => (
+      <span
+        key={`word-${wordIndex}`}
+        className="inline-block whitespace-nowrap mr-2"
+      >
+        {word.split("").map((char, charIndex) => (
+          <motion.span
+            key={`${wordIndex}-${char}-${charIndex}`}
+            variants={letterVariant}
+            className="inline-block"
+          >
+            {char}
+          </motion.span>
+        ))}
+      </span>
+    ));
+
   return (
     <div className="menu-information px-4 sm:px-6 md:px-8 py-8">
-      
+
       {/* Header */}
-      <h1 className="menu-title text-3xl font-bold mb-2">Our Menu</h1>
-      <p className="menu-description text-gray-700 mb-8">
-        Discover our delicious selection of coffee and treats, crafted with love and the finest ingredients.
-      </p>
+      <motion.h1
+        className="menu-title text-3xl sm:text-4xl font-bold mb-2 text-black"
+        style={{ textShadow: "0 2px 4px rgba(0,0,0,0.35)" }}
+        variants={letterContainer}
+        initial="hidden"
+        animate="visible"
+      >
+        {renderAnimatedLetters("Our Menu")}
+      </motion.h1>
+
+      <motion.p
+        className="menu-description text-gray-700 mb-8 text-base sm:text-lg leading-relaxed"
+        style={{ textShadow: "0 1px 3px rgba(0,0,0,0.25)" }}
+        variants={letterContainer}
+        initial="hidden"
+        animate="visible"
+      >
+        {renderAnimatedLetters(
+          "Discover our delicious selection of coffee and treats, crafted with love and the finest ingredients."
+        )}
+      </motion.p>
 
       {/* Coffee Menu Section */}
       <section className="mb-12">
