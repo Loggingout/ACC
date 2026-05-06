@@ -4,14 +4,18 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function MenuCards({ menu }) {
   const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
 
   const nextCard = () => {
+    setDirection(1);
     setIndex((prev) => (prev + 1) % menu.length);
   };
 
   const prevCard = () => {
+    setDirection(-1);
     setIndex((prev) => (prev - 1 + menu.length) % menu.length);
   };
+
 
   const swipeConfidenceThreshold = 100;
 
@@ -27,35 +31,36 @@ export default function MenuCards({ menu }) {
           <motion.div
             key={index}
             drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
-            onDragEnd={(e, { offset, velocity }) => {
-              const swipe = swipePower(offset.x, velocity.x);
+              dragConstraints={{ left: -120, right: 120 }}
+              dragElastic={0.2}
+              dragMomentum={false}
+              onDragEnd={(e, { offset, velocity }) => {
+                const swipe = swipePower(offset.x, velocity.x);
 
-              if (swipe < -swipeConfidenceThreshold) {
-                nextCard();
-              } else if (swipe > swipeConfidenceThreshold) {
-                prevCard();
-              }
-            }}
-            initial={{ x: 300, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: -300, opacity: 0 }}
-            transition={{
-              type: "spring",
-              stiffness: 300,
-              damping: 30,
-            }}
-            className="w-full"
-          >
-            {renderCard(menu[index], index)}
-          </motion.div>
-        </AnimatePresence>
+                if (swipe < -swipeConfidenceThreshold) {
+                  nextCard();
+                } else if (swipe > swipeConfidenceThreshold) {
+                  prevCard();
+                }
+              }}
+              initial={{ x: direction > 0 ? 300 : -300, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: direction > 0 ? -300 : 300, opacity: 0 }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 30,
+              }}
+              className="w-full"
+            >
+              {renderCard(menu[index], index)}
+            </motion.div>
+          </AnimatePresence>
 
-        {/* Optional swipe hint */}
-        <div className="text-center text-xs text-black mt-3">
-          Swipe left or right
+          <div className="text-center text-xs text-black mt-3">
+            Swipe left or right to navigate cards
+          </div>
         </div>
-      </div>
 
       {/* DESKTOP / TABLET GRID (UNCHANGED) */}
       <div className="menu-cards hidden sm:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
