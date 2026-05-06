@@ -10,6 +10,7 @@ export default function AboutUsInformation() {
       {/* CEO Image */}
       <div
         className="
+          hidden sm:block
           relative
           mx-auto
           mb-6
@@ -43,6 +44,7 @@ export default function AboutUsInformation() {
       {/* Business Rating Image */}
       <div
         className="
+          hidden sm:block
           relative
           mx-auto
           mb-6
