@@ -28,7 +28,7 @@ export default function AdminBannersPage() {
     setLoading(true);
     setError(null);
     getBanners(token)
-      .then(setBanners)
+      .then((data) => setBanners(Array.isArray(data) ? data : []))
       .catch((err) => setError(err.message || "Failed to load banners."))
       .finally(() => setLoading(false));
   }, [token]);

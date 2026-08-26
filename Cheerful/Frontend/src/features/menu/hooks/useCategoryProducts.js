@@ -15,7 +15,7 @@ export function useCategoryProducts(slug) {
 
     getProductsByCategory(slug)
       .then((data) => {
-        if (!cancelled) setProducts(data.products);
+        if (!cancelled) setProducts(Array.isArray(data?.products) ? data.products : []);
       })
       .catch((err) => {
         if (!cancelled) setError(err.message || "Failed to load menu items");

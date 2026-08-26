@@ -12,7 +12,7 @@ export function useReviews() {
     setError(null);
 
     return getReviews()
-      .then(setReviews)
+      .then((data) => setReviews(Array.isArray(data) ? data : []))
       .catch((err) => setError(err.message || "Failed to load reviews"))
       .finally(() => setLoading(false));
   }, []);

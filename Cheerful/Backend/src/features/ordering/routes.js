@@ -24,6 +24,7 @@ const createOrderSchema = z.object({
   customerName: z.string().min(1),
   customerPhone: z.string().min(1),
   customerEmail: z.string().email().nullish().or(z.literal('')),
+  paymentMethod: z.enum(['pay_in_store', 'square_link']).optional(),
   items: z.array(orderItemSchema).min(1),
 });
 

@@ -20,7 +20,7 @@ export default function AdminHeader() {
     setOrdersLoading(true);
     setOrdersError(null);
     getOrders(token)
-      .then(setOrders)
+      .then((data) => setOrders(Array.isArray(data) ? data : []))
       .catch((err) => setOrdersError(err.message || "Failed to load orders."))
       .finally(() => setOrdersLoading(false));
   }, [token]);

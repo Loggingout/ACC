@@ -25,7 +25,7 @@ export default function AdminOrdersPage() {
     setLoading(true);
     setError(null);
     getOrders(token)
-      .then(setOrders)
+      .then((data) => setOrders(Array.isArray(data) ? data : []))
       .catch((err) => setError(err.message || "Failed to load orders."))
       .finally(() => setLoading(false));
   }, [token]);
@@ -72,6 +72,9 @@ export default function AdminOrdersPage() {
                       <Mail size={12} /> {order.customerEmail}
                     </span>
                   )}
+                  <span className="px-2 py-0.5 rounded-full bg-white/10 text-white/70">
+                    {order.paymentMethod === "square_link" ? "Pay Online (Square)" : "Pay In Store"}
+                  </span>
                 </div>
               </div>
 

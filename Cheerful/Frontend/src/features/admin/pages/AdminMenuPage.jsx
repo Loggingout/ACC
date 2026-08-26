@@ -22,7 +22,7 @@ export default function AdminMenuPage() {
     setLoading(true);
     setError(null);
     getAdminProducts(token)
-      .then(setGroups)
+      .then((data) => setGroups(Array.isArray(data) ? data : []))
       .catch((err) => setError(err.message || "Failed to load menu."))
       .finally(() => setLoading(false));
   }, [token]);
