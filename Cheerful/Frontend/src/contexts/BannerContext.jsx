@@ -10,7 +10,7 @@ export function BannerProvider({ children }) {
 
   const refetch = useCallback(() => {
     getActiveBanners()
-      .then(setBanners)
+      .then((data) => setBanners(Array.isArray(data) ? data : []))
       .catch(() => setBanners([]))
       .finally(() => setLoading(false));
   }, []);
