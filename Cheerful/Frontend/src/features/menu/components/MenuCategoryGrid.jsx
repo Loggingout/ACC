@@ -2,9 +2,13 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { menuCategories } from "../data/menuCategories";
+import { useCategories } from "../hooks/useCategories";
+import { getCategoryIcon } from "../data/categoryIcons";
+import PageLoader from "../../../components/feedback/PageLoader";
 
 export default function MenuCategoryGrid() {
+  const { categories, loading, error } = useCategories();
+
   return (
     <div className="menu-information px-4 sm:px-6 md:px-8 py-8">
       <motion.h1
@@ -27,30 +31,38 @@ export default function MenuCategoryGrid() {
         Choose a category below to explore our full menu.
       </motion.p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {menuCategories.map(({ slug, title, description, icon: Icon }, i) => (
-          <motion.div
-            key={slug}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.15 + i * 0.08 }}
-          >
-            <Link
-              to={`/menu/${slug}`}
-              className="group relative flex flex-col h-full overflow-hidden rounded-2xl bg-black/40 hover:bg-black/50 hover:-translate-y-1 transition-all duration-300 p-6 sm:p-8 shadow-lg border border-white/10"
-            >
-              <div className="flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-red-500 via-orange-500 to-blue-500 mb-4 shrink-0">
-                <Icon className="w-7 h-7 text-white" />
-              </div>
-              <h2 className="text-xl font-semibold text-white mb-2">{title}</h2>
-              <p className="text-sm text-white/70 leading-relaxed">{description}</p>
-              <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-yellow-400 group-hover:gap-2 transition-all">
-                View menu <ArrowRight size={16} />
-              </span>
-            </Link>
-          </motion.div>
-        ))}
-      </div>
+      {loading && <PageLoader />}
+      {error && !loading && <p className="text-red-300 text-sm">Couldn't load the menu: {error}</p>}
+
+      {!loading && !error && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {categories.map(({ slug, title, description }, i) => {
+            const Icon = getCategoryIcon(slug);
+            return (
+              <motion.div
+                key={slug}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.15 + i * 0.08 }}
+              >
+                <Link
+                  to={`/menu/${slug}`}
+                  className="group relative flex flex-col h-full overflow-hidden rounded-2xl bg-black/40 hover:bg-black/50 hover:-translate-y-1 transition-all duration-300 p-6 sm:p-8 shadow-lg border border-white/10"
+                >
+                  <div className="flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-red-500 via-orange-500 to-blue-500 mb-4 shrink-0">
+                    <Icon className="w-7 h-7 text-white" />
+                  </div>
+                  <h2 className="text-xl font-semibold text-white mb-2">{title}</h2>
+                  <p className="text-sm text-white/70 leading-relaxed">{description}</p>
+                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-yellow-400 group-hover:gap-2 transition-all">
+                    View menu <ArrowRight size={16} />
+                  </span>
+                </Link>
+              </motion.div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }

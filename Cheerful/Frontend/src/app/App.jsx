@@ -20,9 +20,7 @@ const CartPage = lazy(() => import('../pages/CartPage'))
 const CheckoutPage = lazy(() => import('../pages/CheckoutPage'))
 const Universal404Page = lazy(() => import('../components/feedback/universal404Page'))
 const CaterRequestInformation = lazy(() => import('../features/home/components/caterRequestInformation'))
-const CoffeeMenuPage = lazy(() => import('../pages/CoffeeMenuPage'))
-const LunchMenuPage = lazy(() => import('../pages/LunchMenuPage'))
-const FridgeMenuPage = lazy(() => import('../pages/FridgeMenuPage'))
+const MenuCategoryDetailPage = lazy(() => import('../pages/MenuCategoryDetailPage'))
 const AdminDashboardPage = lazy(() => import('../features/admin/pages/AdminDashboardPage'))
 const AdminMenuPage = lazy(() => import('../features/admin/pages/AdminMenuPage'))
 const AdminOrdersPage = lazy(() => import('../features/admin/pages/AdminOrdersPage'))
@@ -46,9 +44,7 @@ function App() {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<HomepagePage />} />
           <Route path="menu" element={<MenuPage />} />
-          <Route path="menu/coffee" element={<CoffeeMenuPage />} />
-          <Route path="menu/lunch" element={<LunchMenuPage />} />
-          <Route path="menu/fridge" element={<FridgeMenuPage />} />
+          <Route path="menu/:slug" element={<MenuCategoryDetailPage />} />
           <Route path="catering-request" element={<CaterRequestInformation />} />
           <Route path="catering-page" element={<CaterPage />} />
           <Route path="review-page" element={<ReviewsPage />} />
