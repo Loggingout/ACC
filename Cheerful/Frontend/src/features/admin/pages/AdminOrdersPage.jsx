@@ -55,63 +55,86 @@ export default function AdminOrdersPage() {
       )}
 
       <div className="flex flex-col gap-4">
-        {orders.map((order) => (
-          <div key={order._id} className="rounded-2xl bg-black/50 p-5 flex flex-col gap-3">
-            <div className="flex items-start justify-between gap-4 flex-wrap">
-              <div>
-                <h3 className="text-white font-semibold">{order.customerName}</h3>
-                <div className="flex items-center gap-3 mt-1 text-xs text-white/50">
-                  <span className="flex items-center gap-1">
-                    <Clock size={12} /> {new Date(order.createdAt).toLocaleString()}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <Phone size={12} /> {order.customerPhone}
-                  </span>
-                  {order.customerEmail && (
+        {orders.map((order, index) => {
+          const isMostRecent = index === 0;
+          const isLocked = order.status === "completed" || order.status === "cancelled";
+
+          const card = (
+            <div className="rounded-2xl bg-black/50 p-5 flex flex-col gap-3">
+              <div className="flex items-start justify-between gap-4 flex-wrap">
+                <div>
+                  <h3 className="text-white font-semibold">{order.customerName}</h3>
+                  <div className="flex items-center gap-3 mt-1 text-xs text-white/50">
                     <span className="flex items-center gap-1">
-                      <Mail size={12} /> {order.customerEmail}
+                      <Clock size={12} /> {new Date(order.createdAt).toLocaleString()}
                     </span>
-                  )}
-                  <span className="px-2 py-0.5 rounded-full bg-white/10 text-white/70">
-                    {order.paymentMethod === "square_link" ? "Pay Online (Square)" : "Pay In Store"}
-                  </span>
+                    <span className="flex items-center gap-1">
+                      <Phone size={12} /> {order.customerPhone}
+                    </span>
+                    {order.customerEmail && (
+                      <span className="flex items-center gap-1">
+                        <Mail size={12} /> {order.customerEmail}
+                      </span>
+                    )}
+                    <span className="px-2 py-0.5 rounded-full bg-white/10 text-white/70">
+                      {order.paymentMethod === "square_link" ? "Pay Online (Square)" : "Pay In Store"}
+                    </span>
+                  </div>
                 </div>
+
+                <select
+                  value={order.status}
+                  onChange={(e) => handleStatusChange(order, e.target.value)}
+                  disabled={isLocked}
+                  className={`text-xs font-semibold tracking-wide px-3 py-1.5 rounded-full border bg-black/40 capitalize disabled:opacity-60 disabled:cursor-not-allowed ${STATUS_STYLES[order.status] ?? ""}`}
+                >
+                  {STATUS_OPTIONS.map((s) => (
+                    <option key={s} value={s} className="bg-black capitalize">
+                      {s}
+                    </option>
+                  ))}
+                </select>
               </div>
 
-              <select
-                value={order.status}
-                onChange={(e) => handleStatusChange(order, e.target.value)}
-                className={`text-xs font-semibold tracking-wide px-3 py-1.5 rounded-full border bg-black/40 capitalize ${STATUS_STYLES[order.status] ?? ""}`}
-              >
-                {STATUS_OPTIONS.map((s) => (
-                  <option key={s} value={s} className="bg-black capitalize">
-                    {s}
-                  </option>
+              <div className="flex flex-col gap-1.5 pt-2 border-t border-white/10">
+                {order.items.map((item, i) => (
+                  <div key={i} className="flex items-center justify-between text-sm text-white/80">
+                    <span>
+                      {item.quantity}× {item.temperature ? `${item.temperature} ` : ""}{item.name}
+                      {item.size ? ` (${item.size})` : ""}
+                      {item.milk ? `, ${item.milk} milk` : ""}
+                      {item.flavor ? `, ${item.flavor} flavor` : ""}
+                      {item.sugar ? `, ${item.sugar}` : ""}
+                    </span>
+                    <span>{formatCurrency(item.unitPrice * item.quantity)}</span>
+                  </div>
                 ))}
-              </select>
-            </div>
+              </div>
 
-            <div className="flex flex-col gap-1.5 pt-2 border-t border-white/10">
-              {order.items.map((item, i) => (
-                <div key={i} className="flex items-center justify-between text-sm text-white/80">
-                  <span>
-                    {item.quantity}× {item.temperature ? `${item.temperature} ` : ""}{item.name}
-                    {item.size ? ` (${item.size})` : ""}
-                    {item.milk ? `, ${item.milk} milk` : ""}
-                    {item.flavor ? `, ${item.flavor} flavor` : ""}
-                    {item.sugar ? `, ${item.sugar}` : ""}
-                  </span>
-                  <span>{formatCurrency(item.unitPrice * item.quantity)}</span>
-                </div>
-              ))}
+              <div className="flex items-center justify-between pt-2 border-t border-white/10 text-white font-semibold">
+                <span>Total</span>
+                <span>{formatCurrency(order.total)}</span>
+              </div>
             </div>
+          );
 
-            <div className="flex items-center justify-between pt-2 border-t border-white/10 text-white font-semibold">
-              <span>Total</span>
-              <span>{formatCurrency(order.total)}</span>
+          if (!isMostRecent) {
+            return <div key={order._id}>{card}</div>;
+          }
+
+          return (
+            <div key={order._id} className="relative rounded-2xl p-[3px]">
+              <div
+                className="absolute inset-0 rounded-2xl animate-spin"
+                style={{
+                  background: "conic-gradient(from 0deg, transparent, #22c55e, transparent 40%)",
+                  animationDuration: "3s",
+                }}
+              />
+              <div className="relative z-10">{card}</div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
