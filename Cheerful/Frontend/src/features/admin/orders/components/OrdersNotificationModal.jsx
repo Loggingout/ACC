@@ -11,6 +11,13 @@ const STATUS_STYLES = {
   cancelled: "bg-red-500/10 text-red-500 border-red-500/30",
 };
 
+// Orders placed within this window get the rotating "new" border
+const RECENT_ORDER_WINDOW_MS = 15 * 60 * 1000; // 15 minutes
+
+function isRecentOrder(createdAt) {
+  return Date.now() - new Date(createdAt).getTime() < RECENT_ORDER_WINDOW_MS;
+}
+
 export default function OrdersNotificationModal({ orders, loading, error, onClose }) {
   return (
     <div className="fixed inset-0 flex items-start justify-center bg-black/60 z-50 p-4 pt-16 sm:pt-20" onClick={onClose}>
@@ -39,26 +46,62 @@ export default function OrdersNotificationModal({ orders, loading, error, onClos
 
           {!loading &&
             !error &&
-            orders.map((order) => (
-              <div key={order._id} className="rounded-xl bg-black/50 p-3.5 flex flex-col gap-1.5">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-sm font-medium text-white truncate">{order.customerName}</span>
-                  <span
-                    className={`shrink-0 text-[10px] font-semibold uppercase tracking-wide px-2 py-0.5 rounded-full border ${STATUS_STYLES[order.status] ?? ""}`}
-                  >
-                    {order.status}
-                  </span>
+            orders.map((order) => {
+              const recent = isRecentOrder(order.createdAt);
+
+              const card = (
+                <div className="recent-order-inner rounded-xl bg-black/95 p-3.5 flex flex-col gap-1.5">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-sm font-medium text-white truncate">{order.customerName}</span>
+                    <span
+                      className={`shrink-0 text-[10px] font-semibold uppercase tracking-wide px-2 py-0.5 rounded-full border ${STATUS_STYLES[order.status] ?? ""}`}
+                    >
+                      {order.status}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between gap-2 text-xs text-white/50">
+                    <span className="flex items-center gap-1">
+                      <Clock size={11} /> {new Date(order.createdAt).toLocaleString()}
+                    </span>
+                    <span>
+                      {order.items.length} item{order.items.length === 1 ? "" : "s"} · {formatCurrency(order.total)}
+                    </span>
+                  </div>
                 </div>
-                <div className="flex items-center justify-between gap-2 text-xs text-white/50">
-                  <span className="flex items-center gap-1">
-                    <Clock size={11} /> {new Date(order.createdAt).toLocaleString()}
-                  </span>
-                  <span>
-                    {order.items.length} item{order.items.length === 1 ? "" : "s"} · {formatCurrency(order.total)}
-                  </span>
+              );
+
+              if (!recent) {
+                return (
+                  <div key={order._id} className="rounded-xl bg-black/50 p-3.5">
+                    {/* Non-recent orders keep the original flat card */}
+                    <div className="flex flex-col gap-1.5">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-sm font-medium text-white truncate">{order.customerName}</span>
+                        <span
+                          className={`shrink-0 text-[10px] font-semibold uppercase tracking-wide px-2 py-0.5 rounded-full border ${STATUS_STYLES[order.status] ?? ""}`}
+                        >
+                          {order.status}
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between gap-2 text-xs text-white/50">
+                        <span className="flex items-center gap-1">
+                          <Clock size={11} /> {new Date(order.createdAt).toLocaleString()}
+                        </span>
+                        <span>
+                          {order.items.length} item{order.items.length === 1 ? "" : "s"} · {formatCurrency(order.total)}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+
+              return (
+                <div key={order._id} className="recent-order-wrapper">
+                  {card}
                 </div>
-              </div>
-            ))}
+              );
+            })}
         </div>
 
         <Link

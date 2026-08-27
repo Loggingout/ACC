@@ -1,2 +1,36 @@
 @import "tailwindcss";
 
+/* Rotating border for recently-placed orders */
+.recent-order-wrapper {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.recent-order-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: -60%;
+  z-index: 0;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 260deg,
+    #22c55e 300deg,
+    #4ade80 330deg,
+    transparent 360deg
+  );
+  animation: recent-order-spin 2.5s linear infinite;
+}
+
+.recent-order-inner {
+  position: relative;
+  z-index: 1;
+  background-color: black; /* match card bg so only the thin ring shows through padding */
+}
+
+@keyframes recent-order-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

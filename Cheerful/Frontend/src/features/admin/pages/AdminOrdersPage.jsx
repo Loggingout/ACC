@@ -15,6 +15,13 @@ const STATUS_STYLES = {
   cancelled: "bg-red-500/10 text-red-500 border-red-500/30",
 };
 
+// Keep this in sync with OrdersNotificationModal.jsx's window
+const RECENT_ORDER_WINDOW_MS = 15 * 60 * 1000; // 15 minutes
+
+function isRecentOrder(createdAt) {
+  return Date.now() - new Date(createdAt).getTime() < RECENT_ORDER_WINDOW_MS;
+}
+
 export default function AdminOrdersPage() {
   const { token } = useAuth();
   const [orders, setOrders] = useState([]);
@@ -55,8 +62,8 @@ export default function AdminOrdersPage() {
       )}
 
       <div className="flex flex-col gap-4">
-        {orders.map((order, index) => {
-          const isMostRecent = index === 0;
+        {orders.map((order) => {
+          const recent = isRecentOrder(order.createdAt);
           const isLocked = order.status === "completed" || order.status === "cancelled";
 
           const card = (
@@ -118,20 +125,13 @@ export default function AdminOrdersPage() {
             </div>
           );
 
-          if (!isMostRecent) {
+          if (!recent) {
             return <div key={order._id}>{card}</div>;
           }
 
           return (
-            <div key={order._id} className="relative rounded-2xl p-[3px]">
-              <div
-                className="absolute inset-0 rounded-2xl animate-spin"
-                style={{
-                  background: "conic-gradient(from 0deg, transparent, #22c55e, transparent 40%)",
-                  animationDuration: "3s",
-                }}
-              />
-              <div className="relative z-10">{card}</div>
+            <div key={order._id} className="recent-order-wrapper rounded-2xl p-[3px]">
+              <div className="recent-order-inner rounded-2xl">{card}</div>
             </div>
           );
         })}

@@ -68,12 +68,15 @@ export default function HomepagePage() {
           <div className="flex flex-col gap-5 sm:gap-6">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
               Coffee brewed with{" "}
-              <span className="relative inline-block" style={{ perspective: 400 }}>
+              <span
+                className="relative inline-block bg-gradient-to-r from-orange-400 via-yellow-400 to-blue-500 bg-clip-text text-transparent"
+                style={{ perspective: 400 }}
+              >
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={heroWords[heroWordIndex]}
-                    className="inline-block bg-gradient-to-r from-orange-400 via-yellow-400 to-blue-500 bg-clip-text text-transparent"
-                    style={{ transformStyle: "preserve-3d", backfaceVisibility: "hidden" }}
+                    className="inline-block"
+                    style={{ transformStyle: "preserve-3d" }}
                     initial={{ opacity: 0, rotateX: -90 }}
                     animate={{ opacity: 1, rotateX: 0 }}
                     exit={{ opacity: 0, rotateX: 90 }}
