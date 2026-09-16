@@ -39,7 +39,9 @@ export default function HomepagePage() {
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+    setCurrentImageIndex(
+      (prev) => (prev - 1 + heroImages.length) % heroImages.length,
+    );
   };
 
   return (
@@ -63,20 +65,21 @@ export default function HomepagePage() {
         <CoffeeRing className="absolute -top-10 -right-10 w-56 h-56 opacity-[0.12] pointer-events-none" />
 
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center px-6 sm:px-10 py-8 sm:py-12">
-
-          
           <div className="flex flex-col gap-5 sm:gap-6">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
               Coffee brewed with{" "}
               <span
-                className="relative inline-block bg-gradient-to-r from-orange-400 via-yellow-400 to-blue-500 bg-clip-text text-transparent"
+                className="relative inline-block"
                 style={{ perspective: 400 }}
               >
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={heroWords[heroWordIndex]}
-                    className="inline-block"
-                    style={{ transformStyle: "preserve-3d" }}
+                    className="inline-block bg-gradient-to-r from-orange-400 via-yellow-400 to-blue-500 bg-clip-text text-transparent"
+                    style={{
+                      transformStyle: "preserve-3d",
+                      backfaceVisibility: "hidden",
+                    }}
                     initial={{ opacity: 0, rotateX: -90 }}
                     animate={{ opacity: 1, rotateX: 0 }}
                     exit={{ opacity: 0, rotateX: 90 }}
@@ -90,8 +93,8 @@ export default function HomepagePage() {
             </h1>
 
             <p className="text-white/80 text-sm sm:text-base max-w-md">
-              From handcrafted espresso to fresh pastries, every cup is made
-              to brighten your day.
+              From handcrafted espresso to fresh pastries, every cup is made to
+              brighten your day.
             </p>
 
             <div className="flex items-center gap-2 text-sm">
@@ -168,7 +171,6 @@ export default function HomepagePage() {
               </div>
             </div>
           </div>
-
         </div>
       </section>
 
@@ -176,7 +178,6 @@ export default function HomepagePage() {
       <div className="flex flex-col gap-6 lg:gap-8">
         <AboutUsInformation />
         <WhyTrustUsInformation />
-        
       </div>
     </div>
   );
