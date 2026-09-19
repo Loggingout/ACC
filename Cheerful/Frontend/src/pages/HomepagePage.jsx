@@ -1,6 +1,13 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Star,
+  ShoppingBag,
+} from "lucide-react";
+import { Link } from "react-router-dom";
+
 import AboutUsInformation from "../features/home/components/AboutUsInformation";
 // import CaterRequestInformation from "../features/home/components/caterRequestInformation";
 import WhyTrustUsInformation from "../features/home/components/whyTrustUsInformation";
@@ -11,8 +18,20 @@ const GRAIN =
 function CoffeeRing({ className }) {
   return (
     <svg viewBox="0 0 200 200" fill="none" className={className}>
-      <circle cx="100" cy="90" r="70" stroke="#f59e0b" strokeWidth="2" />
-      <circle cx="112" cy="102" r="54" stroke="#f97316" strokeWidth="1.5" />
+      <circle
+        cx="100"
+        cy="90"
+        r="70"
+        stroke="#f59e0b"
+        strokeWidth="2"
+      />
+      <circle
+        cx="112"
+        cy="102"
+        r="54"
+        stroke="#f97316"
+        strokeWidth="1.5"
+      />
     </svg>
   );
 }
@@ -20,27 +39,38 @@ function CoffeeRing({ className }) {
 export default function HomepagePage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [heroWordIndex, setHeroWordIndex] = useState(0);
+
   const heroWords = ["Love", "Passion", "Excitement"];
 
   const heroImages = [
-    { src: "/new-acc-pic.jpeg", alt: "A Cheerful Cup Lobby" },
-    { src: "/outside-view.jpeg", alt: "A Cheerful Cup Exterior View" },
+    {
+      src: "/new-acc-pic.jpeg",
+      alt: "A Cheerful Cup Lobby",
+    },
+    {
+      src: "/outside-view.jpeg",
+      alt: "A Cheerful Cup Exterior View",
+    },
   ];
 
   useEffect(() => {
     const id = setInterval(() => {
       setHeroWordIndex((i) => (i + 1) % heroWords.length);
     }, 2200);
+
     return () => clearInterval(id);
   }, [heroWords.length]);
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    setCurrentImageIndex(
+      (prev) => (prev + 1) % heroImages.length,
+    );
   };
 
   const prevImage = () => {
     setCurrentImageIndex(
-      (prev) => (prev - 1 + heroImages.length) % heroImages.length,
+      (prev) =>
+        (prev - 1 + heroImages.length) % heroImages.length,
     );
   };
 
@@ -52,7 +82,8 @@ export default function HomepagePage() {
       <section
         className="relative bg-black/40 overflow-hidden"
         style={{
-          clipPath: "polygon(0 0, 100% 0, 100% 100%, 6% 100%, 0 92%)",
+          clipPath:
+            "polygon(0 0, 100% 0, 100% 100%, 6% 100%, 0 92%)",
         }}
       >
         {/* Grain overlay */}
@@ -80,10 +111,22 @@ export default function HomepagePage() {
                       transformStyle: "preserve-3d",
                       backfaceVisibility: "hidden",
                     }}
-                    initial={{ opacity: 0, rotateX: -90 }}
-                    animate={{ opacity: 1, rotateX: 0 }}
-                    exit={{ opacity: 0, rotateX: 90 }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    initial={{
+                      opacity: 0,
+                      rotateX: -90,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      rotateX: 0,
+                    }}
+                    exit={{
+                      opacity: 0,
+                      rotateX: 90,
+                    }}
+                    transition={{
+                      duration: 0.5,
+                      ease: "easeInOut",
+                    }}
                   >
                     {heroWords[heroWordIndex]}
                   </motion.span>
@@ -93,16 +136,79 @@ export default function HomepagePage() {
             </h1>
 
             <p className="text-white/80 text-sm sm:text-base max-w-md">
-              From handcrafted espresso to fresh pastries, every cup is made to
-              brighten your day.
+              From handcrafted espresso to fresh pastries, every
+              cup is made to brighten your day.
             </p>
+
+            {/* Order Online CTA */}
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 15,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                delay: 0.4,
+                duration: 0.5,
+              }}
+            >
+              <Link
+                to="/menu"
+                className="
+                  group
+                  inline-flex items-center justify-center
+                  gap-2
+                  w-fit
+                  px-5 py-2.5
+                  sm:px-6 sm:py-3
+                  bg-gradient-to-r
+                  from-orange-500
+                  via-yellow-500
+                  to-orange-600
+                  hover:from-orange-600
+                  hover:via-yellow-500
+                  hover:to-orange-500
+                  text-white
+                  text-sm sm:text-base
+                  font-semibold
+                  rounded-lg
+                  shadow-lg
+                  hover:shadow-xl
+                  transition-all duration-300
+                  active:scale-95
+                "
+              >
+                <ShoppingBag
+                  className="
+                    w-4 h-4
+                    sm:w-5 sm:h-5
+                    transition-transform duration-300
+                    group-hover:scale-110
+                  "
+                />
+
+                <span>Order Online</span>
+              </Link>
+            </motion.div>
 
             <div className="flex items-center gap-2 text-sm">
               <div className="flex items-center gap-1 text-yellow-400">
-                <Star size={16} className="fill-yellow-400" />
-                <span className="font-semibold text-white">5.0</span>
+                <Star
+                  size={16}
+                  className="fill-yellow-400"
+                />
+
+                <span className="font-semibold text-white">
+                  5.0
+                </span>
               </div>
-              <span className="text-white/60">from our customers</span>
+
+              <span className="text-white/60">
+                from our customers
+              </span>
             </div>
           </div>
 
@@ -110,7 +216,8 @@ export default function HomepagePage() {
           <div
             className="relative overflow-hidden h-64 sm:h-80 lg:h-[26rem]"
             style={{
-              clipPath: "polygon(0 0, 100% 0, 100% 100%, 8% 100%, 0 88%)",
+              clipPath:
+                "polygon(0 0, 100% 0, 100% 100%, 8% 100%, 0 88%)",
               borderRadius: "1.25rem",
             }}
           >
@@ -120,10 +227,21 @@ export default function HomepagePage() {
                 src={heroImages[currentImageIndex].src}
                 alt={heroImages[currentImageIndex].alt}
                 className="w-full h-full object-cover"
-                initial={{ opacity: 0, x: 100 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -100 }}
-                transition={{ duration: 0.5 }}
+                initial={{
+                  opacity: 0,
+                  x: 100,
+                }}
+                animate={{
+                  opacity: 1,
+                  x: 0,
+                }}
+                exit={{
+                  opacity: 0,
+                  x: -100,
+                }}
+                transition={{
+                  duration: 0.5,
+                }}
               />
             </AnimatePresence>
 
@@ -149,7 +267,9 @@ export default function HomepagePage() {
                   key={index}
                   onClick={() => setCurrentImageIndex(index)}
                   className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                    index === currentImageIndex ? "bg-white" : "bg-white/50"
+                    index === currentImageIndex
+                      ? "bg-white"
+                      : "bg-white/50"
                   }`}
                   aria-label={`Go to image ${index + 1}`}
                 />
@@ -160,12 +280,17 @@ export default function HomepagePage() {
               <p className="text-xs uppercase tracking-wide text-orange-300 font-semibold mb-1">
                 Featured
               </p>
+
               <div className="flex items-center justify-between">
                 <h3 className="text-white font-semibold text-base sm:text-lg">
                   A Cheerful Cup
                 </h3>
+
                 <div className="flex items-center gap-1 text-yellow-400 text-sm">
-                  <Star size={14} className="fill-yellow-400" />
+                  <Star
+                    size={14}
+                    className="fill-yellow-400"
+                  />
                   5.0
                 </div>
               </div>
