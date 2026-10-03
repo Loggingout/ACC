@@ -1,6 +1,6 @@
 // controller.js — ordering HTTP handlers
 const service = require('./service');
-const { ok, created } = require('../../utils/response');
+const { ok, created, noContent } = require('../../utils/response');
 
 async function createOrder(req, res, next) {
   try {
@@ -26,4 +26,13 @@ async function updateStatus(req, res, next) {
   }
 }
 
-module.exports = { createOrder, listOrders, updateStatus };
+async function deleteOrder(req, res, next) {
+  try {
+    await service.deleteOrder(req.params.id);
+    noContent(res);
+  } catch (err) {
+    next(err);
+  }
+}
+
+module.exports = { createOrder, listOrders, updateStatus, deleteOrder };

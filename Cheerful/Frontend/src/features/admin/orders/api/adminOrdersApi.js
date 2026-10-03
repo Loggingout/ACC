@@ -8,3 +8,7 @@ export function getOrders(token) {
 export function updateOrderStatus(id, status, token) {
   return apiRequest(`/orders/${id}/status`, { method: "PATCH", body: { status }, token });
 }
+
+export function deleteOrder(id, token) {
+  return apiRequest(`/orders/${id}`, { method: "DELETE", token });
+}

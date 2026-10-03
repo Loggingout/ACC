@@ -17,4 +17,9 @@ async function updateStatus(id, status) {
   return order;
 }
 
-module.exports = { createOrder, listOrders, updateStatus };
+async function deleteOrder(id) {
+  const order = await Order.findByIdAndDelete(id);
+  if (!order) throw AppError.notFound('Order not found');
+}
+
+module.exports = { createOrder, listOrders, updateStatus, deleteOrder };

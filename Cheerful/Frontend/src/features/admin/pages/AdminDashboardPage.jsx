@@ -65,8 +65,29 @@ export default function AdminDashboardPage() {
           </StatCard>
 
           <StatCard icon={Star} label="Reviews">
-            <span className="text-2xl font-bold text-white">{stats.totalReviews}</span>
+            <div className="flex items-baseline gap-3">
+              <span className="text-2xl font-bold text-white">{stats.totalReviews}</span>
+              <span className="inline-flex items-center gap-1 text-sm text-yellow-300">
+                <Star size={13} className="fill-yellow-300" />
+                {stats.averageReviewRating.toFixed(1)} average
+              </span>
+            </div>
             <span className="text-xs text-white/50">{stats.newReviews} new in the last 7 days</span>
+            <div className="flex flex-col gap-1.5 mt-2" aria-label="Review rating distribution">
+              {[5, 4, 3, 2, 1].map((rating) => {
+                const count = stats.reviewRatingBreakdown[rating] ?? 0;
+                const share = stats.totalReviews ? (count / stats.totalReviews) * 100 : 0;
+                return (
+                  <div key={rating} className="grid grid-cols-[1rem_1fr_1.5rem] items-center gap-2 text-xs text-white/60">
+                    <span>{rating}</span>
+                    <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                      <div className="h-full bg-yellow-400 rounded-full" style={{ width: `${share}%` }} />
+                    </div>
+                    <span className="text-right">{count}</span>
+                  </div>
+                );
+              })}
+            </div>
           </StatCard>
 
           <StatCard icon={CalendarCheck} label="Catering Conversion Rate">

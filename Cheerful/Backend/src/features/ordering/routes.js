@@ -37,5 +37,6 @@ const router = Router();
 router.post('/', validate(createOrderSchema), controller.createOrder);
 router.get('/', requireAuth, requireAdmin, controller.listOrders);
 router.patch('/:id/status', requireAuth, requireAdmin, validate(statusSchema), controller.updateStatus);
+router.delete('/:id', requireAuth, requireAdmin, controller.deleteOrder);
 
 module.exports = router;

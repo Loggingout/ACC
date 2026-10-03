@@ -1,8 +1,8 @@
 // AdminOrdersPage.jsx — view placed orders, see when/who, and update status
 import { useCallback, useEffect, useState } from "react";
-import { Clock, Phone, Mail } from "lucide-react";
+import { Clock, Phone, Mail, Trash2 } from "lucide-react";
 import { useAuth } from "../../../hooks/useAuth";
-import { getOrders, updateOrderStatus } from "../orders/api/adminOrdersApi";
+import { deleteOrder, getOrders, updateOrderStatus } from "../orders/api/adminOrdersApi";
 import { formatCurrency } from "../../../utils/currency";
 
 const STATUS_OPTIONS = ["pending", "preparing", "ready", "completed", "cancelled"];
@@ -27,6 +27,7 @@ export default function AdminOrdersPage() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [deletingOrderId, setDeletingOrderId] = useState(null);
 
   const loadOrders = useCallback(() => {
     setLoading(true);
@@ -48,6 +49,21 @@ export default function AdminOrdersPage() {
     } catch (err) {
       alert(err.message || "Failed to update order status.");
       loadOrders();
+    }
+  };
+
+  const handleDelete = async (order) => {
+    const confirmed = window.confirm(`Permanently delete the order from ${order.customerName}?`);
+    if (!confirmed) return;
+
+    setDeletingOrderId(order._id);
+    try {
+      await deleteOrder(order._id, token);
+      setOrders((prev) => prev.filter((item) => item._id !== order._id));
+    } catch (err) {
+      alert(err.message || "Failed to delete order.");
+    } finally {
+      setDeletingOrderId(null);
     }
   };
 
@@ -89,18 +105,30 @@ export default function AdminOrdersPage() {
                   </div>
                 </div>
 
-                <select
-                  value={order.status}
-                  onChange={(e) => handleStatusChange(order, e.target.value)}
-                  disabled={isLocked}
-                  className={`text-xs font-semibold tracking-wide px-3 py-1.5 rounded-full border bg-black/40 capitalize disabled:opacity-60 disabled:cursor-not-allowed ${STATUS_STYLES[order.status] ?? ""}`}
-                >
-                  {STATUS_OPTIONS.map((s) => (
-                    <option key={s} value={s} className="bg-black capitalize">
-                      {s}
-                    </option>
-                  ))}
-                </select>
+                <div className="flex items-center gap-2">
+                  <select
+                    value={order.status}
+                    onChange={(e) => handleStatusChange(order, e.target.value)}
+                    disabled={isLocked}
+                    className={`text-xs font-semibold tracking-wide px-3 py-1.5 rounded-full border bg-black/40 capitalize disabled:opacity-60 disabled:cursor-not-allowed ${STATUS_STYLES[order.status] ?? ""}`}
+                  >
+                    {STATUS_OPTIONS.map((s) => (
+                      <option key={s} value={s} className="bg-black capitalize">
+                        {s}
+                      </option>
+                    ))}
+                  </select>
+                  <button
+                    type="button"
+                    onClick={() => handleDelete(order)}
+                    disabled={deletingOrderId === order._id}
+                    aria-label={`Delete order from ${order.customerName}`}
+                    title="Delete order"
+                    className="p-2 text-red-300 hover:text-red-200 hover:bg-red-500/10 rounded-md disabled:opacity-50"
+                  >
+                    <Trash2 size={16} />
+                  </button>
+                </div>
               </div>
 
               <div className="flex flex-col gap-1.5 pt-2 border-t border-white/10">
@@ -130,7 +158,7 @@ export default function AdminOrdersPage() {
           }
 
           return (
-            <div key={order._id} className="recent-order-wrapper rounded-2xl p-[3px]">
+            <div key={order._id} className="recent-order-wrapper rounded-2xl p-0.75">
               <div className="recent-order-inner rounded-2xl">{card}</div>
             </div>
           );
