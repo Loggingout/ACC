@@ -4,7 +4,7 @@ import { formatCurrency } from "../../../utils/currency";
 import { useCart } from "../../../hooks/useCart";
 
 export default function OrderSummary() {
-  const { itemCount, subtotal } = useCart();
+  const { itemCount, onlineOrderFee, total } = useCart();
   const navigate = useNavigate();
 
   return (
@@ -17,19 +17,15 @@ export default function OrderSummary() {
           <span className="text-white font-medium">{itemCount}</span>
         </div>
         <div className="flex items-center justify-between text-white/70">
-          <span>Order Total</span>
-          <span className="text-white font-medium">{formatCurrency(subtotal)}</span>
-        </div>
-        <div className="flex items-center justify-between text-white/70">
-          <span>Discount</span>
-          <span className="text-white font-medium">{formatCurrency(0)}</span>
+          <span>Online order charge</span>
+          <span className="text-white font-medium">{formatCurrency(onlineOrderFee)}</span>
         </div>
       </div>
 
       <div className="flex items-center justify-between pt-3 border-t border-white/10">
-        <span className="text-white font-semibold">Total</span>
+        <span className="text-white font-semibold">Final bill</span>
         <span className="text-xl font-bold bg-gradient-to-r from-orange-400 to-yellow-700 bg-clip-text text-transparent">
-          {formatCurrency(subtotal)}
+          {formatCurrency(total)}
         </span>
       </div>
 

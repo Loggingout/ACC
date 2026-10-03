@@ -12,6 +12,9 @@ const orderSchema = new mongoose.Schema(
     items: { type: [orderItemSchema], required: true },
     status: { type: String, enum: Object.values(ORDER_STATUS), default: ORDER_STATUS.PENDING },
     paymentMethod: { type: String, enum: ['pay_in_store', 'square_link'], default: 'pay_in_store' },
+    itemSubtotal: { type: Number, required: true, min: 0 },
+    onlineOrderFee: { type: Number, required: true, min: 0, default: 0 },
+    salesTax: { type: Number, required: true, min: 0, default: 0 },
     total: { type: Number, required: true, min: 0 },
   },
   { timestamps: true }

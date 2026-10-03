@@ -146,9 +146,23 @@ export default function AdminOrdersPage() {
                 ))}
               </div>
 
-              <div className="flex items-center justify-between pt-2 border-t border-white/10 text-white font-semibold">
-                <span>Total</span>
-                <span>{formatCurrency(order.total)}</span>
+              <div className="flex flex-col gap-1 pt-2 border-t border-white/10 text-sm">
+                <div className="flex items-center justify-between text-white/60">
+                  <span>Items subtotal</span>
+                  <span>{formatCurrency(order.itemSubtotal ?? order.total)}</span>
+                </div>
+                <div className="flex items-center justify-between text-white/60">
+                  <span>Online order charge</span>
+                  <span>{formatCurrency(order.onlineOrderFee ?? 0)}</span>
+                </div>
+                <div className="flex items-center justify-between text-white/60">
+                  <span>Tax (8.5%)</span>
+                  <span>{formatCurrency(order.salesTax ?? 0)}</span>
+                </div>
+                <div className="flex items-center justify-between pt-1 text-white font-semibold">
+                  <span>Total</span>
+                  <span>{formatCurrency(order.total)}</span>
+                </div>
               </div>
             </div>
           );

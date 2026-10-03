@@ -2,6 +2,7 @@
 import { Heart, Minus, Plus, Trash2 } from "lucide-react";
 import ImageWithLoader from "../../../components/shared/components/ImageWithLoader";
 import { formatCurrency } from "../../../utils/currency";
+import { taxInclusivePrice } from "../../../utils/taxInclusivePricing";
 import { useCart } from "../../../hooks/useCart";
 
 export default function CartLineItem({ line }) {
@@ -69,7 +70,7 @@ export default function CartLineItem({ line }) {
           </button>
         </div>
         <span className="text-base font-bold bg-gradient-to-r from-orange-400 to-yellow-700 bg-clip-text text-transparent">
-          {formatCurrency(line.unitPrice * line.quantity)}
+          {formatCurrency(taxInclusivePrice(line.unitPrice, line.quantity))}
         </span>
       </div>
     </div>

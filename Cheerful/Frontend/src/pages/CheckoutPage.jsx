@@ -5,13 +5,14 @@ import { CheckCircle2, ShoppingBag, ExternalLink } from "lucide-react";
 import { useCart } from "../hooks/useCart";
 import { submitOrder } from "../features/cart/api/ordersApi";
 import { formatCurrency } from "../utils/currency";
+import { taxInclusivePrice } from "../utils/taxInclusivePricing";
 
 const SQUARE_PAYMENT_LINK = "https://square.link/u/0KsiFRSV";
 
 const INITIAL_FORM = { customerName: "", customerPhone: "", customerEmail: "" };
 
 export default function CheckoutPage() {
-  const { lines, subtotal, clearCart } = useCart();
+  const { lines, onlineOrderFee, total, clearCart } = useCart();
   const [form, setForm] = useState(INITIAL_FORM);
   const [paymentMethod, setPaymentMethod] = useState("pay_in_store");
   const [status, setStatus] = useState("idle");
@@ -46,7 +47,7 @@ export default function CheckoutPage() {
           unitPrice: l.unitPrice,
         })),
       });
-      setOrderTotal(subtotal);
+      setOrderTotal(total);
       clearCart();
       setStatus("success");
     } catch (err) {
@@ -118,12 +119,18 @@ export default function CheckoutPage() {
               {line.quantity}× {line.name}
               {line.size ? ` (${line.size})` : ""}
             </span>
-            <span>{formatCurrency(line.unitPrice * line.quantity)}</span>
+            <span>{formatCurrency(taxInclusivePrice(line.unitPrice, line.quantity))}</span>
           </div>
         ))}
-        <div className="flex items-center justify-between pt-2 mt-1 border-t border-white/10 text-white font-semibold">
-          <span>Total</span>
-          <span>{formatCurrency(subtotal)}</span>
+        <div className="flex flex-col gap-2 pt-2 mt-1 border-t border-white/10 text-sm">
+          <div className="flex items-center justify-between text-white/70">
+            <span>Online order charge</span>
+            <span>{formatCurrency(onlineOrderFee)}</span>
+          </div>
+          <div className="flex items-center justify-between pt-2 border-t border-white/10 text-white font-semibold">
+            <span>Final bill</span>
+            <span>{formatCurrency(total)}</span>
+          </div>
         </div>
       </div>
 
@@ -195,7 +202,7 @@ export default function CheckoutPage() {
           {paymentMethod === "square_link" && (
             <p className="px-3 py-2.5 rounded-lg bg-orange-500/10 border border-orange-500/30 text-sm text-white/80">
               Your order balance is{" "}
-              <span className="font-semibold text-white">{formatCurrency(subtotal)}</span> — enter this exact amount
+                <span className="font-semibold text-white">{formatCurrency(total)}</span> — enter this exact amount
               on the Square payment page so we can match it to your order.
             </p>
           )}

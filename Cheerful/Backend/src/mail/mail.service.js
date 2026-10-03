@@ -1,6 +1,7 @@
 const { sendEmail } = require('./transporter');
 const { formatUSD } = require('../utils/currency');
 const env = require('../config/env');
+const { taxInclusiveUnitPriceCents } = require('../constants/orderPricing');
 
 function escapeHtml(value = '') {
 	return String(value).replace(/[&<>"']/g, (character) => ({
@@ -21,13 +22,17 @@ function formatOrderItems(order) {
 				.join(', ');
 			const description = `${escapeHtml(item.quantity)} × ${escapeHtml(item.name)}`;
 			const details = options ? ` <span>(${options})</span>` : '';
-			return `<li>${description}${details} - ${formatUSD(item.unitPrice * item.quantity)}</li>`;
+			const lineTotal = (taxInclusiveUnitPriceCents(item.unitPrice) * item.quantity) / 100;
+			return `<li>${description}${details} - ${formatUSD(lineTotal)}</li>`;
 		})
 		.join('');
 }
 
 function buildOrderEmail(order) {
 	const items = formatOrderItems(order);
+	const itemSubtotal = formatUSD(order.itemSubtotal ?? order.total);
+	const onlineOrderFee = formatUSD(order.onlineOrderFee ?? 0);
+	const salesTax = formatUSD(order.salesTax ?? 0);
 	const total = formatUSD(order.total);
 	const payment = order.paymentMethod === 'square_link'
 		? 'Square payment link'
@@ -39,12 +44,16 @@ function buildOrderEmail(order) {
 			const options = [item.size, item.milk, item.sugar, item.flavor, item.temperature]
 				.filter(Boolean)
 				.join(', ');
-			return `- ${item.quantity} x ${item.name}${options ? ` (${options})` : ''}: ${formatUSD(item.unitPrice * item.quantity)}`;
+			const lineTotal = (taxInclusiveUnitPriceCents(item.unitPrice) * item.quantity) / 100;
+			return `- ${item.quantity} x ${item.name}${options ? ` (${options})` : ''}: ${formatUSD(lineTotal)}`;
 		})
 		.join('\n');
 
 	return {
 		items,
+		itemSubtotal,
+		onlineOrderFee,
+		salesTax,
 		total,
 		payment,
 		orderNumber,
@@ -62,8 +71,8 @@ async function sendOrderNotifications(order) {
 			label: 'customer confirmation',
 			to: order.customerEmail,
 			subject: 'We received your A Cheerful Cup order',
-			html: `<h1>Thanks, ${details.name}!</h1><p>We received order <strong>${details.orderNumber}</strong> and our team will review it and prepare it for you.</p><h2>Your order</h2><ul>${details.items}</ul><p><strong>Total:</strong> ${details.total}</p><p><strong>Payment:</strong> ${escapeHtml(details.payment)}. If you selected pay in store, payment is due when you collect your order.</p><p>Questions? Reply to this email.</p><p>Thanks for choosing A Cheerful Cup.</p>`,
-			text: `Thanks, ${order.customerName}!\n\nWe received order ${order.id || order._id} and our team will review it and prepare it for you.\n\nYour order:\n${details.itemsText}\n\nTotal: ${details.total}\nPayment: ${details.payment}. If you selected pay in store, payment is due when you collect your order.\n\nQuestions? Reply to this email.\nThanks for choosing A Cheerful Cup.`,
+			html: `<h1>Thanks, ${details.name}!</h1><p>We received order <strong>${details.orderNumber}</strong> and our team will review it and prepare it for you.</p><h2>Your order</h2><ul>${details.items}</ul><p>Online order charge: ${details.onlineOrderFee}</p><p><strong>Final bill: ${details.total}</strong></p><p><strong>Payment:</strong> ${escapeHtml(details.payment)}. If you selected pay in store, payment is due when you collect your order.</p><p>Questions? Reply to this email.</p><p>Thanks for choosing A Cheerful Cup.</p>`,
+			text: `Thanks, ${order.customerName}!\n\nWe received order ${order.id || order._id} and our team will review it and prepare it for you.\n\nYour order:\n${details.itemsText}\n\nOnline order charge: ${details.onlineOrderFee}\nFinal bill: ${details.total}\nPayment: ${details.payment}. If you selected pay in store, payment is due when you collect your order.\n\nQuestions? Reply to this email.\nThanks for choosing A Cheerful Cup.`,
 		});
 	}
 
@@ -72,8 +81,8 @@ async function sendOrderNotifications(order) {
 			label: 'admin order alert',
 			to: env.mail.adminEmail,
 			subject: `New online order ${details.orderNumber}`,
-			html: `<h1>New online order</h1><p><strong>Order:</strong> ${details.orderNumber}</p><p><strong>Customer:</strong> ${details.name}</p><p><strong>Email:</strong> ${escapeHtml(order.customerEmail || 'Not provided')}</p><p><strong>Phone:</strong> ${escapeHtml(order.customerPhone)}</p><h2>Items</h2><ul>${details.items}</ul><p><strong>Total:</strong> ${details.total}</p><p><strong>Payment:</strong> ${escapeHtml(details.payment)}</p>`,
-			text: `New online order ${order.id || order._id}\nCustomer: ${order.customerName}\nEmail: ${order.customerEmail || 'Not provided'}\nPhone: ${order.customerPhone}\n\nItems:\n${details.itemsText}\n\nTotal: ${details.total}\nPayment: ${details.payment}`,
+			html: `<h1>New online order</h1><p><strong>Order:</strong> ${details.orderNumber}</p><p><strong>Customer:</strong> ${details.name}</p><p><strong>Email:</strong> ${escapeHtml(order.customerEmail || 'Not provided')}</p><p><strong>Phone:</strong> ${escapeHtml(order.customerPhone)}</p><h2>Items</h2><ul>${details.items}</ul><p>Items subtotal: ${details.itemSubtotal}<br>Online order charge: ${details.onlineOrderFee}<br>Tax (8.5%): ${details.salesTax}</p><p><strong>Total: ${details.total}</strong></p><p><strong>Payment:</strong> ${escapeHtml(details.payment)}</p>`,
+			text: `New online order ${order.id || order._id}\nCustomer: ${order.customerName}\nEmail: ${order.customerEmail || 'Not provided'}\nPhone: ${order.customerPhone}\n\nItems:\n${details.itemsText}\n\nItems subtotal: ${details.itemSubtotal}\nOnline order charge: ${details.onlineOrderFee}\nTax (8.5%): ${details.salesTax}\nTotal: ${details.total}\nPayment: ${details.payment}`,
 		});
 	}
 

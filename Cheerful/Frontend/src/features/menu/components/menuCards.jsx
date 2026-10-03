@@ -3,14 +3,15 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import ImageWithLoader from "../../../components/shared/components/ImageWithLoader";
 import { formatCurrency } from "../../../utils/currency";
+import { taxInclusivePrice } from "../../../utils/taxInclusivePricing";
 import { useCart } from "../../../hooks/useCart";
 
 function priceLabel(item) {
   if (item.prices) {
     const min = Math.min(...Object.values(item.prices));
-    return `From ${formatCurrency(min)}`;
+    return `From ${formatCurrency(taxInclusivePrice(min))}`;
   }
-  if (item.price) return formatCurrency(item.price);
+  if (item.price != null) return formatCurrency(taxInclusivePrice(item.price));
   return "Ask in store";
 }
 
@@ -218,7 +219,7 @@ function SpotlightCard({ item }) {
 
           <div className="mt-auto flex items-center justify-between gap-4 pt-4 border-t border-white/10">
             <span className="text-xl font-bold bg-gradient-to-r from-orange-500 to-yellow-700 bg-clip-text text-transparent">
-              {activePrice != null ? formatCurrency(activePrice) : item.price != null ? formatCurrency(item.price) : "Ask in store"}
+              {activePrice != null ? formatCurrency(taxInclusivePrice(activePrice)) : item.price != null ? formatCurrency(taxInclusivePrice(item.price)) : "Ask in store"}
             </span>
             <button
               type="button"

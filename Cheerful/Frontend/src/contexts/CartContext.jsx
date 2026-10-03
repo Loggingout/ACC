@@ -1,5 +1,7 @@
 // CartContext.jsx — client-side shopping cart state, persisted to localStorage
 import { createContext, useCallback, useEffect, useMemo, useState } from "react";
+import { ONLINE_ORDER_FEE } from "../constants/orderPricing";
+import { taxInclusiveUnitPriceCents } from "../utils/taxInclusivePricing";
 
 const CartContext = createContext(null);
 const STORAGE_KEY = "acc-cart";
@@ -52,9 +54,24 @@ export function CartProvider({ children }) {
   const clearCart = useCallback(() => setLines([]), []);
 
   const itemCount = useMemo(() => lines.reduce((sum, l) => sum + l.quantity, 0), [lines]);
-  const subtotal = useMemo(() => lines.reduce((sum, l) => sum + l.unitPrice * l.quantity, 0), [lines]);
+  const taxInclusiveSubtotalCents = useMemo(
+    () => lines.reduce((sum, line) => sum + taxInclusiveUnitPriceCents(line.unitPrice) * line.quantity, 0),
+    [lines]
+  );
+  const onlineOrderFee = lines.length ? ONLINE_ORDER_FEE : 0;
+  const total = taxInclusiveSubtotalCents / 100 + onlineOrderFee;
 
-  const value = { lines, addItem, updateQuantity, removeItem, toggleFavorite, clearCart, itemCount, subtotal };
+  const value = {
+    lines,
+    addItem,
+    updateQuantity,
+    removeItem,
+    toggleFavorite,
+    clearCart,
+    itemCount,
+    onlineOrderFee,
+    total,
+  };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
