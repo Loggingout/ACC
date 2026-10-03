@@ -1,10 +1,13 @@
 // service.js — guest order placement (pay-in-store) + admin management
 const Order = require('../../models/Order');
 const { AppError } = require('../../utils/errors');
+const mailService = require('../../mail/mail.service');
 
 async function createOrder(data) {
   const total = data.items.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
-  return Order.create({ ...data, total });
+  const order = await Order.create({ ...data, total });
+  await mailService.sendOrderNotifications(order);
+  return order;
 }
 
 async function listOrders() {

@@ -9,6 +9,7 @@
     "seed:admin": "node scripts/createAdmin.js",
     "seed:menu": "node scripts/seedMenu.js",
     "seed:reviews": "node scripts/seedReviews.js",
+    "mail:test": "node scripts/testEmail.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
