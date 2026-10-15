@@ -1,12 +1,22 @@
 import Logo from "../../../public/acc-logo.jpg";
 import PartnerLogo from "../../assets/partner-logo.png";
 import { Clock, Coffee, MapPin, Phone, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
+
+const COMPANY_LINKS = [
+  { label: "Book for Catering", to: "/" },
+  { label: "Reward Program", to: "/" },
+  { label: "Refer to a Friend", to: "/" },
+  { label: "Data Policy", to: "/" },
+  { label: "Privacy Policy", to: "/" },
+  { label: "Terms of Service", to: "/" },
+];
 
 export default function Footer() {
   return (
     <div className="bg-white text-black py-6 sm:py-8 px-4 sm:px-6 border-t border-gray-200">
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8 mb-6 sm:mb-8">
           {/* Logo and Brand */}
           <div className="flex flex-col items-center sm:items-start gap-2">
             <img
@@ -24,7 +34,7 @@ export default function Footer() {
 
           {/* Hours */}
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2">
-            <Clock className="w-5 h-5 text-sky-500 flex-shrink-0 mt-0 sm:mt-1" />
+            <Clock className="w-5 h-5 text-sky-500 shrink-0 mt-0 sm:mt-1" />
             <div className="text-center sm:text-left">
               <p className="text-sm sm:text-base font-semibold text-black mb-1">
                 Business Hours
@@ -73,6 +83,29 @@ export default function Footer() {
               </a>
             </div>
           </div>
+
+          {/* Company Pages */}
+          {/** 
+          <div className="flex flex-col items-center sm:items-start gap-2">
+            <p className="text-sm sm:text-base font-semibold text-black mb-1">
+              Company
+            </p>
+            <nav aria-label="Company">
+              <ul className="flex flex-col items-center sm:items-start gap-2">
+                {COMPANY_LINKS.map(({ label, to }) => (
+                  <li key={to}>
+                    <Link
+                      to={to}
+                      className="text-xs sm:text-sm text-gray-700 hover:text-black transition-colors"
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+          */}
 
           {/* Partner Logo */}
           <div className="flex flex-col items-center sm:items-start lg:items-center gap-2">

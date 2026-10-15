@@ -22,7 +22,8 @@ function getEnv() {
     },
     mail: {
       apiKey: process.env.UNOSEND_API_KEY,
-      apiUrl: process.env.UNOSEND_API_URL || 'https://api.unosend.co/v1/emails',
+      apiUrl: process.env.UNOSEND_API_URL
+        || new URL('/api/v1/emails', process.env.UNOSEND_URL || 'https://app.unosend.co').toString(),
       senderEmail: process.env.UNOSEND_SENDER_EMAIL,
       senderName: process.env.UNOSEND_SENDER_NAME || 'A Cheerful Cup',
       adminEmail: process.env.ADMIN_EMAIL,

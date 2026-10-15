@@ -35,8 +35,15 @@ async function listOrders() {
 }
 
 async function updateStatus(id, status) {
-  const order = await Order.findByIdAndUpdate(id, { status }, { new: true });
+  const order = await Order.findById(id);
   if (!order) throw AppError.notFound('Order not found');
+
+  const previousStatus = order.status;
+  if (previousStatus === status) return order;
+
+  order.status = status;
+  await order.save();
+  await mailService.sendOrderStatusUpdate(order, previousStatus);
   return order;
 }
 
