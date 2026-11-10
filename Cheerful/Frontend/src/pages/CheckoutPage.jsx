@@ -12,12 +12,14 @@ const SQUARE_PAYMENT_LINK = "https://square.link/u/0KsiFRSV";
 const INITIAL_FORM = { customerName: "", customerPhone: "", customerEmail: "" };
 
 export default function CheckoutPage() {
-  const { lines, onlineOrderFee, total, clearCart } = useCart();
+  const { lines, onlineOrderFee: potentialOnlineOrderFee, total: onlineTotal, clearCart } = useCart();
   const [form, setForm] = useState(INITIAL_FORM);
   const [paymentMethod, setPaymentMethod] = useState("pay_in_store");
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState(null);
   const [orderTotal, setOrderTotal] = useState(0);
+  const onlineOrderFee = paymentMethod === "square_link" ? potentialOnlineOrderFee : 0;
+  const total = (Math.round(onlineTotal * 100) - Math.round(potentialOnlineOrderFee * 100) + Math.round(onlineOrderFee * 100)) / 100;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,7 +32,7 @@ export default function CheckoutPage() {
     setError(null);
 
     try {
-      await submitOrder({
+      const order = await submitOrder({
         ...form,
         paymentMethod,
         items: lines.map((l) => ({
@@ -47,7 +49,7 @@ export default function CheckoutPage() {
           unitPrice: l.unitPrice,
         })),
       });
-      setOrderTotal(total);
+      setOrderTotal(order.total);
       clearCart();
       setStatus("success");
     } catch (err) {
@@ -123,10 +125,12 @@ export default function CheckoutPage() {
           </div>
         ))}
         <div className="flex flex-col gap-2 pt-2 mt-1 border-t border-white/10 text-sm">
-          <div className="flex items-center justify-between text-white/70">
-            <span>Online order charge</span>
-            <span>{formatCurrency(onlineOrderFee)}</span>
-          </div>
+          {paymentMethod === "square_link" && (
+            <div className="flex items-center justify-between text-white/70">
+              <span>Online order charge</span>
+              <span>{formatCurrency(onlineOrderFee)}</span>
+            </div>
+          )}
           <div className="flex items-center justify-between pt-2 border-t border-white/10 text-white font-semibold">
             <span>Final bill</span>
             <span>{formatCurrency(total)}</span>
@@ -186,6 +190,7 @@ export default function CheckoutPage() {
               name="paymentMethod"
               checked={paymentMethod === "pay_in_store"}
               onChange={() => setPaymentMethod("pay_in_store")}
+              disabled={status === "submitting"}
             />
             Pay In Store — pay when you pick up your order
           </label>
@@ -195,6 +200,7 @@ export default function CheckoutPage() {
               name="paymentMethod"
               checked={paymentMethod === "square_link"}
               onChange={() => setPaymentMethod("square_link")}
+              disabled={status === "submitting"}
             />
             Pay Online via Square — you'll get a payment link after placing your order
           </label>

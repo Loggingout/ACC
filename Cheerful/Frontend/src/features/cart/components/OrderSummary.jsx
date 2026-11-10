@@ -6,6 +6,7 @@ import { useCart } from "../../../hooks/useCart";
 export default function OrderSummary() {
   const { itemCount, onlineOrderFee, total } = useCart();
   const navigate = useNavigate();
+  const subtotal = (Math.round(total * 100) - Math.round(onlineOrderFee * 100)) / 100;
 
   return (
     <div className="rounded-2xl bg-black/50 p-6 flex flex-col gap-4">
@@ -16,16 +17,13 @@ export default function OrderSummary() {
           <span>Number of Products</span>
           <span className="text-white font-medium">{itemCount}</span>
         </div>
-        <div className="flex items-center justify-between text-white/70">
-          <span>Online order charge</span>
-          <span className="text-white font-medium">{formatCurrency(onlineOrderFee)}</span>
-        </div>
+        <p className="text-white/70">A {formatCurrency(onlineOrderFee)} online order charge applies only when paying online.</p>
       </div>
 
       <div className="flex items-center justify-between pt-3 border-t border-white/10">
-        <span className="text-white font-semibold">Final bill</span>
+        <span className="text-white font-semibold">Estimated total</span>
         <span className="text-xl font-bold bg-gradient-to-r from-orange-400 to-yellow-700 bg-clip-text text-transparent">
-          {formatCurrency(total)}
+          {formatCurrency(subtotal)}
         </span>
       </div>
 

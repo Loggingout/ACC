@@ -1,11 +1,13 @@
 // AdminHeader.jsx — top bar for the admin dashboard: order notifications + profile menu
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
-import { LogOut, ChevronDown, User, ExternalLink, Bell } from "lucide-react";
+import { LogOut, ChevronDown, User, ExternalLink, Bell, CalendarCheck } from "lucide-react";
+import { Toast } from "@animate-ui/react/primitives/base-ui/toast";
 import { useAuth } from "../../../hooks/useAuth";
 import { ADMIN_NAV_ITEMS } from "./AdminSidebar";
 import { getOrders } from "../orders/api/adminOrdersApi";
 import OrdersNotificationModal from "../orders/components/OrdersNotificationModal";
+import { getCateringRequests } from "../../catering/api/cateringApi";
 
 export default function AdminHeader() {
   const { user, token, logout } = useAuth();
@@ -15,6 +17,9 @@ export default function AdminHeader() {
   const [orders, setOrders] = useState([]);
   const [ordersLoading, setOrdersLoading] = useState(true);
   const [ordersError, setOrdersError] = useState(null);
+  const [newCateringCount, setNewCateringCount] = useState(0);
+  const knownCateringIds = useRef(null);
+  const { add: addToast } = Toast.useToastManager();
 
   const loadOrders = useCallback(() => {
     setOrdersLoading(true);
@@ -28,6 +33,42 @@ export default function AdminHeader() {
   useEffect(() => {
     loadOrders();
   }, [loadOrders]);
+
+  useEffect(() => {
+    let active = true;
+    let loading = false;
+    knownCateringIds.current = null;
+
+    const refreshCatering = async () => {
+      if (loading) return;
+      loading = true;
+      try {
+        const data = await getCateringRequests(token);
+        if (!active) return;
+        const requests = Array.isArray(data) ? data : [];
+        const arrivals = knownCateringIds.current === null ? [] : requests.filter((request) => !knownCateringIds.current.has(request._id));
+        knownCateringIds.current = new Set(requests.map((request) => request._id));
+        setNewCateringCount(requests.filter((request) => request.status === "new").length);
+        if (arrivals.length) {
+          addToast({ title: "New catering request", description: `${arrivals.length} new request${arrivals.length === 1 ? "" : "s"} received. Open Catering Requests to review.` });
+          window.dispatchEvent(new Event("catering:new"));
+        }
+      } catch (error) {
+        console.error("Failed to check catering requests:", error);
+      } finally {
+        loading = false;
+      }
+    };
+
+    refreshCatering();
+    const interval = window.setInterval(refreshCatering, 30000);
+    window.addEventListener("catering:updated", refreshCatering);
+    return () => {
+      active = false;
+      window.clearInterval(interval);
+      window.removeEventListener("catering:updated", refreshCatering);
+    };
+  }, [token, addToast]);
 
   const pendingCount = orders.filter((o) => o.status === "pending").length;
 
@@ -44,8 +85,7 @@ export default function AdminHeader() {
         <div className="flex items-center gap-2">
           <Link
             to="/"
-            target="_blank"
-            rel="noopener noreferrer"
+            aria-label="View Site"
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors"
           >
             <ExternalLink size={14} />
@@ -68,6 +108,20 @@ export default function AdminHeader() {
               </span>
             )}
           </button>
+
+          <Link
+            to="/admin/catering"
+            aria-label={`Catering requests${newCateringCount ? `, ${newCateringCount} new` : ""}`}
+            title="Catering requests"
+            className="relative p-2 text-white/80 hover:bg-white/10 hover:text-white rounded-full transition-colors"
+          >
+            <CalendarCheck size={18} />
+            {newCateringCount > 0 && (
+              <span className="absolute -top-0.5 -right-0.5 min-w-[1.1rem] h-[1.1rem] px-1 flex items-center justify-center rounded-full bg-orange-500 text-white text-[10px] font-bold leading-none">
+                {newCateringCount}
+              </span>
+            )}
+          </Link>
 
           <div className="relative">
           <button

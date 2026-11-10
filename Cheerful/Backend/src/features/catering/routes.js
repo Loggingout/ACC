@@ -12,6 +12,9 @@ const requestSchema = z.object({
   phoneNumber: z.string().min(1).max(30),
   location: z.string().min(1).max(300),
   description: z.string().min(1).max(2000),
+  eventDate: z.string().date(),
+  eventTime: z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/),
+  hoursNeeded: z.number().min(2).max(168),
 });
 
 const statusSchema = z.object({
@@ -23,5 +26,6 @@ const router = Router();
 router.post('/', validate(requestSchema), controller.createRequest);
 router.get('/', requireAuth, requireAdmin, controller.getRequests);
 router.patch('/:id/status', requireAuth, requireAdmin, validate(statusSchema), controller.updateStatus);
+router.delete('/:id', requireAuth, requireAdmin, controller.deleteRequest);
 
 module.exports = router;

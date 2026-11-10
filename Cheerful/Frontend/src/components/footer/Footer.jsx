@@ -1,15 +1,18 @@
 import Logo from "../../../public/acc-logo.jpg";
 import PartnerLogo from "../../assets/partner-logo.png";
-import { Clock, Coffee, MapPin, Phone, Mail } from "lucide-react";
+import { Clock, Coffee } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const COMPANY_LINKS = [
-  { label: "Book for Catering", to: "/" },
+  { label: "Book for Catering", to: "/catering-page" },
+  { label: "Leave A Review", to: "/review-page" },
+  {/** 
   { label: "Reward Program", to: "/" },
   { label: "Refer to a Friend", to: "/" },
   { label: "Data Policy", to: "/" },
   { label: "Privacy Policy", to: "/" },
   { label: "Terms of Service", to: "/" },
+   */}
 ];
 
 export default function Footer() {
@@ -54,7 +57,6 @@ export default function Footer() {
               Contact Us
             </p>
             <div className="flex items-center gap-2">
-              <Phone className="w-4 h-4 text-sky-500" />
               <a
                 href="tel:5551234567"
                 className="text-xs sm:text-sm text-gray-700 hover:text-black transition-colors"
@@ -63,7 +65,6 @@ export default function Footer() {
               </a>
             </div>
             <div className="flex items-center gap-2">
-              <Mail className="w-4 h-4 text-sky-500" />
               <a
                 href="mailto:Acheerfulcup@gmail.com"
                 className="text-xs sm:text-sm text-gray-700 hover:text-black transition-colors"
@@ -72,7 +73,6 @@ export default function Footer() {
               </a>
             </div>
             <div className="flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-sky-500" />
               <a
                 href="https://www.google.com/maps/place/A+cheerful+Cup/@39.6898918,-104.9447929,17z/data=!3m1!5s0x8707e28c84994409:0x507bd2e0b6c7f442!4m6!3m5!1s0x876c7f0bdbd727b5:0xd4eadbdad48a8d99!8m2!3d39.6898918!4d-104.942218!16s%2Fg%2F11qnc2c9k7?entry=ttu&g_ep=EgoyMDI2MDIwNC4wIKXMDSoKLDEwMDc5MjA2N0gBUAM%3D"
                 target="_blank"
@@ -85,7 +85,7 @@ export default function Footer() {
           </div>
 
           {/* Company Pages */}
-          {/** 
+          
           <div className="flex flex-col items-center sm:items-start gap-2">
             <p className="text-sm sm:text-base font-semibold text-black mb-1">
               Company
@@ -105,7 +105,7 @@ export default function Footer() {
               </ul>
             </nav>
           </div>
-          */}
+       
 
           {/* Partner Logo */}
           <div className="flex flex-col items-center sm:items-start lg:items-center gap-2">

@@ -9,6 +9,9 @@ const cateringRequestSchema = new mongoose.Schema(
     phoneNumber: { type: String, required: true, trim: true },
     location: { type: String, required: true, trim: true },
     description: { type: String, required: true, trim: true },
+    eventDate: { type: String, required: true },
+    eventTime: { type: String, required: true },
+    hoursNeeded: { type: Number, required: true, min: 2, max: 168 },
     status: {
       type: String,
       enum: ['new', 'contacted', 'confirmed', 'declined'],

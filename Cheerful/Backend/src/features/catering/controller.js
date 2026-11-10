@@ -26,4 +26,12 @@ async function updateStatus(req, res, next) {
   }
 }
 
-module.exports = { createRequest, getRequests, updateStatus };
+async function deleteRequest(req, res, next) {
+  try {
+    ok(res, await service.deleteRequest(req.params.id));
+  } catch (err) {
+    next(err);
+  }
+}
+
+module.exports = { createRequest, getRequests, updateStatus, deleteRequest };

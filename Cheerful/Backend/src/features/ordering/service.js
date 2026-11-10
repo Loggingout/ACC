@@ -12,7 +12,7 @@ async function createOrder(data) {
     (sum, item) => sum + Math.round(item.unitPrice * 100) * item.quantity,
     0
   );
-  const onlineOrderFeeCents = data.items.length ? ONLINE_ORDER_FEE_CENTS : 0;
+  const onlineOrderFeeCents = data.items.length && data.paymentMethod === 'square_link' ? ONLINE_ORDER_FEE_CENTS : 0;
   const taxInclusiveItemsCents = data.items.reduce(
     (sum, item) => sum + taxInclusiveUnitPriceCents(item.unitPrice) * item.quantity,
     0

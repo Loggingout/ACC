@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Logo from '../../../../public/acc-logo.jpg';
-import { Building2, Mail, User, Phone, MapPin, MessageSquare, Send, Gift } from 'lucide-react';
+import { Send } from 'lucide-react';
+import { Toast } from '@animate-ui/react/primitives/base-ui/toast';
 import { submitCateringRequest } from '../api/cateringApi';
 
 const INITIAL_FORM = {
@@ -10,189 +10,107 @@ const INITIAL_FORM = {
     phoneNumber: '',
     location: '',
     description: '',
+    eventDate: '',
+    eventTime: '',
+    hoursNeeded: '2',
 };
 
+const fieldClass = 'block w-full min-w-0 max-w-full border-0 border-b border-gray-300 bg-transparent px-0 py-2 text-base text-gray-900 placeholder:text-gray-400 focus:border-orange-500 focus:outline-none focus:ring-0';
+const labelClass = 'block text-xs font-semibold text-gray-800';
+
 export default function CaterRequestForm() {
+    const toast = Toast.useToastManager();
     const [form, setForm] = useState(INITIAL_FORM);
     const [status, setStatus] = useState('idle');
     const [error, setError] = useState(null);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setForm((prev) => ({ ...prev, [name]: value }));
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setForm((previous) => ({ ...previous, [name]: value }));
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSubmit = async (event) => {
+        event.preventDefault();
         setStatus('submitting');
         setError(null);
 
         try {
-            await submitCateringRequest(form);
+            await submitCateringRequest({
+                ...Object.fromEntries(Object.entries(form).map(([key, value]) => [key, value.trim()])),
+                hoursNeeded: Number(form.hoursNeeded),
+            });
             setForm(INITIAL_FORM);
             setStatus('success');
+            toast.add({ type: 'success', title: 'Request received', description: 'We will reach out within 2-4 hours.' });
         } catch (err) {
             setStatus('error');
             setError(err.message || 'Something went wrong submitting your request. Please try again.');
+            toast.add({ type: 'error', title: 'Request not submitted', description: 'Please try again.' });
         }
     };
 
     if (status === 'success') {
         return (
-            <div className="p-6 sm:p-8 md:p-10 lg:p-12 text-center">
-                <img src={Logo} alt="A Cheerful Cup Logo" className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 rounded-md" />
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-gray-800">
-                    Request Received!
-                </h2>
-                <p className="text-sm sm:text-base md:text-lg leading-relaxed text-gray-700">
-                    Thanks for reaching out, we'll be in touch within 24-48 hours to discuss your event.
-                </p>
+            <div className="p-6 sm:p-10 lg:p-12" role="status">
+                <p className="text-xs font-bold uppercase text-orange-600">Catering request</p>
+                <h2 className="mt-4 font-serif text-3xl text-gray-950">Request received.</h2>
+                <p className="mt-4 text-sm leading-relaxed text-gray-600">Thanks for reaching out. We'll be in touch within 2-4 hours to discuss your event.</p>
+                <button type="button" onClick={() => setStatus('idle')} className="mt-6 border-b border-orange-500 pb-1 text-sm font-semibold text-gray-900">Send another request</button>
             </div>
         );
     }
 
-    return(
-        <div className="p-6 sm:p-8 md:p-10 lg:p-12">
-            <img src={Logo} alt="A Cheerful Cup Logo" className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 rounded-md" />
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 text-center text-gray-800">
-                Request for Us to Cater
-            </h2>
-            <p className="mb-6 sm:mb-8 text-sm sm:text-base md:text-lg leading-relaxed text-gray-700 text-center px-2">
-                Please fill out the form below to request catering services for your event. We will get back to you within 24-48 hours to discuss your needs and provide a customized catering proposal.
-            </p>
-            
-            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-                {/* Business Name */}
+    return (
+        <div className="p-6 sm:p-10 lg:p-12 xl:p-14">
+            <p className="text-xs font-bold uppercase text-orange-600">Let's get started</p>
+            <h2 className="mt-3 font-serif text-3xl text-gray-950">Tell us about your event.</h2>
+            <form onSubmit={handleSubmit} className="mt-8 space-y-5">
                 <div>
-                    <label htmlFor="businessName" className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-700 mb-2">
-                        <Building2 className="w-3 h-3 sm:w-4 sm:h-4 text-orange-500" />
-                        Business Name
-                    </label>
-                    <input
-                        type="text"
-                        id="businessName"
-                        name="businessName"
-                        value={form.businessName}
-                        onChange={handleChange}
-                        className="w-full px-3 py-2 sm:px-4 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                        placeholder="Enter your business name"
-                        required
-                    />
+                    <label htmlFor="businessName" className={labelClass}>Business name <span className="text-orange-600">*</span></label>
+                    <input className={fieldClass} id="businessName" name="businessName" value={form.businessName} onChange={handleChange} placeholder="Your business name" maxLength={200} required />
                 </div>
-
-                {/* Business Email */}
                 <div>
-                    <label htmlFor="businessEmail" className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-700 mb-2">
-                        <Mail className="w-3 h-3 sm:w-4 sm:h-4 text-orange-500" />
-                        Business Email
-                    </label>
-                    <input
-                        type="email"
-                        id="businessEmail"
-                        name="businessEmail"
-                        value={form.businessEmail}
-                        onChange={handleChange}
-                        className="w-full px-3 py-2 sm:px-4 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                        placeholder="business@example.com"
-                        required
-                    />
+                    <label htmlFor="name" className={labelClass}>Contact name <span className="text-orange-600">*</span></label>
+                    <input className={fieldClass} id="name" name="name" value={form.name} onChange={handleChange} placeholder="Your full name" maxLength={200} required />
                 </div>
-
-                {/* Name and Phone - Two columns on larger screens */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                    {/* Name */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
-                        <label htmlFor="name" className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-700 mb-2">
-                            <User className="w-3 h-3 sm:w-4 sm:h-4 text-orange-500" />
-                            Name
-                        </label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            value={form.name}
-                            onChange={handleChange}
-                            className="w-full px-3 py-2 sm:px-4 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                            placeholder="Enter your full name"
-                            required
-                        />
+                        <label htmlFor="businessEmail" className={labelClass}>Business email <span className="text-orange-600">*</span></label>
+                        <input className={fieldClass} type="email" id="businessEmail" name="businessEmail" value={form.businessEmail} onChange={handleChange} placeholder="you@business.com" required />
                     </div>
-
-                    {/* Phone Number */}
                     <div>
-                        <label htmlFor="phoneNumber" className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-700 mb-2">
-                            <Phone className="w-3 h-3 sm:w-4 sm:h-4 text-orange-500" />
-                            Phone Number
-                        </label>
-                        <input
-                            type="tel"
-                            id="phoneNumber"
-                            name="phoneNumber"
-                            value={form.phoneNumber}
-                            onChange={handleChange}
-                            className="w-full px-3 py-2 sm:px-4 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                            placeholder="(555) 123-4567"
-                            required
-                        />
+                        <label htmlFor="phoneNumber" className={labelClass}>Phone <span className="text-orange-600">*</span></label>
+                        <input className={fieldClass} type="tel" id="phoneNumber" name="phoneNumber" value={form.phoneNumber} onChange={handleChange} placeholder="(555) 123-4567" maxLength={30} required />
                     </div>
                 </div>
-
-                {/* Location */}
                 <div>
-                    <label htmlFor="location" className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-700 mb-2">
-                        <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-orange-500" />
-                        Location
-                    </label>
-                    <input
-                        type="text"
-                        id="location"
-                        name="location"
-                        value={form.location}
-                        onChange={handleChange}
-                        className="w-full px-3 py-2 sm:px-4 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                        placeholder="Event location address"
-                        required
-                    />
+                    <label htmlFor="location" className={labelClass}>Event address <span className="text-orange-600">*</span></label>
+                    <input className={fieldClass} id="location" name="location" value={form.location} onChange={handleChange} placeholder="Where will we meet you?" maxLength={300} required />
                 </div>
-
-                {/* Description of Area */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                        <label htmlFor="eventDate" className={labelClass}>Event date <span className="text-orange-600">*</span></label>
+                        <input className={fieldClass} type="date" id="eventDate" name="eventDate" value={form.eventDate} onChange={handleChange} required />
+                    </div>
+                    <div>
+                        <label htmlFor="eventTime" className={labelClass}>Event time <span className="text-orange-600">*</span></label>
+                        <input className={fieldClass} type="time" id="eventTime" name="eventTime" value={form.eventTime} onChange={handleChange} required />
+                    </div>
+                </div>
                 <div>
-                    <label htmlFor="description" className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-700 mb-2">
-                        <MessageSquare className="w-3 h-3 sm:w-4 sm:h-4 text-orange-500" />
-                        Description of Area
-                    </label>
-                    <textarea
-                        id="description"
-                        name="description"
-                        rows="4"
-                        value={form.description}
-                        onChange={handleChange}
-                        className="w-full px-3 py-2 sm:px-4 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all resize-none"
-                        placeholder="Please describe your event, number of attendees, specific catering needs, and any other relevant details..."
-                        required
-                    ></textarea>
+                    <label htmlFor="hoursNeeded" className={labelClass}>Hours needed <span className="text-orange-600">*</span></label>
+                    <input className={fieldClass} type="number" id="hoursNeeded" name="hoursNeeded" min="2" max="168" step="0.5" value={form.hoursNeeded} onChange={handleChange} aria-describedby="hours-hint" required />
+                    <p id="hours-hint" className="mt-1 text-xs text-gray-500">2-hour minimum</p>
                 </div>
-
-                {error && (
-                    <p className="text-sm text-red-600 text-center">{error}</p>
-                )}
-
-                {/* Submit Button */}
-                <button
-                    type="submit"
-                    disabled={status === 'submitting'}
-                    className="w-full px-4 py-3 sm:px-6 sm:py-4 bg-gradient-to-br from-red-500 via-orange-500 to-yellow-500 text-white text-sm sm:text-base md:text-lg font-semibold rounded-lg hover:opacity-90 transition-opacity shadow-md flex items-center justify-center gap-2 disabled:opacity-60"
-                >
-                    <Send className="w-4 h-4 sm:w-5 sm:h-5" />
-                    {status === 'submitting' ? 'Submitting…' : 'Submit Request'}
+                <div>
+                    <label htmlFor="description" className={labelClass}>Event details <span className="text-orange-600">*</span></label>
+                    <textarea className={`${fieldClass} resize-y`} id="description" name="description" rows="3" value={form.description} onChange={handleChange} placeholder="Tell us about your event, guests, and catering needs" maxLength={2000} required />
+                </div>
+                {error && <p role="alert" className="text-sm text-red-600">{error}</p>}
+                <button type="submit" disabled={status === 'submitting'} className="inline-flex items-center justify-center gap-2 rounded-full bg-gray-950 px-6 py-3 text-sm font-semibold text-white hover:bg-orange-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 disabled:opacity-60">
+                    {status === 'submitting' ? 'Submitting...' : 'Send request'} <Send size={15} aria-hidden="true" />
                 </button>
-
-                {/* Confirmation Message */}
-                <p className="text-center text-xs sm:text-sm md:text-base text-gray-600 flex flex-col sm:flex-row items-center justify-center gap-2 pb-4">
-                    <span>You will receive an email 24-48 hours after submission</span>
-                    <Gift className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500" />
-                </p>
             </form>
         </div>
-    )
+    );
 }

@@ -1,10 +1,11 @@
 // AdminSidebar.jsx — left navigation for the admin dashboard
 import { NavLink } from "react-router-dom";
-import { LayoutDashboard, Coffee, Star, CalendarCheck, Receipt, Megaphone, Settings } from "lucide-react";
+import { LayoutDashboard, Coffee, Star, CalendarCheck, Receipt, Megaphone, Settings, ChartColumn } from "lucide-react";
 import Logo from "../../../../public/acc-logo.jpg";
 
 export const ADMIN_NAV_ITEMS = [
   { to: "/admin", label: "Dashboard", icon: LayoutDashboard, end: true },
+  { to: "/admin/analytics", label: "Analytics", icon: ChartColumn },
   { to: "/admin/menu", label: "Menu", icon: Coffee },
   { to: "/admin/orders", label: "Online Orders", icon: Receipt },
   { to: "/admin/reviews", label: "Reviews", icon: Star },

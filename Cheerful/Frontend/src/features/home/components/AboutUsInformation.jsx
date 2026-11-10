@@ -1,82 +1,64 @@
+import { ArrowRight, Coffee } from "lucide-react";
+import { Link } from "react-router-dom";
+import { CountingNumber } from "@animate-ui/react/primitives/texts/counting-number";
 import Ceo from "../../../assets/ceo-and-menu.jpg";
+import Catering from "../../../assets/catering.jpg";
+import AccLobby from "../../../assets/acc-lobby.png"; 
 import BusinessRating from "../../../assets/acc-business-rating.jpg";
+import Giftcard from "../../../assets/Giftcard.png";
+import ACCAI from "../../../assets/acc-ai.png";
 
-const GRAIN =
-  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E";
+const GALLERY_IMAGES = [
+  { src: BusinessRating, alt: "Business rating" },
+  { src: Catering, alt: "A Cheerful Cup catering" },
+  { src: Giftcard, alt: "Gift card" },
+  { src: Ceo, alt: "A Cheerful Cup owner with the menu" },
+  { src: ACCAI, alt: "Acc Coupple" },
+];
 
-function CoffeeRing({ className }) {
-  return (
-    <svg viewBox="0 0 200 200" fill="none" className={className}>
-      <circle cx="100" cy="90" r="70" stroke="#f59e0b" strokeWidth="2" />
-      <circle cx="112" cy="102" r="54" stroke="#f97316" strokeWidth="1.5" />
-    </svg>
-  );
-}
+const STATS = [
+  { value: 2015, label: "Serving our community since" },
+  { value: 190, suffix: "K+", label: "Cups served" },
+  { value: 3, suffix: "K+", label: "Lives touched" },
+  { value: 5, decimalPlaces: 1, label: "Customer rating" },
+];
 
 export default function AboutUsInformation() {
   return (
-    <section
-      className="relative bg-black/40 overflow-hidden"
-      style={{
-        clipPath:
-          "polygon(0 0, 100% 0, 100% 94%, 95% 100%, 0 100%)",
-      }}
-    >
-      {/* Grain overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.08] mix-blend-overlay pointer-events-none"
-        style={{ backgroundImage: `url("${GRAIN}")` }}
-      />
-
-      {/* Coffee ring accent */}
-      <CoffeeRing className="absolute -top-6 -left-6 w-40 h-40 opacity-20 pointer-events-none" />
-
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10 px-6 sm:px-8 md:px-12 py-10 sm:py-14 md:py-16">
-
-        {/* Image cluster */}
-        <div className="lg:col-span-2 relative flex items-center justify-center gap-4 sm:gap-0">
-          <div
-            className="w-2/3 sm:w-1/2 lg:w-3/5 aspect-[4/5] overflow-hidden shadow-xl relative z-10"
-            style={{ borderRadius: "63% 37% 54% 46% / 43% 37% 63% 57%" }}
-          >
-            <img src={Ceo} alt="CEO and Menu" className="w-full h-full object-cover" />
-          </div>
-          <div
-            className="w-1/2 sm:w-2/5 aspect-square overflow-hidden shadow-xl -ml-8 sm:-ml-10 mt-16 sm:mt-24 border-4 border-black/40"
-            style={{ borderRadius: "42% 58% 63% 37% / 41% 45% 55% 59%" }}
-          >
-            <img src={BusinessRating} alt="Business Rating" className="w-full h-full object-cover" />
-          </div>
+    <section id="about" className="overflow-hidden bg-white pt-10 sm:pt-14">
+      <div className="overflow-x-auto overscroll-x-contain pb-2" aria-label="A Cheerful Cup photo gallery" tabIndex={0}>
+        <div className="mx-auto flex min-w-max w-fit items-start justify-center gap-2 px-4 pb-8 sm:gap-5 sm:px-12 sm:pb-24">
+          {GALLERY_IMAGES.map((image, index) => {
+            const position = GALLERY_IMAGES.length > 1 ? (index / (GALLERY_IMAGES.length - 1)) * 2 - 1 : 0;
+            const curve = position * position;
+            return (
+              <img
+                key={image.src}
+                src={image.src}
+                alt={image.alt}
+                loading="lazy"
+                style={{ transform: `translateY(clamp(${curve * 16}px, ${curve * 4}vw, ${curve * 52}px)) rotate(${position * 12}deg)` }}
+                className="aspect-[4/5] w-[clamp(2.75rem,15vw,10rem)] shrink-0 rounded-lg object-cover shadow-md"
+              />
+            );
+          })}
         </div>
+      </div>
 
-        {/* Text */}
-        <div className="lg:col-span-3 relative flex flex-col justify-center">
-          <span
-            aria-hidden="true"
-            className="absolute -top-6 right-0 sm:right-4 text-[6rem] sm:text-[8rem] font-extrabold text-white/[0.05] leading-none select-none"
-          >
-            2015
-          </span>
+      <div className="mx-auto max-w-6xl rounded-t-[50%] border-t border-dashed border-orange-300 px-6 pb-14 pt-10 text-center sm:px-10 sm:pb-20 sm:pt-14">
+        <p className="inline-flex items-center gap-2 text-xs font-bold uppercase text-orange-600"><Coffee size={15} /> About A Cheerful Cup</p>
+        <h2 className="mx-auto mt-4 max-w-3xl font-serif text-4xl leading-tight text-gray-950 sm:text-5xl">Good coffee. Even better company.</h2>
+        <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-gray-600">Since 2015, we've been bringing people together over thoughtfully crafted coffee, friendly service, and a warm welcome. Whether you're stopping in for a quick boost or staying awhile, there's a place for you here.</p>
+        <Link to="/menu" className="mt-7 inline-flex items-center gap-3 rounded-full bg-yellow-300 px-5 py-3 text-sm font-bold text-gray-950 hover:bg-orange-400">Explore Our Menu <ArrowRight size={16} /></Link>
 
-          <h2 className="relative bg-gradient-to-r from-orange-400 via-yellow-400 to-blue-500 bg-clip-text text-transparent font-extrabold text-3xl sm:text-4xl md:text-5xl mb-6 sm:mb-8">
-            About Us
-          </h2>
-
-          <div className="relative space-y-5 sm:space-y-6 max-w-xl">
-            <p className="text-white/90 text-base sm:text-lg md:text-xl leading-relaxed font-medium">
-              At A Cheerful Cup, we're dedicated to crafting the perfect cup of
-              coffee. We bring warmth and joy through carefully sourced beans
-              and expertly brewed drinks—because coffee isn't just a beverage,
-              it's an experience that brings people together.
-            </p>
-
-            <p className="text-white/90 text-base sm:text-lg md:text-xl leading-relaxed font-medium">
-              Founded in 2015, A Cheerful Cup is a community-loved spot
-              offering exceptional service and a welcoming atmosphere—perfect
-              for a quick boost or a relaxed visit.
-            </p>
-          </div>
-        </div>
+        <dl className="mt-12 grid grid-cols-2 gap-y-8 sm:mt-16 sm:grid-cols-4">
+          {STATS.map((stat) => (
+            <div key={stat.label} className="px-3 sm:border-r sm:border-gray-200 sm:last:border-r-0">
+              <dt className="text-xs leading-snug text-gray-600">{stat.label}</dt>
+              <dd className="mt-2 text-3xl font-bold text-gray-950"><CountingNumber number={stat.value} decimalPlaces={stat.decimalPlaces ?? 0} inView transition={{ duration: 1.8, ease: "easeOut" }} />{stat.suffix}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   );

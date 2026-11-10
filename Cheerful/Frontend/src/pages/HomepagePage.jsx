@@ -1,309 +1,65 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Star,
-  ShoppingBag,
-} from "lucide-react";
+import { useState } from "react";
+import { ArrowDown, ArrowLeft, ArrowRight, ShoppingBag, Star } from "lucide-react";
 import { Link } from "react-router-dom";
-
 import AboutUsInformation from "../features/home/components/AboutUsInformation";
-// import CaterRequestInformation from "../features/home/components/caterRequestInformation";
 import WhyTrustUsInformation from "../features/home/components/whyTrustUsInformation";
 
-const GRAIN =
-  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E";
-
-function CoffeeRing({ className }) {
-  return (
-    <svg viewBox="0 0 200 200" fill="none" className={className}>
-      <circle
-        cx="100"
-        cy="90"
-        r="70"
-        stroke="#f59e0b"
-        strokeWidth="2"
-      />
-      <circle
-        cx="112"
-        cy="102"
-        r="54"
-        stroke="#f97316"
-        strokeWidth="1.5"
-      />
-    </svg>
-  );
-}
+const HERO_IMAGES = [
+  { src: "/new-acc-pic.jpeg", alt: "The team at A Cheerful Cup" },
+  { src: "/outside-view.jpeg", alt: "The entrance to A Cheerful Cup" },
+];
 
 export default function HomepagePage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [heroWordIndex, setHeroWordIndex] = useState(0);
 
-  const heroWords = ["Love", "Passion", "Excitement"];
-
-  const heroImages = [
-    {
-      src: "/new-acc-pic.jpeg",
-      alt: "A Cheerful Cup Lobby",
-    },
-    {
-      src: "/outside-view.jpeg",
-      alt: "A Cheerful Cup Exterior View",
-    },
-  ];
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      setHeroWordIndex((i) => (i + 1) % heroWords.length);
-    }, 2200);
-
-    return () => clearInterval(id);
-  }, [heroWords.length]);
-
-  const nextImage = () => {
-    setCurrentImageIndex(
-      (prev) => (prev + 1) % heroImages.length,
-    );
-  };
-
-  const prevImage = () => {
-    setCurrentImageIndex(
-      (prev) =>
-        (prev - 1 + heroImages.length) % heroImages.length,
-    );
+  const changeImage = (direction) => {
+    setCurrentImageIndex((current) => (current + direction + HERO_IMAGES.length) % HERO_IMAGES.length);
   };
 
   return (
-    // full-bleed: breaks out of MainLayout's max-w-7xl container so homepage sections span the viewport;
-    // negative top/bottom margins cancel out MainLayout's py-* so hero/footer sit flush against the navbar/footer
-    <div className="w-screen relative left-1/2 -translate-x-1/2 -mt-6 sm:-mt-8 md:-mt-10 -mb-6 sm:-mb-8 md:-mb-10 flex flex-col gap-6 lg:gap-8">
-      {/* Hero Section */}
-      <section
-        className="relative bg-black/40 overflow-hidden"
-        style={{
-          clipPath:
-            "polygon(0 0, 100% 0, 100% 100%, 6% 100%, 0 92%)",
-        }}
-      >
-        {/* Grain overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.08] mix-blend-overlay pointer-events-none"
-          style={{ backgroundImage: `url("${GRAIN}")` }}
-        />
+    <div className="w-full bg-white text-gray-950">
+      <section className="relative isolate flex min-h-[min(42rem,calc(100svh-7rem))] overflow-hidden bg-gray-900">
+        {HERO_IMAGES.map((image, index) => (
+          <img
+            key={image.src}
+            src={image.src}
+            alt={index === currentImageIndex ? image.alt : ""}
+            aria-hidden={index !== currentImageIndex}
+            className={`absolute inset-0 h-full w-full object-cover object-[30%_center] transition-opacity duration-700 motion-reduce:transition-none ${index === currentImageIndex ? "opacity-100" : "opacity-0"}`}
+          />
+        ))}
+        <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/30 to-transparent lg:bg-linear-to-l lg:from-black/85 lg:via-black/30 lg:to-transparent" />
 
-        {/* Coffee ring accent */}
-        <CoffeeRing className="absolute -top-10 -right-10 w-56 h-56 opacity-[0.12] pointer-events-none" />
-
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center px-6 sm:px-10 py-8 sm:py-12">
-          <div className="flex flex-col gap-5 sm:gap-6">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
-              Coffee brewed with{" "}
-              <span
-                className="relative inline-block"
-                style={{ perspective: 400 }}
-              >
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={heroWords[heroWordIndex]}
-                    className="inline-block bg-gradient-to-r from-orange-400 via-yellow-400 to-blue-500 bg-clip-text text-transparent"
-                    style={{
-                      transformStyle: "preserve-3d",
-                      backfaceVisibility: "hidden",
-                    }}
-                    initial={{
-                      opacity: 0,
-                      rotateX: -90,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      rotateX: 0,
-                    }}
-                    exit={{
-                      opacity: 0,
-                      rotateX: 90,
-                    }}
-                    transition={{
-                      duration: 0.5,
-                      ease: "easeInOut",
-                    }}
-                  >
-                    {heroWords[heroWordIndex]}
-                  </motion.span>
-                </AnimatePresence>
-              </span>
-              , served with a smile.
-            </h1>
-
-            <p className="text-white/80 text-sm sm:text-base max-w-md">
-              From handcrafted espresso to fresh pastries, every
-              cup is made to brighten your day.
+        <div className="relative mx-auto flex w-full max-w-7xl flex-col justify-end px-4 pb-24 pt-24 sm:px-10 sm:pt-36 lg:items-end lg:justify-center lg:px-14 lg:py-20">
+          <div className="w-full max-w-xl text-white">
+            <p className="inline-flex items-center gap-2 text-xs font-bold uppercase text-yellow-300">
+              <span className="h-2 w-2 rounded-full bg-orange-400" /> Coffee, community &amp; a smile
             </p>
+            <h1 className="mt-4 font-serif text-4xl leading-[1.05] sm:text-6xl lg:text-7xl">A Cheerful Cup</h1>
+            <p className="mt-4 max-w-md text-xl font-medium leading-snug sm:text-2xl">Coffee brewed with love, served with a smile.</p>
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-white/85 sm:text-base">From handcrafted espresso to fresh pastries, every cup is made to brighten your day.</p>
 
-            {/* Order Online CTA */}
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 15,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{
-                delay: 0.4,
-                duration: 0.5,
-              }}
-            >
-              <Link
-                to="/menu"
-                className="
-                  group
-                  inline-flex items-center justify-center
-                  gap-2
-                  w-fit
-                  px-5 py-2.5
-                  sm:px-6 sm:py-3
-                  bg-gradient-to-r
-                  from-orange-500
-                  via-yellow-500
-                  to-orange-600
-                  hover:from-orange-600
-                  hover:via-yellow-500
-                  hover:to-orange-500
-                  text-white
-                  text-sm sm:text-base
-                  font-semibold
-                  rounded-lg
-                  shadow-lg
-                  hover:shadow-xl
-                  transition-all duration-300
-                  active:scale-95
-                "
-              >
-                <ShoppingBag
-                  className="
-                    w-4 h-4
-                    sm:w-5 sm:h-5
-                    transition-transform duration-300
-                    group-hover:scale-110
-                  "
-                />
-
-                <span>Order Online</span>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Link to="/menu" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-gray-950 hover:bg-yellow-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                <ShoppingBag size={16} /> Order Online
               </Link>
-            </motion.div>
-
-            <div className="flex items-center gap-2 text-sm">
-              <div className="flex items-center gap-1 text-yellow-400">
-                <Star
-                  size={16}
-                  className="fill-yellow-400"
-                />
-
-                <span className="font-semibold text-white">
-                  5.0
-                </span>
-              </div>
-
-              <span className="text-white/60">
-                from our customers
-              </span>
-            </div>
-          </div>
-
-          {/* Right: image slider card */}
-          <div
-            className="relative overflow-hidden h-64 sm:h-80 lg:h-[26rem]"
-            style={{
-              clipPath:
-                "polygon(0 0, 100% 0, 100% 100%, 8% 100%, 0 88%)",
-              borderRadius: "1.25rem",
-            }}
-          >
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={currentImageIndex}
-                src={heroImages[currentImageIndex].src}
-                alt={heroImages[currentImageIndex].alt}
-                className="w-full h-full object-cover"
-                initial={{
-                  opacity: 0,
-                  x: 100,
-                }}
-                animate={{
-                  opacity: 1,
-                  x: 0,
-                }}
-                exit={{
-                  opacity: 0,
-                  x: -100,
-                }}
-                transition={{
-                  duration: 0.5,
-                }}
-              />
-            </AnimatePresence>
-
-            <button
-              onClick={prevImage}
-              className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors z-10"
-              aria-label="Previous image"
-            >
-              <ChevronLeft size={20} />
-            </button>
-
-            <button
-              onClick={nextImage}
-              className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors z-10"
-              aria-label="Next image"
-            >
-              <ChevronRight size={20} />
-            </button>
-
-            <div className="absolute bottom-20 sm:bottom-24 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
-              {heroImages.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentImageIndex(index)}
-                  className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                    index === currentImageIndex
-                      ? "bg-white"
-                      : "bg-white/50"
-                  }`}
-                  aria-label={`Go to image ${index + 1}`}
-                />
-              ))}
-            </div>
-
-            <div className="absolute bottom-0 left-0 right-0 bg-black/60 backdrop-blur-sm px-4 sm:px-5 py-3 sm:py-4">
-              <p className="text-xs uppercase tracking-wide text-orange-300 font-semibold mb-1">
-                Featured
-              </p>
-
-              <div className="flex items-center justify-between">
-                <h3 className="text-white font-semibold text-base sm:text-lg">
-                  A Cheerful Cup
-                </h3>
-
-                <div className="flex items-center gap-1 text-yellow-400 text-sm">
-                  <Star
-                    size={14}
-                    className="fill-yellow-400"
-                  />
-                  5.0
-                </div>
-              </div>
+              <Link to="/review-page" className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/80 px-5 py-3 text-sm font-bold text-white hover:bg-white hover:text-gray-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                <Star size={16} /> Leave a Review
+              </Link>
             </div>
           </div>
         </div>
+
+        <div className="absolute bottom-4 right-4 flex items-center gap-2 sm:right-10 lg:bottom-8 lg:right-14">
+          <span className="mr-2 text-xs font-semibold tabular-nums text-white">0{currentImageIndex + 1} / 0{HERO_IMAGES.length}</span>
+          <button type="button" onClick={() => changeImage(-1)} aria-label="Previous photo" title="Previous photo" className="grid h-11 w-11 place-items-center rounded-full border border-white/70 text-white hover:bg-white hover:text-gray-950"><ArrowLeft size={16} /></button>
+          <button type="button" onClick={() => changeImage(1)} aria-label="Next photo" title="Next photo" className="grid h-11 w-11 place-items-center rounded-full border border-white/70 text-white hover:bg-white hover:text-gray-950"><ArrowRight size={16} /></button>
+        </div>
+        <a href="#about" aria-label="Explore A Cheerful Cup" className="absolute bottom-7 left-6 hidden items-center gap-2 text-xs font-semibold text-white/90 hover:text-white sm:flex sm:left-10 lg:left-14"><ArrowDown size={16} /> Discover more</a>
       </section>
 
-      {/* Main content, full width sections stacked */}
-      <div className="flex flex-col gap-6 lg:gap-8">
-        <AboutUsInformation />
-        <WhyTrustUsInformation />
-      </div>
+      <AboutUsInformation />
+      <WhyTrustUsInformation />
     </div>
   );
 }

@@ -22,6 +22,7 @@ const Universal404Page = lazy(() => import('../components/feedback/universal404P
 const CaterRequestInformation = lazy(() => import('../features/home/components/caterRequestInformation'))
 const MenuCategoryDetailPage = lazy(() => import('../pages/MenuCategoryDetailPage'))
 const AdminDashboardPage = lazy(() => import('../features/admin/pages/AdminDashboardPage'))
+const AdminAnalyticsPage = lazy(() => import('../features/admin/pages/AdminAnalyticsPage'))
 const AdminMenuPage = lazy(() => import('../features/admin/pages/AdminMenuPage'))
 const AdminOrdersPage = lazy(() => import('../features/admin/pages/AdminOrdersPage'))
 const AdminReviewsPage = lazy(() => import('../features/admin/pages/AdminReviewsPage'))
@@ -59,6 +60,7 @@ function App() {
         <Route path="/admin" element={<RequireAdmin />}>
           <Route element={<AdminLayout />}>
             <Route index element={<AdminDashboardPage />} />
+            <Route path="analytics" element={<AdminAnalyticsPage />} />
             <Route path="menu" element={<AdminMenuPage />} />
             <Route path="orders" element={<AdminOrdersPage />} />
             <Route path="reviews" element={<AdminReviewsPage />} />

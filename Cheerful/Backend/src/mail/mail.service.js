@@ -111,6 +111,34 @@ async function sendOrderNotifications(order) {
 	});
 }
 
+async function sendCateringNotifications(request) {
+	const adminRecipients = await getAdminRecipients();
+	const jobs = [{
+		label: 'customer catering confirmation',
+		to: request.businessEmail,
+		subject: 'We received your A Cheerful Cup catering request',
+		html: `<h1>Thank you, ${escapeHtml(request.name)}!</h1><p>We have received your catering request and will reach out to you within 2-4 hours.</p><p>Thank you for considering A Cheerful Cup for your event.</p>`,
+		text: `Thank you, ${request.name}!\n\nWe have received your catering request and will reach out to you within 2-4 hours.\n\nThank you for considering A Cheerful Cup for your event.`,
+	}];
+
+	for (const adminEmail of adminRecipients) {
+		jobs.push({
+			label: `admin catering alert (${adminEmail})`,
+			to: adminEmail,
+			subject: 'New catering request',
+			html: `<h1>New catering request</h1><p><strong>Business:</strong> ${escapeHtml(request.businessName)}<br><strong>Contact:</strong> ${escapeHtml(request.name)}<br><strong>Email:</strong> ${escapeHtml(request.businessEmail)}<br><strong>Phone:</strong> ${escapeHtml(request.phoneNumber)}</p><p><strong>Event date:</strong> ${escapeHtml(request.eventDate)}<br><strong>Event time:</strong> ${escapeHtml(request.eventTime)}<br><strong>Hours:</strong> ${escapeHtml(request.hoursNeeded)}<br><strong>Address:</strong> ${escapeHtml(request.location)}</p><p><strong>Event details:</strong> ${escapeHtml(request.description)}</p><p>Review this request in the admin dashboard.</p>`,
+			text: `New catering request\n\nBusiness: ${request.businessName}\nContact: ${request.name}\nEmail: ${request.businessEmail}\nPhone: ${request.phoneNumber}\nEvent date: ${request.eventDate}\nEvent time: ${request.eventTime}\nHours: ${request.hoursNeeded}\nAddress: ${request.location}\n\nEvent details: ${request.description}\n\nReview this request in the admin dashboard.`,
+		});
+	}
+
+	const results = await Promise.allSettled(jobs.map(({ label, ...email }) => sendEmail(email)));
+	results.forEach((result, index) => {
+		if (result.status === 'rejected') {
+			console.error(`Failed to send ${jobs[index].label}:`, result.reason.message);
+		}
+	});
+}
+
 async function sendOrderStatusUpdate(order, previousStatus) {
 	if (!order.customerEmail || order.status === previousStatus) return;
 
@@ -162,4 +190,4 @@ async function sendTestEmail(to) {
 	});
 }
 
-module.exports = { sendOrderNotifications, sendOrderStatusUpdate, sendTestEmail };
+module.exports = { sendOrderNotifications, sendCateringNotifications, sendOrderStatusUpdate, sendTestEmail };

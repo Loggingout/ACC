@@ -2,6 +2,44 @@
 const Order = require('../../models/Order');
 const Review = require('../../models/Review');
 const CateringRequest = require('../../models/CateringRequest');
+const PageVisit = require('../../models/PageVisit');
+
+async function recordPageVisit(data) {
+  await PageVisit.updateOne(
+    { visitId: data.visitId },
+    {
+      $setOnInsert: { visitId: data.visitId, sessionId: data.sessionId, visitorId: data.visitorId, path: data.path },
+      $max: { durationMs: data.durationMs },
+    },
+    { upsert: true, runValidators: true }
+  );
+}
+
+async function getTrafficStats() {
+  const start = new Date();
+  start.setUTCHours(0, 0, 0, 0);
+  start.setUTCDate(start.getUTCDate() - 29);
+  const [result] = await PageVisit.aggregate([
+    { $match: { createdAt: { $gte: start } } },
+    { $facet: {
+      sessions: [{ $group: { _id: '$sessionId' } }, { $count: 'count' }],
+      dailyVisitors: [
+        { $group: { _id: { day: { $dateToString: { format: '%Y-%m-%d', date: '$createdAt', timezone: 'UTC' } }, visitor: '$visitorId' } } },
+        { $group: { _id: '$_id.day', visitors: { $sum: 1 } } },
+        { $sort: { _id: 1 } },
+      ],
+      pages: [
+        { $group: { _id: '$path', visits: { $sum: 1 }, averageDurationMs: { $avg: '$durationMs' } } },
+        { $sort: { visits: -1, _id: 1 } },
+      ],
+    } },
+  ]);
+  return {
+    sessions: result.sessions[0]?.count || 0,
+    dailyVisitors: result.dailyVisitors.map((day) => ({ date: day._id, visitors: day.visitors })),
+    pages: result.pages.map((page) => ({ path: page._id, visits: page.visits, averageDurationMs: Math.round(page.averageDurationMs) })),
+  };
+}
 
 async function getDashboardStats() {
   const orders = await Order.find();
@@ -66,4 +104,4 @@ async function getDashboardStats() {
   };
 }
 
-module.exports = { getDashboardStats };
+module.exports = { getDashboardStats, recordPageVisit, getTrafficStats };
