@@ -6,14 +6,14 @@ import Catering from "../../../assets/catering.jpg";
 import AccLobby from "../../../assets/acc-lobby.png"; 
 import BusinessRating from "../../../assets/acc-business-rating.jpg";
 import Giftcard from "../../../assets/Giftcard.png";
-import ACCAI from "../../../assets/acc-ai.png";
+import AccShirt from "../../../assets/acc-shirt.jpg";
 
 const GALLERY_IMAGES = [
   { src: BusinessRating, alt: "Business rating" },
   { src: Catering, alt: "A Cheerful Cup catering" },
   { src: Giftcard, alt: "Gift card" },
   { src: Ceo, alt: "A Cheerful Cup owner with the menu" },
-  { src: ACCAI, alt: "Acc Coupple" },
+  { src: AccShirt, alt: "Acc Shirt" },
 ];
 
 const STATS = [
