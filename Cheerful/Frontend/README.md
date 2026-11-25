@@ -1,5 +1,9 @@
 # React + Vite
 
+## Sitemap
+
+`public/sitemap.xml` lists the site's indexable public pages. Update its menu category URLs whenever categories are added, renamed, or removed in admin. `public/robots.txt` points search engines to the sitemap.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
